@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Game Collection</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #0e0f13; color: #e8e8ea;
+    font: 15px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  header {
+    position: sticky; top: 0; z-index: 5; background: rgba(14,15,19,.95);
+    backdrop-filter: blur(6px); border-bottom: 1px solid #23252c; padding: 14px 18px;
+  }
+  h1 { margin: 0 0 2px; font-size: 20px; }
+  .counts { color: #9aa0ab; font-size: 13px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .controls input, .controls select {
+    background: #1a1c22; color: #e8e8ea; border: 1px solid #2c2f38;
+    border-radius: 8px; padding: 8px 11px; font-size: 14px;
+  }
+  .controls input { flex: 1 1 220px; min-width: 0; }
+  .seg { display: inline-flex; border: 1px solid #2c2f38; border-radius: 8px; overflow: hidden; }
+  .seg button {
+    background: #1a1c22; color: #9aa0ab; border: 0; padding: 8px 14px;
+    font-size: 14px; cursor: pointer;
+  }
+  .seg button.active { background: #3b5bdb; color: #fff; }
+  main { padding: 18px; }
+  .grid {
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .card { background: #16181e; border: 1px solid #21242c; border-radius: 12px; overflow: hidden; }
+  .cover { aspect-ratio: 3/4; width: 100%; background: #1f222a; display: block; object-fit: cover; }
+  .mono {
+    aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center;
+    font-size: 40px; font-weight: 700; color: #4a4f5c;
+    background: linear-gradient(135deg, #1c1f27, #14161c);
+  }
+  .meta { padding: 9px 11px 12px; }
+  .name { font-weight: 600; font-size: 14px; line-height: 1.3; }
+  .sub { color: #8b909b; font-size: 12px; margin-top: 3px; }
+  .badge {
+    display: inline-block; margin-top: 7px; font-size: 11px; font-weight: 700;
+    padding: 2px 8px; border-radius: 999px; letter-spacing: .02em;
+  }
+  .badge.owned { background: #1c3a25; color: #6ee7a0; }
+  .badge.wishlist { background: #3a2c14; color: #f5c971; }
+  .empty { color: #8b909b; text-align: center; padding: 60px 20px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Game Collection</h1>
+  <div class="counts" id="counts"></div>
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search games…" autocomplete="off">
+    <select id="platform"><option value="">All platforms</option></select>
+    <div class="seg" id="status">
+      <button data-v="all" class="active">All</button>
+      <button data-v="owned">Owned</button>
+      <button data-v="wishlist">Wishlist</button>
+    </div>
+  </div>
+</header>
+<main><div class="grid" id="grid"></div></main>
+<script src="data.js"></script>
+<script>
+  var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
+  var labelBySlug = {}; PLATFORMS.forEach(function (p) { labelBySlug[p.slug] = p.label; });
+
+  var ownedTotal = GAMES.filter(function (g) { return g.status === 'owned'; }).length;
+  var wishTotal = GAMES.filter(function (g) { return g.status === 'wishlist'; }).length;
+  document.getElementById('counts').textContent =
+    ownedTotal + ' owned · ' + wishTotal + ' wishlisted';
+
+  var sel = document.getElementById('platform');
+  PLATFORMS.forEach(function (p) {
+    var o = document.createElement('option'); o.value = p.slug; o.textContent = p.label; sel.appendChild(o);
+  });
+
+  var state = { q: '', platform: '', status: 'all' };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // Replace a broken/absent cover with a monogram tile. Called from <img onerror>
+  // and for cover-less games; the initial letter rides in data-mono so we never
+  // build HTML out of an attribute-decoded string.
+  window.thumbFail = function (img) {
+    var d = document.createElement('div');
+    d.className = 'mono';
+    d.textContent = img.getAttribute('data-mono') || '?';
+    img.replaceWith(d);
+  };
+
+  function card(g) {
+    var label = labelBySlug[g.platform] || g.platform;
+    var sub = [label, g.year].filter(Boolean).join(' · ');
+    var mono = esc((g.name || '?').charAt(0).toUpperCase());
+    var art = g.cover
+      ? '<img class="cover" loading="lazy" alt="" data-mono="' + mono +
+        '" src="' + esc(g.cover) + '" onerror="thumbFail(this)">'
+      : '<div class="mono">' + mono + '</div>';
+    return '<div class="card">' + art +
+      '<div class="meta"><div class="name">' + esc(g.name) + '</div>' +
+      '<div class="sub">' + esc(sub) + '</div>' +
+      '<span class="badge ' + g.status + '">' + (g.status === 'owned' ? 'Owned' : 'Wishlist') +
+      '</span></div></div>';
+  }
+
+  function render() {
+    var q = state.q.trim().toLowerCase();
+    var list = GAMES.filter(function (g) {
+      if (state.status !== 'all' && g.status !== state.status) return false;
+      if (state.platform && g.platform !== state.platform) return false;
+      if (q && (g.name || '').toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    });
+    var grid = document.getElementById('grid');
+    grid.innerHTML = list.length
+      ? list.map(card).join('')
+      : '<div class="empty">No games match your filters.</div>';
+  }
+
+  document.getElementById('q').addEventListener('input', function (e) { state.q = e.target.value; render(); });
+  sel.addEventListener('change', function (e) { state.platform = e.target.value; render(); });
+  document.getElementById('status').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    state.status = b.dataset.v;
+    [].forEach.call(this.children, function (c) { c.classList.toggle('active', c === b); });
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>
