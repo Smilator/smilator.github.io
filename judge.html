@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Judge the backlog</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0; background: #0e0f13; color: #e8e8ea;
+    font: 15px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    min-height: 100dvh;
+  }
+  header {
+    position: sticky; top: 0; z-index: 5; background: rgba(14,15,19,.95);
+    backdrop-filter: blur(6px); border-bottom: 1px solid #23252c;
+    padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+  }
+  header h1 { margin: 0; font-size: 16px; flex: 1; }
+  header .left { color: #9aa0ab; font-size: 13px; }
+  .gear { background: none; border: 0; color: #9aa0ab; font-size: 18px; cursor: pointer; padding: 4px; }
+  main { padding: 16px; display: flex; justify-content: center; }
+  .stage { width: 100%; max-width: 420px; }
+  .card { background: #16181e; border: 1px solid #21242c; border-radius: 16px; overflow: hidden; }
+  .cover { aspect-ratio: 3/4; width: 100%; background: #1f222a; display: block; object-fit: cover; }
+  .mono {
+    aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center;
+    font-size: 72px; font-weight: 700; color: #4a4f5c;
+    background: linear-gradient(135deg, #1c1f27, #14161c);
+  }
+  .meta { padding: 14px 16px 18px; }
+  .name { font-weight: 700; font-size: 19px; line-height: 1.25; }
+  .sub { color: #8b909b; font-size: 13px; margin-top: 4px; }
+  .badge {
+    display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 700;
+    padding: 2px 9px; border-radius: 999px; background: #2a2030; color: #d6a8ff;
+  }
+  .rows { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .row {
+    display: flex; align-items: center; gap: 10px;
+    background: #1a1c22; border: 1px solid #24272f; border-radius: 12px; padding: 8px 10px;
+  }
+  .row .plat { flex: 1; font-size: 14px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .row .err { color: #f08a8a; font-size: 11px; }
+  .row button {
+    border: 0; border-radius: 10px; width: 52px; height: 40px; font-size: 18px;
+    cursor: pointer; flex: none; transition: transform .05s;
+  }
+  .row button:active { transform: scale(.92); }
+  .row button:disabled { opacity: .4; }
+  .wish { background: #2a3b2c; color: #6ee7a0; }
+  .trash { background: #3b2424; color: #f08a8a; }
+  .skip {
+    margin-top: 14px; width: 100%; padding: 12px; border-radius: 12px;
+    background: #1a1c22; color: #9aa0ab; border: 1px solid #24272f; font-size: 14px; cursor: pointer;
+  }
+  .empty { color: #8b909b; text-align: center; padding: 70px 20px; }
+  .empty .big { font-size: 44px; }
+  .empty button {
+    margin-top: 16px; padding: 10px 18px; border-radius: 10px; border: 0;
+    background: #3b5bdb; color: #fff; font-size: 14px; cursor: pointer;
+  }
+  .overlay {
+    position: fixed; inset: 0; background: #0e0f13; z-index: 20;
+    display: flex; flex-direction: column; justify-content: center; padding: 24px; gap: 14px;
+  }
+  .overlay h2 { margin: 0; font-size: 19px; }
+  .overlay p { margin: 0; color: #9aa0ab; font-size: 13px; }
+  .overlay label { font-size: 12px; color: #9aa0ab; }
+  .overlay input {
+    width: 100%; background: #1a1c22; color: #e8e8ea; border: 1px solid #2c2f38;
+    border-radius: 10px; padding: 11px; font-size: 15px; margin-top: 4px;
+  }
+  .overlay button {
+    padding: 13px; border-radius: 12px; border: 0; background: #3b5bdb; color: #fff;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+  }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Judge the backlog</h1>
+  <span class="left" id="left"></span>
+  <button class="gear" id="gear" title="Change backend channel">⚙</button>
+</header>
+<main><div class="stage" id="stage"></div></main>
+
+<div class="overlay hidden" id="config">
+  <h2>Connect to your library</h2>
+  <p>Paste the <b>topic</b> and <b>token</b> shown on the desktop app under
+     Settings → “Mobile judging”. Stored only on this phone.</p>
+  <div>
+    <label for="topic">ntfy topic</label>
+    <input id="topic" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="fr-…">
+  </div>
+  <div>
+    <label for="token">token</label>
+    <input id="token" autocapitalize="off" autocomplete="off" spellcheck="false">
+  </div>
+  <button id="saveCfg">Save & start judging</button>
+</div>
+
+<script src="unjudged.js"></script>
+<script>
+  var NTFY = 'https://ntfy.sh';
+  var UNJUDGED = window.UNJUDGED || [], LABELS = window.LABELS || {};
+
+  function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+
+  // Games already decided this session — filtered out so they don't reappear
+  // until the next publish refreshes unjudged.js.
+  function judgedSet(){
+    try { return new Set(JSON.parse(lsGet('judgedIds') || '[]')); } catch(e){ return new Set(); }
+  }
+  function rememberJudged(ids){
+    var set = judgedSet(); ids.forEach(function(i){ set.add(i); });
+    lsSet('judgedIds', JSON.stringify([].slice.call(set)));
+  }
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  // Mirror the desktop groupByGame(): collapse rows by igdb_id into one card,
+  // same-platform rows fold into a single decision targeting all their ids.
+  function group(list){
+    var order = [], byKey = {}, platByKey = {};
+    list.forEach(function(g){
+      var key = (g.igdb_id != null) ? 'igdb:' + g.igdb_id : 'manual:' + g.id;
+      if (!byKey[key]) { byKey[key] = { key: key, rep: g, rows: [] }; platByKey[key] = {}; order.push(key); }
+      var slugs = platByKey[key], ex = slugs[g.platform];
+      if (ex) { ex.ids.push(g.id); }
+      else { slugs[g.platform] = { slug: g.platform, label: (LABELS[g.platform] || g.platform), ids: [g.id] }; }
+    });
+    return order.map(function(key){
+      var grp = byKey[key];
+      grp.rows = Object.keys(platByKey[key]).map(function(s){ return platByKey[key][s]; })
+        .sort(function(a,b){ return a.label.localeCompare(b.label); });
+      return grp;
+    });
+  }
+
+  var cards = [], idx = 0;
+
+  function build(){
+    var judged = judgedSet();
+    var live = UNJUDGED.filter(function(g){ return !judged.has(g.id); });
+    cards = group(live);
+    idx = 0;
+  }
+
+  function updateLeft(){
+    var remaining = 0;
+    for (var i = idx; i < cards.length; i++) remaining += cards[i].rows.length ? 1 : 0;
+    document.getElementById('left').textContent = remaining ? remaining + ' left' : '';
+  }
+
+  function next(){ idx++; render(); }
+
+  function post(ids, status, btns, onErr){
+    var topic = lsGet('ntfyTopic'), token = lsGet('ntfyToken');
+    return fetch(NTFY + '/' + encodeURIComponent(topic), {
+      method: 'POST',
+      body: JSON.stringify({ ids: ids, status: status, token: token })
+    }).then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); });
+  }
+
+  function render(){
+    var stage = document.getElementById('stage');
+    // Skip past cards whose rows are all decided.
+    while (idx < cards.length && cards[idx].rows.length === 0) idx++;
+    updateLeft();
+    if (idx >= cards.length){
+      stage.innerHTML =
+        '<div class="empty"><div class="big">🎉</div>' +
+        '<div>All caught up — nothing left to judge.</div>' +
+        '<button id="reload">Reload</button></div>';
+      document.getElementById('reload').onclick = function(){ build(); render(); };
+      return;
+    }
+    var c = cards[idx], g = c.rep;
+    var mono = esc((g.name || '?').charAt(0).toUpperCase());
+    // `ig` holds an IGDB cover's varying path (size token + id); rebuild the URL.
+    var cover = g.ig ? ('https://images.igdb.com/igdb/image/upload/' + g.ig + '.jpg') : g.cover;
+    var art = cover
+      ? '<img class="cover" alt="" src="' + esc(cover) + '" onerror="this.outerHTML=\'<div class=&quot;mono&quot;>' + mono + '</div>\'">'
+      : '<div class="mono">' + mono + '</div>';
+    var sub = [g.developer, g.year].filter(Boolean).join(' · ');
+    var rowsHtml = c.rows.map(function(row, i){
+      return '<div class="row" data-i="' + i + '">' +
+        '<span class="plat" title="' + esc(row.slug) + '">' + esc(row.label) + '</span>' +
+        '<button class="wish" data-act="wishlist" title="Wishlist">♡</button>' +
+        '<button class="trash" data-act="trash" title="Trash">✕</button>' +
+      '</div>';
+    }).join('');
+    stage.innerHTML =
+      '<div class="card">' + art +
+        '<div class="meta">' +
+          '<div class="name">' + esc(g.name) + '</div>' +
+          (sub ? '<div class="sub">' + esc(sub) + '</div>' : '') +
+          (c.rows.length > 1 ? '<span class="badge">' + c.rows.length + ' consoles</span>' : '') +
+          '<div class="rows">' + rowsHtml + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<button class="skip" id="skip">Skip ⏭</button>';
+
+    document.getElementById('skip').onclick = next;
+    [].forEach.call(stage.querySelectorAll('.row'), function(el){
+      var row = c.rows[+el.dataset.i];
+      [].forEach.call(el.querySelectorAll('button'), function(btn){
+        btn.onclick = function(){
+          var act = btn.dataset.act, btns = el.querySelectorAll('button');
+          [].forEach.call(btns, function(b){ b.disabled = true; });
+          var old = el.querySelector('.err'); if (old) old.remove();
+          post(row.ids, act).then(function(){
+            rememberJudged(row.ids);
+            row.done = true;
+            // Drop this row; advance the card once every console is decided.
+            c.rows = c.rows.filter(function(r){ return r !== row; });
+            if (c.rows.length === 0) next(); else render();
+          }).catch(function(e){
+            [].forEach.call(btns, function(b){ b.disabled = false; });
+            var sp = document.createElement('span');
+            sp.className = 'err'; sp.textContent = 'failed';
+            el.insertBefore(sp, btns[0]);
+          });
+        };
+      });
+    });
+  }
+
+  // ---- config (ntfy pairing) ----
+  function showConfig(){
+    var ov = document.getElementById('config');
+    document.getElementById('topic').value = lsGet('ntfyTopic') || '';
+    document.getElementById('token').value = lsGet('ntfyToken') || '';
+    ov.classList.remove('hidden');
+  }
+  document.getElementById('gear').onclick = showConfig;
+  document.getElementById('saveCfg').onclick = function(){
+    var t = document.getElementById('topic').value.trim();
+    var k = document.getElementById('token').value.trim();
+    if (!t || !k) return;
+    lsSet('ntfyTopic', t); lsSet('ntfyToken', k);
+    document.getElementById('config').classList.add('hidden');
+    build(); render();
+  };
+
+  if (lsGet('ntfyTopic') && lsGet('ntfyToken')) { build(); render(); }
+  else { showConfig(); }
+</script>
+</body>
+</html>
