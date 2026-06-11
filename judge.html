@@ -101,6 +101,11 @@
     padding: 13px; border-radius: 12px; border: 0; background: #3b5bdb; color: #fff;
     font-size: 15px; font-weight: 600; cursor: pointer;
   }
+  .warn {
+    flex: 0 0 auto; background: #3a2c14; color: #f5c971; border-bottom: 1px solid #4a3a1c;
+    padding: 10px 14px; font-size: 13px; line-height: 1.4; display: flex; gap: 8px; align-items: flex-start;
+  }
+  .warn button { margin-left: auto; flex: none; background: none; border: 0; color: #f5c971; font-size: 16px; cursor: pointer; }
   .hidden { display: none !important; }
 </style>
 </head>
@@ -110,6 +115,7 @@
   <span class="left" id="left"></span>
   <button class="gear" id="gear" title="Change backend channel">⚙</button>
 </header>
+<div class="warn hidden" id="warn"><span id="warnMsg"></span><button id="warnX" title="Dismiss">✕</button></div>
 <main><div class="stage" id="stage"></div></main>
 
 <div class="overlay hidden" id="config">
@@ -138,6 +144,20 @@
 
   function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
   function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  function ssGet(k){ try { return sessionStorage.getItem(k); } catch(e){ return null; } }
+  function ssSet(k,v){ try { sessionStorage.setItem(k,v); } catch(e){} }
+
+  // True if localStorage writes don't stick — a private/forgetful browser or a
+  // "block site data" setting. Judged games then reappear after every refresh.
+  function storageBlocked(){
+    try {
+      var k = '__probe__' + Math.random();
+      localStorage.setItem(k, '1');
+      var ok = localStorage.getItem(k) === '1';
+      localStorage.removeItem(k);
+      return !ok;
+    } catch(e){ return true; }
+  }
 
   // Games already decided this session — filtered out so they don't reappear
   // until the next publish refreshes unjudged.js.
@@ -147,7 +167,31 @@
   function rememberJudged(ids){
     var set = judgedSet(); ids.forEach(function(i){ set.add(i); });
     lsSet('judgedIds', JSON.stringify([].slice.call(set)));
+    ssSet('didJudge', '1');  // lets the next load detect non-persistent storage
   }
+
+  // Warn if the browser won't remember judged games across refreshes (the cause
+  // of "I judged it but it came back"). Decisions are still saved server-side.
+  function maybeWarnStorage(){
+    var msg = null;
+    if (storageBlocked()) {
+      msg = 'Your browser is blocking site storage, so games you judge reappear after a ' +
+        'refresh. They ARE still saved to your library. To stop the repeats: turn off ' +
+        'private/incognito mode (or allow site data for this page), or press Publish on the ' +
+        'desktop to refresh the list.';
+    } else if (ssGet('didJudge') && judgedSet().size === 0) {
+      msg = 'Your browser is not keeping judged games between refreshes. They ARE still saved ' +
+        'to your library — use a normal browser tab, or press Publish on the desktop to ' +
+        'refresh the list.';
+    }
+    if (msg){
+      document.getElementById('warnMsg').textContent = msg;
+      document.getElementById('warn').classList.remove('hidden');
+    }
+  }
+  document.getElementById('warnX').onclick = function(){
+    document.getElementById('warn').classList.add('hidden');
+  };
 
   function esc(s){
     return String(s).replace(/[&<>"']/g, function(c){
@@ -364,7 +408,7 @@
     if (e.persisted){ try { sessionStorage.removeItem('judgeReturn'); } catch(_){} }
   });
 
-  if (lsGet('ntfyTopic') && lsGet('ntfyToken')) { build(); render(); }
+  if (lsGet('ntfyTopic') && lsGet('ntfyToken')) { build(); render(); maybeWarnStorage(); }
   else { showConfig(); }
 </script>
 </body>
