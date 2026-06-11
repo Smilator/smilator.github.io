@@ -24,6 +24,11 @@
   main { padding: 16px; display: flex; justify-content: center; }
   .stage { width: 100%; max-width: 420px; }
   .card { background: #16181e; border: 1px solid #21242c; border-radius: 16px; overflow: hidden; }
+  .coverlink { display: block; position: relative; }
+  .igdbhint {
+    position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,.6); color: #cdd3df;
+    font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; pointer-events: none;
+  }
   .cover { aspect-ratio: 3/4; width: 100%; background: #1f222a; display: block; object-fit: cover; }
   .mono {
     aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center;
@@ -148,10 +153,20 @@
 
   var cards = [], idx = 0;
 
+  // Fisher-Yates: a fresh random order every load, so the queue doesn't march
+  // through the same platform-then-name sequence each session.
+  function shuffle(a){
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
   function build(){
     var judged = judgedSet();
     var live = UNJUDGED.filter(function(g){ return !judged.has(g.id); });
-    cards = group(live);
+    cards = shuffle(group(live));
     idx = 0;
   }
 
@@ -191,6 +206,13 @@
     var art = cover
       ? '<img class="cover" alt="" src="' + esc(cover) + '" onerror="this.outerHTML=\'<div class=&quot;mono&quot;>' + mono + '</div>\'">'
       : '<div class="mono">' + mono + '</div>';
+    // Tap the cover to open the IGDB page (slug) — or an IGDB name search if we
+    // have no slug — in a new tab.
+    var igdbUrl = g.sl
+      ? ('https://www.igdb.com/games/' + encodeURIComponent(g.sl))
+      : ('https://www.igdb.com/search?type=1&q=' + encodeURIComponent(g.name || ''));
+    art = '<a class="coverlink" href="' + esc(igdbUrl) + '" target="_blank" rel="noopener noreferrer" ' +
+      'title="Open on IGDB ↗">' + art + '<span class="igdbhint">IGDB ↗</span></a>';
     var sub = [g.developer, g.year].filter(Boolean).join(' · ');
     var rowsHtml = c.rows.map(function(row, i){
       return '<div class="row" data-i="' + i + '">' +
