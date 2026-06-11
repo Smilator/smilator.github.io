@@ -57,6 +57,13 @@
   .row button:disabled { opacity: .4; }
   .wish { background: #2a3b2c; color: #6ee7a0; }
   .trash { background: #3b2424; color: #f08a8a; }
+  .xplat { margin-top: 14px; border-top: 1px solid #24272f; padding-top: 12px; }
+  .xplat-title { font-size: 11px; color: #8b909b; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+  .xchips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .xchip { font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid transparent; }
+  .xchip-owned { background: #14241a; color: #6ee7a0; border-color: #1c3a25; }
+  .xchip-wishlist { background: #2a2410; color: #f5c971; border-color: #3a2c14; }
+  .xchip-trash { background: #241818; color: #f08a8a; border-color: #3b2424; }
   .skip {
     margin-top: 14px; width: 100%; padding: 12px; border-radius: 12px;
     background: #1a1c22; color: #9aa0ab; border: 1px solid #24272f; font-size: 14px; cursor: pointer;
@@ -112,6 +119,10 @@
 <script>
   var NTFY = 'https://ntfy.sh';
   var UNJUDGED = window.UNJUDGED || [], LABELS = window.LABELS || {};
+  // igdb_id -> [{p:slug, s:status}] statuses this game holds on OTHER consoles
+  // (owned/wishlist/trash), for context next to the unjudged decision.
+  var XPLAT = window.XPLAT || {};
+  var XSTATUS_TXT = { owned: 'owned', wishlist: 'wishlist', trash: 'trash' };
 
   function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
   function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
@@ -236,6 +247,15 @@
         '<button class="trash" data-act="trash" title="Trash">✕</button>' +
       '</div>';
     }).join('');
+    // Read-only context: the statuses this game already has on other consoles.
+    var others = (g.igdb_id != null && XPLAT[String(g.igdb_id)]) ? XPLAT[String(g.igdb_id)] : [];
+    var xHtml = others.length
+      ? '<div class="xplat"><div class="xplat-title">Already on other consoles</div><div class="xchips">' +
+        others.map(function(o){
+          return '<span class="xchip xchip-' + o.s + '">' + esc(LABELS[o.p] || o.p) +
+            ' · ' + (XSTATUS_TXT[o.s] || o.s) + '</span>';
+        }).join('') + '</div></div>'
+      : '';
     stage.innerHTML =
       '<div class="card">' + art +
         '<div class="meta">' +
@@ -243,6 +263,7 @@
           (sub ? '<div class="sub">' + esc(sub) + '</div>' : '') +
           (c.rows.length > 1 ? '<span class="badge">' + c.rows.length + ' consoles</span>' : '') +
           '<div class="rows">' + rowsHtml + '</div>' +
+          xHtml +
         '</div>' +
       '</div>' +
       '<button class="skip" id="skip">Skip ⏭</button>';
