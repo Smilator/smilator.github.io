@@ -186,11 +186,42 @@
     return a;
   }
 
+  // Persist/restore the queue across a same-tab visit to IGDB, so the browser
+  // Back button lands on the exact card you left instead of reshuffling. Uses
+  // sessionStorage (per-tab, survives the back-navigation reload).
+  function saveReturn(){
+    try {
+      sessionStorage.setItem('judgeReturn', JSON.stringify({
+        order: cards.map(function(c){ return c.key; }), idx: idx
+      }));
+    } catch(e){}
+  }
+  function takeReturn(){
+    try {
+      var raw = sessionStorage.getItem('judgeReturn');
+      sessionStorage.removeItem('judgeReturn');
+      return raw ? JSON.parse(raw) : null;
+    } catch(e){ return null; }
+  }
+
   function build(){
     var judged = judgedSet();
     var live = UNJUDGED.filter(function(g){ return !judged.has(g.id); });
-    cards = shuffle(group(live));
-    idx = 0;
+    var grouped = group(live);
+    var ret = takeReturn();
+    if (ret && ret.order){
+      // Returned from IGDB: keep the order we left (any new/unseen cards go to
+      // the end) and resume at the same spot.
+      var pos = {}; ret.order.forEach(function(k, i){ pos[k] = i; });
+      grouped.sort(function(a, b){
+        return ((a.key in pos) ? pos[a.key] : 1e9) - ((b.key in pos) ? pos[b.key] : 1e9);
+      });
+      cards = grouped;
+      idx = Math.min(ret.idx || 0, cards.length);
+    } else {
+      cards = shuffle(grouped);
+      idx = 0;
+    }
   }
 
   function updateLeft(){
@@ -244,13 +275,15 @@
     var art = cover
       ? '<img class="cover" alt="" src="' + esc(cover) + '" onerror="this.outerHTML=\'<div class=&quot;mono&quot;>' + mono + '</div>\'">'
       : '<div class="mono">' + mono + '</div>';
-    // Tap the cover to open the IGDB page (slug) — or an IGDB name search if we
-    // have no slug — in a new tab.
+    // Tap the cover to open the game's full IGDB page (video, screenshots, …) in
+    // THIS tab — IGDB blocks iframes, so same-tab navigation is the only way to
+    // show its real page. We save the queue position first (see saveReturn) so
+    // the browser Back button returns to this exact card instead of reshuffling.
     var igdbUrl = g.sl
       ? ('https://www.igdb.com/games/' + encodeURIComponent(g.sl))
       : ('https://www.igdb.com/search?type=1&q=' + encodeURIComponent(g.name || ''));
-    art = '<a class="coverlink" href="' + esc(igdbUrl) + '" target="_blank" rel="noopener noreferrer" ' +
-      'title="Open on IGDB ↗">' + art + '<span class="igdbhint">IGDB ↗</span></a>';
+    art = '<a class="coverlink" id="coverLink" href="' + esc(igdbUrl) + '" ' +
+      'title="Open on IGDB">' + art + '<span class="igdbhint">IGDB ↗</span></a>';
     var sub = [g.developer, g.year].filter(Boolean).join(' · ');
     var rowsHtml = c.rows.map(function(row, i){
       return '<div class="row" data-i="' + i + '">' +
@@ -281,6 +314,8 @@
       '<button class="skip" id="skip">Skip ⏭</button>';
 
     document.getElementById('skip').onclick = next;
+    var cl = document.getElementById('coverLink');
+    if (cl) cl.addEventListener('click', saveReturn);  // save before same-tab nav
     [].forEach.call(stage.querySelectorAll('.row'), function(el){
       var row = c.rows[+el.dataset.i];
       [].forEach.call(el.querySelectorAll('button'), function(btn){
@@ -321,6 +356,13 @@
     document.getElementById('config').classList.add('hidden');
     build(); render();
   };
+
+  // If the browser restored this page from its back/forward cache (returning
+  // from IGDB without a reload), the card is already intact — just drop the
+  // pending saved position so a later real reload reshuffles as normal.
+  window.addEventListener('pageshow', function(e){
+    if (e.persisted){ try { sessionStorage.removeItem('judgeReturn'); } catch(_){} }
+  });
 
   if (lsGet('ntfyTopic') && lsGet('ntfyToken')) { build(); render(); }
   else { showConfig(); }
