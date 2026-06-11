@@ -178,12 +178,27 @@
 
   function next(){ idx++; render(); }
 
-  function post(ids, status, btns, onErr){
+  // POST one decision to ntfy, retrying transient failures (429 rate-limit,
+  // 5xx, network blips) with backoff so a momentary throttle isn't shown as
+  // "failed". ntfy.sh limits per IP; a few retries ride over short bursts.
+  function post(ids, status){
     var topic = lsGet('ntfyTopic'), token = lsGet('ntfyToken');
-    return fetch(NTFY + '/' + encodeURIComponent(topic), {
-      method: 'POST',
-      body: JSON.stringify({ ids: ids, status: status, token: token })
-    }).then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); });
+    var url = NTFY + '/' + encodeURIComponent(topic);
+    var body = JSON.stringify({ ids: ids, status: status, token: token });
+    function wait(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+    function attempt(n){
+      return fetch(url, { method: 'POST', body: body }).then(function(r){
+        if (r.ok) return;
+        if ((r.status === 429 || r.status >= 500) && n < 3)
+          return wait(700 * (n + 1)).then(function(){ return attempt(n + 1); });
+        throw new Error('HTTP ' + r.status);
+      }, function(netErr){
+        // Network/CORS rejection — retry a couple of times before giving up.
+        if (n < 3) return wait(700 * (n + 1)).then(function(){ return attempt(n + 1); });
+        throw netErr;
+      });
+    }
+    return attempt(0);
   }
 
   function render(){
