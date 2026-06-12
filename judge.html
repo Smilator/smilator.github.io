@@ -218,7 +218,7 @@
     });
   }
 
-  var cards = [], idx = 0;
+  var cards = [], idx = 0, judgedThisSession = 0;
 
   // Fisher-Yates: a fresh random order every load, so the queue doesn't march
   // through the same platform-then-name sequence each session.
@@ -268,10 +268,12 @@
     }
   }
 
-  function updateLeft(){
-    var remaining = 0;
-    for (var i = idx; i < cards.length; i++) remaining += cards[i].rows.length ? 1 : 0;
-    document.getElementById('left').textContent = remaining ? remaining + ' left' : '';
+  // Session progress: counts up as you judge. In-memory only — the browser may
+  // block storage, and the list is a static snapshot, so a "remaining" count
+  // can't survive a refresh anyway. Resets to 0 on refresh (a fresh session).
+  function updateJudged(){
+    document.getElementById('left').textContent =
+      judgedThisSession ? ('✓ ' + judgedThisSession + ' judged') : '';
   }
 
   function next(){ idx++; render(); }
@@ -303,7 +305,6 @@
     var stage = document.getElementById('stage');
     // Skip past cards whose rows are all decided.
     while (idx < cards.length && cards[idx].rows.length === 0) idx++;
-    updateLeft();
     if (idx >= cards.length){
       stage.innerHTML =
         '<div class="empty"><div class="big">🎉</div>' +
@@ -369,6 +370,7 @@
           var old = el.querySelector('.err'); if (old) old.remove();
           post(row.ids, act).then(function(){
             rememberJudged(row.ids);
+            judgedThisSession += 1; updateJudged();
             row.done = true;
             // Drop this row; advance the card once every console is decided.
             c.rows = c.rows.filter(function(r){ return r !== row; });
@@ -408,7 +410,7 @@
     if (e.persisted){ try { sessionStorage.removeItem('judgeReturn'); } catch(_){} }
   });
 
-  if (lsGet('ntfyTopic') && lsGet('ntfyToken')) { build(); render(); maybeWarnStorage(); }
+  if (lsGet('ntfyTopic') && lsGet('ntfyToken')) { build(); render(); updateJudged(); maybeWarnStorage(); }
   else { showConfig(); }
 </script>
 </body>
