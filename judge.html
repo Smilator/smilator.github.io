@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Judge · Frankenstein</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+  :root {
+    color-scheme: light;
+    --bg: #f4f4f6; --bg-elev: #ffffff; --bg-elev-2: #eef0f2;
+    --border: #e2e2e6; --text: #14161a; --text-dim: #6b7280;
+    --accent: #e4002b; --accent-tint: #fdecef;
+    --good: #16a34a; --good-tint: #e7f6ec; --good-border: #bfe6cb;
+    --warn: #b45309; --warn-tint: #fdf0e3;
+    --radius: 16px; --radius-sm: 10px;
+    --shadow-sm: 0 1px 2px rgba(20,22,26,.06), 0 1px 3px rgba(20,22,26,.05);
+    --shadow-md: 0 8px 30px rgba(20,22,26,.14);
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 var(--sans);
+    height: 100dvh; display: flex; flex-direction: column; overflow: hidden;
+  }
+  header {
+    flex: 0 0 auto; background: var(--bg-elev); border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm); position: relative;
+  }
+  .hwrap { max-width: 620px; margin: 0 auto; padding: 10px 14px; display: flex; flex-direction: column; gap: 8px; }
+  .hrow { display: flex; align-items: center; gap: 8px; }
+  .wordmark { font: 700 17px/1 var(--display); letter-spacing: -.01em; }
+  .wordmark b { color: var(--accent); }
+  .stamp { font-size: 10px; color: var(--text-dim); margin-left: auto; }
+  .gear {
+    background: var(--bg-elev-2); border: 1px solid var(--border); color: var(--text-dim);
+    border-radius: var(--radius-sm); font-size: 15px; cursor: pointer; padding: 5px 9px; flex: none;
+  }
+  .platBtn {
+    display: flex; align-items: center; gap: 6px; background: none; border: 0; padding: 0;
+    color: inherit; cursor: pointer; font: inherit;
+  }
+  .platBtn .title { font: 700 20px/1.1 var(--display); letter-spacing: -.02em; }
+  .platBtn .chev { color: var(--text-dim); font-size: 15px; transition: transform .15s; }
+  .platBtn[aria-expanded="true"] .chev { transform: rotate(180deg); }
+  .picker {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 30; background: var(--bg-elev);
+    border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md);
+    max-height: 70vh; overflow: auto;
+  }
+  .picker .inner { max-width: 620px; margin: 0 auto; padding: 6px; }
+  .picker button {
+    display: flex; width: 100%; justify-content: space-between; align-items: center;
+    background: none; border: 0; color: var(--text); font: 500 15px var(--sans);
+    padding: 11px 13px; cursor: pointer; border-radius: var(--radius-sm);
+  }
+  .picker button.here, .picker button:hover { background: var(--accent-tint); }
+  .picker button .n { color: var(--text-dim); font-size: 13px; font-variant-numeric: tabular-nums; }
+
+  .conn {
+    flex: 0 0 auto; font-size: 12px; padding: 6px 14px; text-align: center; line-height: 1.35;
+    border-bottom: 1px solid var(--border);
+  }
+  .conn.ok { background: var(--good-tint); color: var(--good); }
+  .conn.pending { background: var(--warn-tint); color: var(--warn); }
+  .conn.bad { background: var(--accent-tint); color: var(--accent); }
+
+  main { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .stage { max-width: 620px; margin: 0 auto; padding: 14px 14px 40px; }
+
+  .progress {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12px; color: var(--text-dim); font-variant-numeric: tabular-nums; margin-bottom: 10px;
+  }
+
+  .card {
+    background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden; box-shadow: var(--shadow-sm);
+  }
+  .coverlink {
+    aspect-ratio: 16/10; width: 100%; position: relative; background: var(--bg-elev-2);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mono {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font: 700 56px var(--display); color: #c2c6cd; background: var(--bg-elev-2);
+  }
+  .igdbhint {
+    position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,.55); color: #fff;
+    font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; pointer-events: none;
+  }
+  .playBtn {
+    position: absolute; inset: 0; margin: auto; width: 58px; height: 58px; border-radius: 50%;
+    background: rgba(0,0,0,.5); color: #fff; border: 1px solid rgba(255,255,255,.35);
+    font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-left: 4px;
+  }
+  .playBtn:active { transform: scale(.94); }
+  .ytmount { position: absolute; inset: 0; }
+  .coverlink iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .meta { padding: 13px 14px 15px; }
+  .name { font: 700 18px/1.25 var(--display); }
+  .sub { color: var(--text-dim); font-size: 12px; margin-top: 5px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .pill {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
+    padding: 2px 7px; border-radius: 999px; border: 1px solid transparent;
+  }
+  .pill--released { background: var(--good-tint); color: var(--good); border-color: var(--good-border); }
+  .pill--wip { background: var(--warn-tint); color: var(--warn); }
+  .pill--dead { background: var(--accent-tint); color: var(--accent); }
+  .pill--type { background: #eef2ff; color: #3949ab; border-color: #d7ddfb; }
+  .companies { color: var(--text-dim); font-size: 12px; margin-top: 6px; }
+  .desc { color: #3f434b; font-size: 13px; line-height: 1.45; margin-top: 9px; }
+
+  .owned-chips { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .xchip { font-size: 10px; padding: 2px 7px; border-radius: 999px; background: var(--good-tint); color: var(--good); border: 1px solid var(--good-border); }
+
+  .rows { margin-top: 13px; display: flex; flex-direction: column; gap: 8px; }
+  .rowlabel { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-dim); margin-top: 4px; }
+  .row {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--bg-elev-2); border: 1px solid var(--border); border-radius: 12px; padding: 6px 7px;
+  }
+  .row.done { opacity: .55; }
+  .row .plat { flex: 1; text-align: center; font-size: 12px; color: var(--text); min-width: 0; overflow-wrap: break-word; }
+  .row button {
+    border: 0; border-radius: 9px; width: 46px; height: 36px; font-size: 17px; cursor: pointer;
+    flex: none; transition: transform .05s; background: var(--bg-elev); color: var(--text-dim);
+    box-shadow: inset 0 0 0 1px var(--border);
+  }
+  .row button:active { transform: scale(.93); }
+  .wish.active { background: var(--good-tint); color: var(--good); box-shadow: inset 0 0 0 1px var(--good-border); }
+  .trash.active { background: var(--accent-tint); color: var(--accent); box-shadow: inset 0 0 0 1px #f4b8c4; }
+
+  .nav { display: flex; gap: 10px; margin-top: 16px; }
+  .nav button {
+    flex: 1 1 0; padding: 13px; border-radius: 12px; border: 1px solid var(--border);
+    background: var(--bg-elev); color: var(--text); font: 600 14px var(--sans); cursor: pointer;
+  }
+  .nav button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .nav button:disabled { opacity: .45; cursor: default; }
+  .hint { text-align: center; font-size: 12px; color: var(--warn); margin-top: 8px; min-height: 16px; }
+
+  .empty { text-align: center; padding: 80px 20px; color: var(--text-dim); }
+  .empty .big { font-size: 46px; }
+
+  .overlay {
+    position: fixed; inset: 0; background: var(--bg); z-index: 40;
+    display: flex; flex-direction: column; justify-content: center; padding: 24px; gap: 14px;
+    max-width: 480px; margin: 0 auto;
+  }
+  .overlay h2 { margin: 0; font: 700 20px var(--display); }
+  .overlay p { margin: 0; color: var(--text-dim); font-size: 13px; }
+  .overlay label { font-size: 12px; color: var(--text-dim); }
+  .overlay input {
+    width: 100%; background: var(--bg-elev); color: var(--text); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 11px; font-size: 15px; margin-top: 4px;
+  }
+  .overlay button {
+    padding: 13px; border-radius: 12px; border: 0; background: var(--accent); color: #fff;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+  }
+  .overlay button.ghost { background: var(--bg-elev-2); color: var(--text); border: 1px solid var(--border); }
+  .warn {
+    flex: 0 0 auto; background: var(--warn-tint); color: var(--warn); border-bottom: 1px solid #efd9b8;
+    padding: 9px 14px; font-size: 12px; line-height: 1.4; display: flex; gap: 8px; align-items: flex-start;
+  }
+  .warn button { margin-left: auto; flex: none; background: none; border: 0; color: var(--warn); font-size: 15px; cursor: pointer; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div class="hrow">
+      <span class="wordmark">Franken<b>stein</b></span>
+      <span class="stamp">judge · Updated 27 Aug 2026</span>
+      <button class="gear" id="gearBtn" title="Settings">&#9881;</button>
+    </div>
+    <button class="platBtn" id="platBtn" aria-expanded="false">
+      <span class="title" id="platTitle">All platforms</span>
+      <span class="chev">&#8964;</span>
+    </button>
+  </div>
+  <div class="picker hidden" id="picker"><div class="inner" id="pickerInner"></div></div>
+</header>
+<div class="conn" id="conn">&hellip;</div>
+<div class="warn hidden" id="warn"><span id="warnMsg"></span><button id="warnX" title="Dismiss">&#10005;</button></div>
+
+<main><div class="stage" id="stage"></div></main>
+
+<div class="overlay hidden" id="config">
+  <h2>Connect this phone</h2>
+  <p>Paste the <b>queue secret</b> from the desktop app &rarr; Settings &rarr; Mobile Judging.
+     Stored only on this phone.</p>
+  <div>
+    <label for="secret">Queue secret</label>
+    <input id="secret" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="&hellip;">
+  </div>
+  <button id="saveCfg">Save &amp; start judging</button>
+  <p style="margin-top:6px">&mdash; or &mdash;</p>
+  <button id="startOffline" class="ghost">No connection this trip &mdash; save decisions on this phone only</button>
+  <button id="closeCfg" class="ghost">Cancel</button>
+</div>
+
+<script src="unjudged.js?v=2e6ae57dd647"></script>
+<script>
+  // Baked at publish. QUEUE_URL = the Cloudflare Worker; JUDGE_ENDPOINT = an
+  // optional Tailscale Funnel fast-path straight to the desktop. The queue SECRET
+  // is NOT baked (public file) — the user pastes it once; it lives in localStorage.
+  var QUEUE_URL = "https://fr-judge.fr-judge.workers.dev";
+  var JUDGE_ENDPOINT = "https://desktop-740t80v.taile9b490.ts.net";
+  var IGDB_IMG = 'https://images.igdb.com/igdb/image/upload/';
+  var UNJUDGED = window.UNJUDGED || [], LABELS = window.LABELS || {}, XPLAT = window.XPLAT || {};
+
+  function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  function ssGet(k){ try { return sessionStorage.getItem(k); } catch(e){ return null; } }
+  function ssSet(k,v){ try { sessionStorage.setItem(k,v); } catch(e){} }
+
+  var OFFLINE = lsGet('offlineMode') === '1';
+  var PLATFORM = lsGet('judgePlatform') || '';
+
+  var IGDB_STATUS = {
+    0: ['Released', 'released'], 2: ['Alpha', 'wip'], 3: ['Beta', 'wip'],
+    4: ['Early access', 'wip'], 5: ['Offline', 'dead'], 6: ['Cancelled', 'dead'],
+    7: ['Rumored', 'wip'], 8: ['Delisted', 'dead']
+  };
+  var IGDB_GAME_TYPE = { 0: 'Main game', 4: 'Standalone expansion', 8: 'Remake', 9: 'Remaster', 11: 'Port' };
+  var PLAT_ABBR = {
+    nes: 'NES', snes: 'SNES', n64: 'N64', n64dd: 'N64DD', gamecube: 'GC', wii: 'Wii',
+    wiiu: 'WiiU', switch: 'Switch', switch2: 'Switch2', gb: 'GB', gbc: 'GBC', gba: 'GBA',
+    nds: 'NDS', '3ds': '3DS', fds: 'FDS', virtualboy: 'VB',
+    mastersystem: 'SMS', megadrive: 'MD', megacd: 'SegaCD', sega32x: '32X', saturn: 'Saturn',
+    dreamcast: 'DC', gamegear: 'GG', sg1000: 'SG-1000',
+    psx: 'PS1', ps2: 'PS2', ps3: 'PS3', ps4: 'PS4', ps5: 'PS5', psp: 'PSP', psvita: 'Vita',
+    xbox: 'Xbox', xbox360: 'X360', xboxone: 'XOne', xboxseriesx: 'XSX', windows: 'PC', dos: 'DOS', macintosh: 'Mac',
+    atari2600: 'A2600', atari5200: 'A5200', atari7800: 'A7800', atarist: 'AtariST',
+    jaguar: 'Jaguar', lynx: 'Lynx', c64: 'C64', amiga: 'Amiga', vic20: 'VIC-20',
+    pcengine: 'PCE', pcenginecd: 'PCE-CD', supergrafx: 'SGX', pcfx: 'PC-FX',
+    neogeo: 'NeoGeo', neogeocd: 'NeoGeoCD', ngp: 'NGP', ngpc: 'NGPC',
+    wswan: 'WSwan', wswanc: 'WSwanC', gameandwatch: 'G&W', pokemini: 'PokeMini',
+    mame: 'Arcade', naomi: 'Naomi', model2: 'Model2', model3: 'Model3',
+    atomiswave: 'AtomisWave', triforce: 'Triforce', teknoparrot: 'TeknoP',
+    '3do': '3DO', colecovision: 'Coleco', intellivision: 'Intelli', vectrex: 'Vectrex',
+    amstradcpc: 'CPC', msx: 'MSX', msx2: 'MSX2', x68000: 'X68K', zxspectrum: 'ZX',
+    oculusrift: 'Rift', 'meta-quest': 'Quest', 'meta-quest-2': 'Quest2', 'meta-quest-3': 'Quest3'
+  };
+  function plabel(slug){ return PLAT_ABBR[slug] || LABELS[slug] || slug; }
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  // ---- trailer (lazy, one at a time) -----------------------------------
+  var ytApiPromise = null;
+  function loadYT(){
+    if (window.YT && window.YT.Player) return Promise.resolve(window.YT);
+    if (ytApiPromise) return ytApiPromise;
+    ytApiPromise = new Promise(function(res){
+      var prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = function(){ if (prev) prev(); res(window.YT); };
+      var sc = document.createElement('script');
+      sc.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(sc);
+    });
+    return ytApiPromise;
+  }
+  var activePlayer = null, activePlayerMount = null;
+  function destroyActivePlayer(){
+    if (activePlayer){ try { activePlayer.destroy(); } catch(_){} }
+    activePlayer = null; activePlayerMount = null;
+  }
+  function playTrailer(vid, btn){
+    destroyActivePlayer();
+    var mount = document.createElement('div');
+    mount.className = 'ytmount';
+    btn.parentNode.replaceChild(mount, btn);
+    activePlayerMount = mount;
+    loadYT().then(function(YT){
+      if (activePlayerMount !== mount) return;
+      activePlayer = new YT.Player(mount, {
+        videoId: vid,
+        playerVars: { autoplay: 1, controls: 1, playsinline: 1, rel: 0, modestbranding: 1 },
+        events: { onReady: function(e){ try { e.target.playVideo(); } catch(_){} } }
+      });
+    });
+  }
+
+  // ---- judged / storage ------------------------------------------------
+  function storageBlocked(){
+    try {
+      var k = '__probe__' + Math.random();
+      localStorage.setItem(k, '1');
+      var ok = localStorage.getItem(k) === '1';
+      localStorage.removeItem(k);
+      return !ok;
+    } catch(e){ return true; }
+  }
+  function judgedSet(){
+    try { return new Set(JSON.parse(lsGet('judgedIds') || '[]')); } catch(e){ return new Set(); }
+  }
+  function rememberJudged(ids){
+    var set = judgedSet(); ids.forEach(function(i){ set.add(i); });
+    lsSet('judgedIds', JSON.stringify([].slice.call(set)));
+    ssSet('didJudge', '1');
+  }
+
+  // ---- durable outbox ------------------------------------------------
+  function newId(){
+    try { if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch(e){}
+    return 'd-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+  }
+  function getOutbox(){ try { return JSON.parse(lsGet('outbox') || '[]'); } catch(e){ return []; } }
+  function setOutbox(box){ lsSet('outbox', JSON.stringify(box)); }
+  function pendingSet(){
+    var s = new Set();
+    getOutbox().forEach(function(e){ (e.ids || []).forEach(function(i){ s.add(i); }); });
+    return s;
+  }
+  function secret(){ return lsGet('queueSecret') || ''; }
+
+  function enqueue(ids, status){
+    var entry = { did: newId(), ids: ids, status: status, ts: Date.now(), tries: 0 };
+    var box = getOutbox(); box.push(entry); setOutbox(box);
+    if (OFFLINE){ rememberJudged(ids); return entry; }
+    flushOutbox();
+    return entry;
+  }
+
+  function fetchT(url, opts, ms){
+    var o = opts || {}, ctl = window.AbortController ? new AbortController() : null;
+    if (ctl) o.signal = ctl.signal;
+    var to = setTimeout(function(){ if (ctl) ctl.abort(); }, ms || 12000);
+    return fetch(url, o).then(
+      function(r){ clearTimeout(to); return r; },
+      function(e){ clearTimeout(to); throw e; });
+  }
+
+  var lastFlushOk = false, flushing = false;
+  // Push the whole outbox to the queue in one write, then poll which dids the
+  // desktop has already applied (drained during Sync) and clear those. An
+  // optional Funnel fast-path applies decisions instantly while the PC is awake.
+  function flushOutbox(){
+    if (OFFLINE || flushing) return Promise.resolve();
+    var box = getOutbox();
+    if (!box.length){ setConn(); return Promise.resolve(); }
+    var sec = secret();
+    if (!sec && !JUDGE_ENDPOINT){ setConn(); return Promise.resolve(); }
+    flushing = true;
+
+    var chain = Promise.resolve();
+    if (JUDGE_ENDPOINT){
+      // Try each entry straight at the desktop; a 200 with the did in .acked is
+      // proof it committed.
+      chain = box.reduce(function(p, entry){
+        return p.then(function(){
+          return fetchT(JUDGE_ENDPOINT + '/api/judge', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ did: entry.did, ids: entry.ids, status: entry.status, token: sec })
+          }, 10000).then(function(r){ return r.ok ? r.json() : null; })
+            .then(function(j){ if (j && j.acked && j.acked.indexOf(entry.did) !== -1) applyAcks([entry.did]); })
+            .catch(function(){});
+        });
+      }, chain);
+    }
+
+    return chain.then(function(){
+      var rest = getOutbox();
+      if (!rest.length || !sec || !QUEUE_URL) return null;
+      return fetchT(QUEUE_URL + '/enqueue', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Judge-Secret': sec },
+        body: JSON.stringify({ items: rest.map(function(e){ return { did: e.did, ids: e.ids, status: e.status }; }) })
+      }, 12000).then(function(r){
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        lastFlushOk = true;
+        return pollAcks();
+      });
+    }).catch(function(){ lastFlushOk = false; })
+      .then(function(){ flushing = false; setConn(); updateProgress(); });
+  }
+
+  function pollAcks(){
+    var box = getOutbox();
+    if (!box.length || !secret() || !QUEUE_URL) return Promise.resolve();
+    var dids = box.map(function(e){ return e.did; }).join(',');
+    return fetchT(QUEUE_URL + '/acked?dids=' + encodeURIComponent(dids),
+      { headers: { 'X-Judge-Secret': secret() } }, 12000)
+      .then(function(r){ return r.ok ? r.json() : { acked: [] }; })
+      .then(function(j){ if (j && j.acked && j.acked.length) applyAcks(j.acked); })
+      .catch(function(){});
+  }
+
+  function applyAcks(dids){
+    var want = {}; dids.forEach(function(d){ want[d] = 1; });
+    var keep = [], confirmed = [];
+    getOutbox().forEach(function(e){
+      if (want[e.did]) confirmed = confirmed.concat(e.ids || []);
+      else keep.push(e);
+    });
+    if (confirmed.length){ rememberJudged(confirmed); setOutbox(keep); updateProgress(); }
+  }
+
+  // ---- connection banner --------------------------------------------
+  function setConn(){
+    var el = document.getElementById('conn');
+    var pend = getOutbox().length;
+    if (!QUEUE_URL && !JUDGE_ENDPOINT){
+      el.className = 'conn bad';
+      el.textContent = 'Not set up — configure the judging queue on the desktop (Settings → Mobile Judging), then re-publish.';
+      return;
+    }
+    if (OFFLINE){
+      el.className = 'conn pending';
+      el.textContent = 'Offline mode — ' + pend + ' decision' + (pend === 1 ? '' : 's') + ' saved on this phone. Export them (⚙) when you get back.';
+      return;
+    }
+    if (!secret()){
+      el.className = 'conn bad';
+      el.textContent = 'Enter the queue secret (⚙) to start syncing.';
+      return;
+    }
+    if (pend){
+      el.className = 'conn pending';
+      el.textContent = 'Queued — ' + pend + ' waiting for the next desktop sync.';
+    } else {
+      el.className = 'conn ok';
+      el.textContent = 'Synced';
+    }
+  }
+
+  function maybeWarnStorage(){
+    var msg = null;
+    if (storageBlocked()){
+      msg = 'This browser is blocking site storage, so decisions can’t be queued for retry and judged games reappear on refresh. Turn off private/incognito mode or allow site data.';
+    } else if (ssGet('didJudge') && judgedSet().size === 0){
+      msg = 'This browser isn’t keeping decisions between refreshes. Keep this tab open until the banner says "Synced".';
+    }
+    if (msg){
+      document.getElementById('warnMsg').textContent = msg;
+      document.getElementById('warn').classList.remove('hidden');
+    }
+  }
+  document.getElementById('warnX').onclick = function(){ document.getElementById('warn').classList.add('hidden'); };
+
+  // ---- deck: group unjudged rows by igdb_id --------------------------
+  function group(list){
+    var order = [], byKey = {}, platByKey = {};
+    list.forEach(function(g){
+      var key = (g.igdb_id != null) ? 'igdb:' + g.igdb_id : 'manual:' + g.id;
+      if (!byKey[key]) { byKey[key] = { key: key, rep: g }; platByKey[key] = {}; order.push(key); }
+      var slugs = platByKey[key];
+      if (slugs[g.platform]) slugs[g.platform].ids.push(g.id);
+      else slugs[g.platform] = { slug: g.platform, label: plabel(g.platform), ids: [g.id] };
+    });
+    return order.map(function(key){
+      var grp = byKey[key];
+      grp.reqRows = Object.keys(platByKey[key]).map(function(s){ return platByKey[key][s]; })
+        .sort(function(a,b){ return a.label.localeCompare(b.label); });
+      return grp;
+    });
+  }
+
+  var deck = [];       // every unjudged card, minus already-judged/pending
+  var queue = [];      // deck filtered by PLATFORM, what we walk through
+  var cursor = 0;
+  var judgedThisSession = 0;
+
+  function rebuildDeck(){
+    var judged = judgedSet(), pending = pendingSet();
+    var live = UNJUDGED.filter(function(g){ return !judged.has(g.id) && !pending.has(g.id); });
+    deck = group(live);
+    deck.forEach(function(c){
+      // optional (editable) rows: this title already judged wishlist/trash on
+      // another console — show it so it can be flipped, but it never blocks.
+      c.optRows = [];
+      if (c.rep.igdb_id != null){
+        var have = {}; c.reqRows.forEach(function(r){ have[r.slug] = 1; });
+        (XPLAT[String(c.rep.igdb_id)] || []).forEach(function(o){
+          if ((o.s === 'wishlist' || o.s === 'trash') && o.id != null && !have[o.p]){
+            have[o.p] = 1;
+            c.optRows.push({ slug: o.p, label: plabel(o.p), ids: [o.id], status: o.s });
+          }
+        });
+      }
+      c.ownedElsewhere = (c.rep.igdb_id != null ? (XPLAT[String(c.rep.igdb_id)] || []) : [])
+        .filter(function(o){ return o.s === 'owned'; });
+      c.decided = {};   // slug -> 'wishlist' | 'trash' for required rows
+    });
+    buildPicker();
+    rebuildQueue();
+  }
+
+  function rebuildQueue(){
+    queue = deck.filter(function(c){
+      return !PLATFORM || c.reqRows.some(function(r){ return r.slug === PLATFORM; });
+    });
+    if (cursor >= queue.length) cursor = Math.max(0, queue.length - 1);
+  }
+
+  // ---- platform picker --------------------------------------------
+  function buildPicker(){
+    var counts = {};
+    deck.forEach(function(c){ c.reqRows.forEach(function(r){ counts[r.slug] = (counts[r.slug] || 0) + 1; }); });
+    if (PLATFORM && !counts[PLATFORM]) PLATFORM = '';
+    var slugs = Object.keys(counts).sort(function(a,b){
+      return (LABELS[a] || a).localeCompare(LABELS[b] || b, undefined, { sensitivity: 'base' });
+    });
+    var total = deck.length;
+    var rows = ['<button data-slug="" class="' + (PLATFORM ? '' : 'here') + '">All platforms <span class="n">' + total + '</span></button>'];
+    slugs.forEach(function(s){
+      rows.push('<button data-slug="' + esc(s) + '" class="' + (s === PLATFORM ? 'here' : '') + '">' +
+        esc(LABELS[s] || s) + ' <span class="n">' + counts[s] + '</span></button>');
+    });
+    document.getElementById('pickerInner').innerHTML = rows.join('');
+    document.getElementById('platTitle').textContent = PLATFORM ? (LABELS[PLATFORM] || PLATFORM) : 'All platforms';
+  }
+  function togglePicker(open){
+    var p = document.getElementById('picker');
+    var show = open == null ? p.classList.contains('hidden') : open;
+    p.classList.toggle('hidden', !show);
+    document.getElementById('platBtn').setAttribute('aria-expanded', show ? 'true' : 'false');
+  }
+  document.getElementById('platBtn').onclick = function(){ togglePicker(); };
+  document.getElementById('pickerInner').onclick = function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    PLATFORM = b.dataset.slug; lsSet('judgePlatform', PLATFORM);
+    cursor = 0; buildPicker(); rebuildQueue(); togglePicker(false); renderCard();
+  };
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('#picker') && !e.target.closest('#platBtn')) togglePicker(false);
+  });
+
+  // ---- render ONE card --------------------------------------------
+  function coverHtml(g){
+    var mono = esc((g.name || '?').charAt(0).toUpperCase());
+    var cover = g.ig ? (IGDB_IMG + g.ig + '.jpg') : g.cover;
+    var imgUrl = cover || (g.art ? (IGDB_IMG + g.art + '.jpg') : null);
+    var inner = imgUrl
+      ? '<img class="cover" alt="" src="' + esc(imgUrl) +
+        '" onerror="this.outerHTML=\'<div class=&quot;mono&quot;>' + mono + '</div>\'">'
+      : '<div class="mono">' + mono + '</div>';
+    var igdbUrl = g.sl
+      ? ('https://www.igdb.com/games/' + encodeURIComponent(g.sl))
+      : ('https://www.igdb.com/search?type=1&q=' + encodeURIComponent(g.name || ''));
+    var playBtn = g.vid ? '<button class="playBtn" data-vid="' + esc(g.vid) + '" title="Trailer">&#9654;</button>' : '';
+    return '<a class="coverlink" href="' + esc(igdbUrl) + '" target="_blank" rel="noopener">' +
+      inner + playBtn + '<span class="igdbhint">IGDB &#8599;</span></a>';
+  }
+
+  function rowHtml(row, kind, i){
+    var isDone = kind === 'req' && cur().decided[row.slug];
+    var status = kind === 'req' ? (cur().decided[row.slug] || '') : row.status;
+    return '<div class="row' + (isDone ? ' done' : '') + '" data-kind="' + kind + '" data-i="' + i + '">' +
+      '<button class="wish' + (status === 'wishlist' ? ' active' : '') + '" data-act="wishlist" title="Wishlist">&#9825;</button>' +
+      '<span class="plat" title="' + esc(row.slug) + '">' + esc(row.label) + '</span>' +
+      '<button class="trash' + (status === 'trash' ? ' active' : '') + '" data-act="trash" title="Trash">&#10005;</button>' +
+    '</div>';
+  }
+
+  function cur(){ return queue[cursor]; }
+
+  function renderCard(){
+    destroyActivePlayer();
+    var stage = document.getElementById('stage');
+    updateProgress();
+    if (!queue.length || cursor >= queue.length){
+      stage.innerHTML = '<div class="empty"><div class="big">&#127881;</div><div>Nothing left to judge' +
+        (PLATFORM ? ' on ' + esc(LABELS[PLATFORM] || PLATFORM) : '') + '.</div></div>';
+      return;
+    }
+    var c = cur(), g = c.rep;
+    var subBits = [g.year, g.genre].filter(Boolean).map(esc).join(' · ');
+    var si = (g.st != null) ? IGDB_STATUS[g.st] : (g.igdb_id != null ? IGDB_STATUS[0] : null);
+    var siHtml = si ? '<span class="pill pill--' + si[1] + '">' + esc(si[0]) + '</span>' : '';
+    var tl = (g.gt != null) ? IGDB_GAME_TYPE[g.gt] : null;
+    var tlHtml = tl ? '<span class="pill pill--type">' + esc(tl) + '</span>' : '';
+    var comp = [g.developer, g.pub].filter(Boolean).map(esc).join(' · ');
+    var ownedHtml = c.ownedElsewhere.length
+      ? '<div class="owned-chips">' + c.ownedElsewhere.map(function(o){
+          return '<span class="xchip">' + esc(plabel(o.p)) + ' · owned</span>'; }).join('') + '</div>'
+      : '';
+    var reqHtml = c.reqRows.map(function(r, i){ return rowHtml(r, 'req', i); }).join('');
+    var optHtml = c.optRows.length
+      ? '<div class="rowlabel">Already judged elsewhere</div>' +
+        c.optRows.map(function(r, i){ return rowHtml(r, 'opt', i); }).join('')
+      : '';
+
+    stage.innerHTML =
+      '<div class="progress"><span>' + (cursor + 1) + ' of ' + queue.length +
+        (PLATFORM ? ' · ' + esc(LABELS[PLATFORM] || PLATFORM) : '') + '</span>' +
+        '<span id="sessCount"></span></div>' +
+      '<div class="card">' + coverHtml(g) +
+        '<div class="meta">' +
+          '<div class="name">' + esc(g.name) + '</div>' +
+          ((subBits || siHtml || tlHtml) ? '<div class="sub">' + (subBits ? '<span>' + subBits + '</span>' : '') + siHtml + tlHtml + '</div>' : '') +
+          (comp ? '<div class="companies">' + comp + '</div>' : '') +
+          (g.desc ? '<div class="desc">' + esc(g.desc) + '</div>' : '') +
+          ownedHtml +
+          '<div class="rows">' + reqHtml + optHtml + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="nav">' +
+        '<button id="laterBtn">Later &#9656;</button>' +
+        '<button id="nextBtn" class="primary">Next &#9656;</button>' +
+      '</div>' +
+      '<div class="hint" id="hint"></div>';
+
+    bindCard();
+    updateProgress();
+  }
+
+  function remainingRequired(){
+    var c = cur();
+    return c.reqRows.filter(function(r){ return !c.decided[r.slug]; }).length;
+  }
+
+  function refreshNav(){
+    var left = remainingRequired();
+    var nextBtn = document.getElementById('nextBtn');
+    var hint = document.getElementById('hint');
+    if (!nextBtn) return;
+    nextBtn.disabled = left > 0;
+    hint.textContent = left > 0 ? ('Decide ' + left + ' more platform' + (left === 1 ? '' : 's') + ' to continue') : '';
+  }
+
+  function advance(){ cursor += 1; renderCard(); }
+
+  function bindCard(){
+    var stage = document.getElementById('stage');
+    var play = stage.querySelector('.playBtn');
+    if (play) play.onclick = function(e){ e.preventDefault(); e.stopPropagation(); playTrailer(play.dataset.vid, play); };
+
+    [].forEach.call(stage.querySelectorAll('.row'), function(rowEl){
+      var kind = rowEl.dataset.kind, i = +rowEl.dataset.i;
+      var c = cur();
+      var row = kind === 'req' ? c.reqRows[i] : c.optRows[i];
+      [].forEach.call(rowEl.querySelectorAll('button'), function(btn){
+        btn.onclick = function(){
+          var act = btn.dataset.act;
+          enqueue(row.ids, act);
+          judgedThisSession += 1;
+          if (kind === 'req'){
+            c.decided[row.slug] = act;
+            rowEl.classList.add('done');
+          } else {
+            row.status = act;
+          }
+          [].forEach.call(rowEl.querySelectorAll('button'), function(b){
+            b.classList.toggle('active', b.dataset.act === act);
+          });
+          updateProgress();
+          refreshNav();
+          if (kind === 'req' && remainingRequired() === 0) setTimeout(advance, 420);
+          flushOutbox();
+        };
+      });
+    });
+
+    document.getElementById('nextBtn').onclick = function(){ if (remainingRequired() === 0) advance(); };
+    document.getElementById('laterBtn').onclick = function(){
+      // rotate this card to the back without deciding it
+      var c = queue.splice(cursor, 1)[0];
+      queue.push(c);
+      if (cursor >= queue.length) cursor = 0;
+      renderCard();
+    };
+    refreshNav();
+  }
+
+  function updateProgress(){
+    var s = document.getElementById('sessCount');
+    var pend = getOutbox().length;
+    if (s){
+      var parts = [];
+      if (judgedThisSession) parts.push('✓ ' + judgedThisSession);
+      if (pend) parts.push('⟳ ' + pend);
+      s.textContent = parts.join(' · ');
+    }
+    setConn();
+  }
+
+  // ---- config overlay ----------------------------------------------
+  function showConfig(){
+    document.getElementById('secret').value = lsGet('queueSecret') || '';
+    document.getElementById('config').classList.remove('hidden');
+  }
+  document.getElementById('gearBtn').onclick = showConfig;
+  document.getElementById('closeCfg').onclick = function(){ document.getElementById('config').classList.add('hidden'); };
+  document.getElementById('saveCfg').onclick = function(){
+    var k = document.getElementById('secret').value.trim();
+    if (!k && !JUDGE_ENDPOINT) return;
+    lsSet('queueSecret', k); lsSet('offlineMode', '0'); OFFLINE = false;
+    document.getElementById('config').classList.add('hidden');
+    rebuildDeck(); renderCard(); flushOutbox();
+  };
+  document.getElementById('startOffline').onclick = function(){
+    lsSet('offlineMode', '1'); OFFLINE = true;
+    document.getElementById('config').classList.add('hidden');
+    rebuildDeck(); renderCard(); maybeWarnStorage();
+  };
+
+  // Export the outbox as a file for import_offline_judgments.py.
+  // (Reuses the gear overlay's context; triggered by long-pressing the gear.)
+  document.getElementById('gearBtn').addEventListener('contextmenu', function(e){
+    e.preventDefault();
+    var blob = new Blob([JSON.stringify(getOutbox(), null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'frankie-judgments-' + Date.now() + '.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+  });
+
+  // ---- boot ------------------------------------------------------
+  if (OFFLINE || secret() || JUDGE_ENDPOINT){
+    rebuildDeck(); renderCard(); maybeWarnStorage(); flushOutbox();
+  } else {
+    setConn(); showConfig();
+  }
+  setInterval(flushOutbox, 25000);
+  window.addEventListener('online', flushOutbox);
+  setInterval(pollAcks, 15000);
+</script>
+</body>
+</html>
