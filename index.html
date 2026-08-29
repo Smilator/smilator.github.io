@@ -326,6 +326,31 @@
     return '<div class="grid">' + groups.slice(0, MAX).map(mergedCard).join('') + '</div>' +
       (capped ? '<div class="empty">Showing first ' + MAX + ' — narrow it with search or a console.</div>' : '');
   }
+
+  // ---- Collection grid: infinite scroll (no 600 cap) -------------------
+  var PAGE = 150, collGroups = [], collShown = 0;
+  function showCollection(groups) {
+    collGroups = groups; collShown = 0;
+    var feed = document.getElementById('feed');
+    if (!groups.length) { feed.innerHTML = '<div class="empty">No games match.</div>'; return; }
+    feed.innerHTML = '<div class="grid" id="collGrid"></div><div id="collMore"></div>';
+    appendCollPage();
+  }
+  function appendCollPage() {
+    var grid = document.getElementById('collGrid');
+    if (!grid || collShown >= collGroups.length) return;
+    var next = collGroups.slice(collShown, collShown + PAGE);
+    grid.insertAdjacentHTML('beforeend', next.map(mergedCard).join(''));
+    collShown += next.length;
+    var more = document.getElementById('collMore');
+    if (more) more.innerHTML = collShown < collGroups.length
+      ? '<div class="empty">' + fmt(collGroups.length - collShown) + ' more — keep scrolling</div>'
+      : '';
+  }
+  window.addEventListener('scroll', function () {
+    if (collShown >= collGroups.length) return;
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 900) appendCollPage();
+  }, { passive: true });
   function fmtDay(day) {
     var dt = new Date(day + 'T00:00');
     if (isNaN(dt)) return day;
@@ -403,10 +428,15 @@
     // "Trashed" pulls in the big trash.js on demand
     if (state.trash && trashState !== 'ready') {
       if (trashState === 'none') loadTrash();
+      collGroups = [];
       feed.innerHTML = '<div class="empty">Loading trashed games…</div>';
       return;
     }
-    if (q.length === 1) { feed.innerHTML = '<div class="empty">Keep typing…</div>'; return; }
+    if (q.length === 1) {
+      collGroups = [];
+      feed.innerHTML = '<div class="empty">Keep typing…</div>';
+      return;
+    }
 
     var src = byPlatform(state.trash ? GAMES.concat(TRASH) : GAMES)
       .filter(function (g) { return set[g.status || 'trash']; });
@@ -415,12 +445,12 @@
       : groupByGame(src).sort(function (a, b) {
           return (a.rep.name || '').localeCompare(b.rep.name || '');
         });
-    feed.innerHTML = groups.length ? gridHtml(groups)
-      : '<div class="empty">No games match.</div>';
+    showCollection(groups);
   }
 
   // ---- ACTIVITY: the per-day feed --------------------------------------
   function renderActivity() {
+    collGroups = [];  // stop the collection infinite-scroll from firing here
     var feed = document.getElementById('feed');
     if (trashState !== 'ready') {
       if (trashState === 'none') loadTrash();
