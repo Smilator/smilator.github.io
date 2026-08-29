@@ -176,7 +176,7 @@
     <div id="colbar" style="display:none">
       <div class="counts" id="counts"></div>
       <div class="searchbar">
-        <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off" enterkeyhint="search">
+        <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off">
       </div>
       <div class="filters">
         <label><input type="checkbox" id="fOwned" checked> Owned</label>
@@ -379,10 +379,8 @@
 
   function render() {
     var activity = state.view === 'activity';
-    var searching = !activity && state.q.trim().length >= 1;
     document.getElementById('colbar').style.display = activity ? 'none' : '';
-    // stats hide while searching the collection — the results take the space
-    document.getElementById('stats').style.display = (activity || searching) ? 'none' : '';
+    document.getElementById('stats').style.display = activity ? 'none' : '';
     [].forEach.call(document.getElementById('view').children, function (b) {
       b.classList.toggle('active', b.dataset.v === state.view);
     });
@@ -392,9 +390,9 @@
 
   // ---- COLLECTION: search + stats + owned/wishlist + platform ------------
   function renderCollection() {
+    renderStats();
     var feed = document.getElementById('feed');
     var q = state.q.trim().toLowerCase();
-    if (!q) renderStats();
     var set = statusSet();  // at least one of owned/wishlist is always on
     if (q.length === 1) { feed.innerHTML = '<div class="empty">Keep typing…</div>'; return; }
 
@@ -410,7 +408,7 @@
       var owG = groupByGame(ow), trG = groupByGame(tr);
       var html = owG.length ? gridHtml(owG) : '<div class="empty">No matches.</div>';
       if (trG.length) {
-        html += '<details class="trash-acc"><summary>Trashed (' + trG.length +
+        html += '<details class="trash-acc" open><summary>Trashed (' + trG.length +
           ')</summary>' + gridHtml(trG) + '</details>';
       }
       feed.innerHTML = html;
@@ -525,10 +523,6 @@
     render();
   });
   document.getElementById('q').addEventListener('input', function (e) { state.q = e.target.value; render(); });
-  // Enter dismisses the mobile keyboard (nothing to submit — filtering is live)
-  document.getElementById('q').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') { e.preventDefault(); e.target.blur(); }
-  });
   // one of owned / wishlist must stay checked
   function onCheck(id, other, key) {
     document.getElementById(id).addEventListener('change', function (e) {

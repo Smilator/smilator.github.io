@@ -113,12 +113,6 @@
   .pill--wip { background: var(--warn-tint); color: var(--warn); }
   .pill--dead { background: var(--accent-tint); color: var(--accent); }
   .pill--type { background: #eef2ff; color: #3949ab; border-color: #d7ddfb; }
-  .glink {
-    display: inline-flex; align-items: center; gap: 5px; margin-top: 9px;
-    background: var(--bg-elev-2); border: 1px solid var(--border); color: var(--text);
-    border-radius: 999px; padding: 5px 11px; font-size: 12px; font-weight: 600; text-decoration: none;
-  }
-  .glink:active { transform: scale(.96); }
   .companies { color: var(--text-dim); font-size: 12px; margin-top: 6px; }
   .desc { color: #3f434b; font-size: 13px; line-height: 1.45; margin-top: 9px; }
 
@@ -208,10 +202,12 @@
     <input id="secret" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="&hellip;">
   </div>
   <button id="saveCfg">Save &amp; start judging</button>
+  <p style="margin-top:6px">&mdash; or &mdash;</p>
+  <button id="startOffline" class="ghost">No connection this trip &mdash; save decisions on this phone only</button>
   <button id="closeCfg" class="ghost">Cancel</button>
 </div>
 
-<script src="unjudged.js?v=f5e0e70ed860"></script>
+<script src="unjudged.js?v=291d43ab067b"></script>
 <script>
   // Baked at publish. QUEUE_URL = the Cloudflare Worker; JUDGE_ENDPOINT = an
   // optional Tailscale Funnel fast-path straight to the desktop. The queue SECRET
@@ -220,18 +216,13 @@
   var JUDGE_ENDPOINT = "https://desktop-740t80v.taile9b490.ts.net";
   var IGDB_IMG = 'https://images.igdb.com/igdb/image/upload/';
   var UNJUDGED = window.UNJUDGED || [], LABELS = window.LABELS || {}, XPLAT = window.XPLAT || {};
-  // Bumped every publish (sha1 of unjudged.js). The "already judged" memory is
-  // scoped to it, so a fresh desktop sync (new list) lets everything be judged
-  // again, while closing/reopening the page in between does not.
-  var JUDGE_VER = "f5e0e70ed860";
-  var LAST_PULL = "Updated 29 Aug 2026";
 
   function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
   function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
-  function lsDel(k){ try { localStorage.removeItem(k); } catch(e){} }
   function ssGet(k){ try { return sessionStorage.getItem(k); } catch(e){ return null; } }
   function ssSet(k,v){ try { sessionStorage.setItem(k,v); } catch(e){} }
 
+  var OFFLINE = lsGet('offlineMode') === '1';
   var PLATFORM = lsGet('judgePlatform') || '';
 
   var IGDB_STATUS = {
@@ -312,24 +303,12 @@
       return !ok;
     } catch(e){ return true; }
   }
-  var JUDGED_KEY = 'judged:' + JUDGE_VER;
-  // Drop memory from previous syncs — that list is stale, those games are gone.
-  (function purgeOldJudged(){
-    try {
-      for (var i = localStorage.length - 1; i >= 0; i--){
-        var k = localStorage.key(i);
-        if (k && k.indexOf('judged:') === 0 && k !== JUDGED_KEY) lsDel(k);
-      }
-      lsDel('judgedIds');  // pre-versioning key
-    } catch(e){}
-  })();
   function judgedSet(){
-    try { return new Set(JSON.parse(lsGet(JUDGED_KEY) || '[]')); } catch(e){ return new Set(); }
+    try { return new Set(JSON.parse(lsGet('judgedIds') || '[]')); } catch(e){ return new Set(); }
   }
   function rememberJudged(ids){
     var set = judgedSet(); ids.forEach(function(i){ set.add(i); });
-    var arr = []; set.forEach(function(i){ arr.push(i); });  // Set -> Array (no spread)
-    lsSet(JUDGED_KEY, JSON.stringify(arr));
+    lsSet('judgedIds', JSON.stringify([].slice.call(set)));
     ssSet('didJudge', '1');
   }
 
@@ -350,9 +329,7 @@
   function enqueue(ids, status){
     var entry = { did: newId(), ids: ids, status: status, ts: Date.now(), tries: 0 };
     var box = getOutbox(); box.push(entry); setOutbox(box);
-    // Lock these in locally right away — the outbox still handles the actual
-    // send/retry, but the card must not come back if the page is reopened.
-    rememberJudged(ids);
+    if (OFFLINE){ rememberJudged(ids); return entry; }
     flushOutbox();
     return entry;
   }
@@ -371,7 +348,7 @@
   // desktop has already applied (drained during Sync) and clear those. An
   // optional Funnel fast-path applies decisions instantly while the PC is awake.
   function flushOutbox(){
-    if (flushing) return Promise.resolve();
+    if (OFFLINE || flushing) return Promise.resolve();
     var box = getOutbox();
     if (!box.length){ setConn(); return Promise.resolve(); }
     var sec = secret();
@@ -439,6 +416,11 @@
       el.textContent = 'Not set up — configure the judging queue on the desktop (Settings → Mobile Judging), then re-publish.';
       return;
     }
+    if (OFFLINE){
+      el.className = 'conn pending';
+      el.textContent = 'Offline mode — ' + pend + ' decision' + (pend === 1 ? '' : 's') + ' saved on this phone. Export them (⚙) when you get back.';
+      return;
+    }
     if (!secret()){
       el.className = 'conn bad';
       el.textContent = 'Enter the queue secret (⚙) to start syncing.';
@@ -446,10 +428,10 @@
     }
     if (pend){
       el.className = 'conn pending';
-      el.textContent = 'Queued — ' + pend + ' waiting for the next desktop sync. Last sync: ' + LAST_PULL + '.';
+      el.textContent = 'Queued — ' + pend + ' waiting for the next desktop sync.';
     } else {
       el.className = 'conn ok';
-      el.textContent = 'Synced with the desktop · last sync: ' + LAST_PULL + '.';
+      el.textContent = 'Synced';
     }
   }
 
@@ -600,9 +582,6 @@
     var tl = (g.gt != null) ? IGDB_GAME_TYPE[g.gt] : null;
     var tlHtml = tl ? '<span class="pill pill--type">' + esc(tl) + '</span>' : '';
     var comp = [g.developer, g.pub].filter(Boolean).map(esc).join(' · ');
-    var gq = [g.name, g.year, plabel((c.reqRows[0] || {}).slug || ''), 'game'].filter(Boolean).join(' ');
-    var gHtml = '<a class="glink" href="https://www.google.com/search?q=' +
-      encodeURIComponent(gq) + '" target="_blank" rel="noopener">&#128269; Google</a>';
     var ownedHtml = c.ownedElsewhere.length
       ? '<div class="owned-chips">' + c.ownedElsewhere.map(function(o){
           return '<span class="xchip">' + esc(plabel(o.p)) + ' · owned</span>'; }).join('') + '</div>'
@@ -622,7 +601,6 @@
           '<div class="name">' + esc(g.name) + '</div>' +
           ((subBits || siHtml || tlHtml) ? '<div class="sub">' + (subBits ? '<span>' + subBits + '</span>' : '') + siHtml + tlHtml + '</div>' : '') +
           (comp ? '<div class="companies">' + comp + '</div>' : '') +
-          '<div>' + gHtml + '</div>' +
           (g.desc ? '<div class="desc">' + esc(g.desc) + '</div>' : '') +
           ownedHtml +
           '<div class="rows">' + reqHtml + optHtml + '</div>' +
@@ -718,13 +696,30 @@
   document.getElementById('saveCfg').onclick = function(){
     var k = document.getElementById('secret').value.trim();
     if (!k && !JUDGE_ENDPOINT) return;
-    lsSet('queueSecret', k);
+    lsSet('queueSecret', k); lsSet('offlineMode', '0'); OFFLINE = false;
     document.getElementById('config').classList.add('hidden');
     rebuildDeck(); renderCard(); flushOutbox();
   };
+  document.getElementById('startOffline').onclick = function(){
+    lsSet('offlineMode', '1'); OFFLINE = true;
+    document.getElementById('config').classList.add('hidden');
+    rebuildDeck(); renderCard(); maybeWarnStorage();
+  };
+
+  // Export the outbox as a file for import_offline_judgments.py.
+  // (Reuses the gear overlay's context; triggered by long-pressing the gear.)
+  document.getElementById('gearBtn').addEventListener('contextmenu', function(e){
+    e.preventDefault();
+    var blob = new Blob([JSON.stringify(getOutbox(), null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'frankie-judgments-' + Date.now() + '.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+  });
 
   // ---- boot ------------------------------------------------------
-  if (secret() || JUDGE_ENDPOINT){
+  if (OFFLINE || secret() || JUDGE_ENDPOINT){
     rebuildDeck(); renderCard(); maybeWarnStorage(); flushOutbox();
   } else {
     setConn(); showConfig();
