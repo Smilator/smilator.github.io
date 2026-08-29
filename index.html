@@ -47,9 +47,9 @@
     font: 600 13px var(--sans); color: var(--text-dim); cursor: pointer;
   }
   .filters input { accent-color: var(--accent); width: 16px; height: 16px; }
-  .filters .platrow { margin-top: 0; margin-left: auto; }
-  .filters .platrow .title { font: 700 15px var(--sans); letter-spacing: 0; }
-  .searchbar { margin-top: 12px; }
+  #colbar .platrow { margin-top: 10px; }
+  #colbar .platrow .title { font: 700 18px/1.1 var(--display); letter-spacing: -.01em; }
+  .searchbar { margin-top: 10px; }
   .searchbar input {
     width: 100%; background: var(--bg-elev); color: var(--text);
     border: 1px solid var(--border); border-radius: var(--radius-sm);
@@ -176,6 +176,10 @@
     </div>
     <div id="colbar" style="display:none">
       <div class="counts" id="counts"></div>
+      <button class="platrow" id="platBtn" aria-expanded="false">
+        <span class="title" id="platTitle">All Platforms</span>
+        <span class="chev">⌄</span>
+      </button>
       <div class="searchbar">
         <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off" enterkeyhint="search">
       </div>
@@ -183,10 +187,6 @@
         <label><input type="checkbox" id="fOwned" checked> Owned</label>
         <label><input type="checkbox" id="fWish" checked> Wishlist</label>
         <label><input type="checkbox" id="fTrash"> Trashed</label>
-        <button class="platrow" id="platBtn" aria-expanded="false">
-          <span class="title" id="platTitle">All Frankie Games</span>
-          <span class="chev">⌄</span>
-        </button>
       </div>
     </div>
   </div>
@@ -509,7 +509,7 @@
       .filter(function (s) { return c[s]; })
       .sort(function (a, b) { return (labelBySlug[a] || a).localeCompare(labelBySlug[b] || b); });
     var rows = ['<button data-slug="" class="' + (state.platform ? '' : 'here') +
-      '">All Frankie Games <span class="n">' +
+      '">All Platforms <span class="n">' +
       Object.keys(c).reduce(function (t, k) { return t + c[k]; }, 0) + '</span></button>'];
     slugs.forEach(function (s) {
       rows.push('<button data-slug="' + esc(s) + '" class="' + (s === state.platform ? 'here' : '') +
@@ -520,7 +520,7 @@
   function setPlatform(slug) {
     state.platform = slug;
     document.getElementById('platTitle').textContent =
-      slug ? (labelBySlug[slug] || slug) : 'All Frankie Games';
+      slug ? (labelBySlug[slug] || slug) : 'All Platforms';
     closePicker(); render();
   }
   function openPicker() {
