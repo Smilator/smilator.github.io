@@ -408,7 +408,7 @@
       var owG = groupByGame(ow), trG = groupByGame(tr);
       var html = owG.length ? gridHtml(owG) : '<div class="empty">No matches.</div>';
       if (trG.length) {
-        html += '<details class="trash-acc"><summary>Trashed (' + trG.length +
+        html += '<details class="trash-acc" open><summary>Trashed (' + trG.length +
           ')</summary>' + gridHtml(trG) + '</details>';
       }
       feed.innerHTML = html;
