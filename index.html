@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <title>Frankenstein</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
@@ -176,11 +177,12 @@
     <div id="colbar" style="display:none">
       <div class="counts" id="counts"></div>
       <div class="searchbar">
-        <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off">
+        <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off" enterkeyhint="search">
       </div>
       <div class="filters">
         <label><input type="checkbox" id="fOwned" checked> Owned</label>
         <label><input type="checkbox" id="fWish" checked> Wishlist</label>
+        <label><input type="checkbox" id="fTrash"> Trashed</label>
         <button class="platrow" id="platBtn" aria-expanded="false">
           <span class="title" id="platTitle">All Frankie Games</span>
           <span class="chev">⌄</span>
@@ -224,7 +226,7 @@
   document.getElementById('counts').textContent =
     fmt(STATS.owned || 0) + ' owned · ' + fmt(STATS.wishlist || 0) + ' wishlisted';
 
-  var state = { view: 'activity', q: '', platform: '', owned: true, wishlist: true };
+  var state = { view: 'activity', q: '', platform: '', owned: true, wishlist: true, trash: false };
   var MAX = 600;
   var IGDB_IMG = 'https://images.igdb.com/igdb/image/upload/';
 
@@ -315,6 +317,7 @@
     var s = {};
     if (state.owned) s.owned = 1;
     if (state.wishlist) s.wishlist = 1;
+    if (state.trash) s.trash = 1;
     return s;
   }
   function gridHtml(groups) {
@@ -323,6 +326,31 @@
     return '<div class="grid">' + groups.slice(0, MAX).map(mergedCard).join('') + '</div>' +
       (capped ? '<div class="empty">Showing first ' + MAX + ' — narrow it with search or a console.</div>' : '');
   }
+
+  // ---- Collection grid: infinite scroll (no 600 cap) -------------------
+  var PAGE = 150, collGroups = [], collShown = 0;
+  function showCollection(groups) {
+    collGroups = groups; collShown = 0;
+    var feed = document.getElementById('feed');
+    if (!groups.length) { feed.innerHTML = '<div class="empty">No games match.</div>'; return; }
+    feed.innerHTML = '<div class="grid" id="collGrid"></div><div id="collMore"></div>';
+    appendCollPage();
+  }
+  function appendCollPage() {
+    var grid = document.getElementById('collGrid');
+    if (!grid || collShown >= collGroups.length) return;
+    var next = collGroups.slice(collShown, collShown + PAGE);
+    grid.insertAdjacentHTML('beforeend', next.map(mergedCard).join(''));
+    collShown += next.length;
+    var more = document.getElementById('collMore');
+    if (more) more.innerHTML = collShown < collGroups.length
+      ? '<div class="empty">' + fmt(collGroups.length - collShown) + ' more — keep scrolling</div>'
+      : '';
+  }
+  window.addEventListener('scroll', function () {
+    if (collShown >= collGroups.length) return;
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 900) appendCollPage();
+  }, { passive: true });
   function fmtDay(day) {
     var dt = new Date(day + 'T00:00');
     if (isNaN(dt)) return day;
@@ -379,8 +407,10 @@
 
   function render() {
     var activity = state.view === 'activity';
+    var searching = !activity && state.q.trim().length >= 1;
     document.getElementById('colbar').style.display = activity ? 'none' : '';
-    document.getElementById('stats').style.display = activity ? 'none' : '';
+    // stats hide while searching the collection — the results take the space
+    document.getElementById('stats').style.display = (activity || searching) ? 'none' : '';
     [].forEach.call(document.getElementById('view').children, function (b) {
       b.classList.toggle('active', b.dataset.v === state.view);
     });
@@ -388,43 +418,39 @@
     else renderCollection();
   }
 
-  // ---- COLLECTION: search + stats + owned/wishlist + platform ------------
+  // ---- COLLECTION: search + stats + owned/wishlist/trashed + platform ----
   function renderCollection() {
-    renderStats();
     var feed = document.getElementById('feed');
     var q = state.q.trim().toLowerCase();
-    var set = statusSet();  // at least one of owned/wishlist is always on
-    if (q.length === 1) { feed.innerHTML = '<div class="empty">Keep typing…</div>'; return; }
+    if (!q) renderStats();
+    var set = statusSet();  // at least one checkbox is always on
 
-    // search — owned/wishlist matches first, trashed in an accordion after
-    if (q.length >= 2) {
-      if (trashState !== 'ready') {
-        if (trashState === 'none') loadTrash();
-        feed.innerHTML = '<div class="empty">Loading…</div>';
-        return;
-      }
-      var ow = bySearch(byPlatform(GAMES).filter(function (g) { return set[g.status]; }), q);
-      var tr = bySearch(byPlatform(TRASH), q);
-      var owG = groupByGame(ow), trG = groupByGame(tr);
-      var html = owG.length ? gridHtml(owG) : '<div class="empty">No matches.</div>';
-      if (trG.length) {
-        html += '<details class="trash-acc" open><summary>Trashed (' + trG.length +
-          ')</summary>' + gridHtml(trG) + '</details>';
-      }
-      feed.innerHTML = html;
+    // "Trashed" pulls in the big trash.js on demand
+    if (state.trash && trashState !== 'ready') {
+      if (trashState === 'none') loadTrash();
+      collGroups = [];
+      feed.innerHTML = '<div class="empty">Loading trashed games…</div>';
+      return;
+    }
+    if (q.length === 1) {
+      collGroups = [];
+      feed.innerHTML = '<div class="empty">Keep typing…</div>';
       return;
     }
 
-    // browse — flat A–Z grid of the selected statuses on the selected platform
-    var list = byPlatform(GAMES).filter(function (g) { return set[g.status]; });
-    var groups = groupByGame(list).sort(function (a, b) {
-      return (a.rep.name || '').localeCompare(b.rep.name || '');
-    });
-    feed.innerHTML = gridHtml(groups);
+    var src = byPlatform(state.trash ? GAMES.concat(TRASH) : GAMES)
+      .filter(function (g) { return set[g.status || 'trash']; });
+    var groups = q.length >= 2
+      ? groupByGame(bySearch(src, q))
+      : groupByGame(src).sort(function (a, b) {
+          return (a.rep.name || '').localeCompare(b.rep.name || '');
+        });
+    showCollection(groups);
   }
 
   // ---- ACTIVITY: the per-day feed --------------------------------------
   function renderActivity() {
+    collGroups = [];  // stop the collection infinite-scroll from firing here
     var feed = document.getElementById('feed');
     if (trashState !== 'ready') {
       if (trashState === 'none') loadTrash();
@@ -523,19 +549,22 @@
     render();
   });
   document.getElementById('q').addEventListener('input', function (e) { state.q = e.target.value; render(); });
-  // one of owned / wishlist must stay checked
-  function onCheck(id, other, key) {
-    document.getElementById(id).addEventListener('change', function (e) {
-      if (!e.target.checked && !document.getElementById(other).checked) {
-        e.target.checked = true;  // revert — can't clear both
-        return;
-      }
-      state[key] = e.target.checked;
+  // Enter dismisses the mobile keyboard (nothing to submit — filtering is live)
+  document.getElementById('q').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); e.target.blur(); }
+  });
+  // at least one status checkbox must stay checked
+  var CHECKS = [['fOwned', 'owned'], ['fWish', 'wishlist'], ['fTrash', 'trash']];
+  function anyChecked() {
+    return CHECKS.some(function (c) { return document.getElementById(c[0]).checked; });
+  }
+  CHECKS.forEach(function (c) {
+    document.getElementById(c[0]).addEventListener('change', function (e) {
+      if (!e.target.checked && !anyChecked()) { e.target.checked = true; return; }
+      state[c[1]] = e.target.checked;
       render();
     });
-  }
-  onCheck('fOwned', 'fWish', 'owned');
-  onCheck('fWish', 'fOwned', 'wishlist');
+  });
 
   render();
 </script>
