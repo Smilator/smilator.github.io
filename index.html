@@ -32,14 +32,15 @@
   .wordmark b { color: var(--accent); }
   .stamp { font-size: 11px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
   .counts { color: var(--text-dim); font-size: 13px; margin-top: 3px; }
-  .seg { display: flex; width: 100%; margin-top: 12px; border: 1px solid var(--border);
-    border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-elev-2); }
-  .seg button {
-    flex: 1 1 0; background: transparent; color: var(--text-dim); border: 0;
-    padding: 9px 6px; font: 600 13px var(--sans); cursor: pointer;
+  .filters { display: flex; align-items: center; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+  .filters label {
+    display: flex; align-items: center; gap: 6px;
+    font: 600 13px var(--sans); color: var(--text-dim); cursor: pointer;
   }
-  .seg button.active { background: var(--accent); color: #fff; }
-  .searchbar { margin-top: 10px; }
+  .filters input { accent-color: var(--accent); width: 16px; height: 16px; }
+  .filters .platrow { margin-top: 0; margin-left: auto; }
+  .filters .platrow .title { font: 700 15px var(--sans); letter-spacing: 0; }
+  .searchbar { margin-top: 12px; }
   .searchbar input {
     width: 100%; background: var(--bg-elev); color: var(--text);
     border: 1px solid var(--border); border-radius: var(--radius-sm);
@@ -80,14 +81,77 @@
   .meta { padding: 10px 11px 12px; }
   .name { font-weight: 600; font-size: 14px; line-height: 1.3; }
   .sub { color: var(--text-dim); font-size: 12px; margin-top: 3px; }
-  .badge {
-    display: inline-block; margin-top: 7px; font-size: 11px; font-weight: 700;
-    padding: 2px 8px; border-radius: 999px; letter-spacing: .02em;
+  .merged-rows { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+  .merged-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    font-size: 11px; color: var(--text-dim);
   }
-  .badge.owned { background: var(--good-tint); color: var(--good); }
-  .badge.wishlist { background: var(--warn-tint); color: var(--warn); }
-  .badge.trash { background: var(--accent-tint); color: var(--accent); }
-  .empty { color: var(--text-dim); text-align: center; padding: 60px 20px; }
+  .merged-row .pl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pill {
+    flex: none; font-size: 10px; font-weight: 700; padding: 1px 7px;
+    border-radius: 999px; letter-spacing: .02em;
+  }
+  .pill.owned { background: var(--good-tint); color: var(--good); }
+  .pill.wishlist { background: var(--warn-tint); color: var(--warn); }
+  .pill.trash { background: var(--accent-tint); color: var(--accent); }
+  .empty { color: var(--text-dim); text-align: center; padding: 40px 20px; }
+
+  /* stats panel */
+  #stats { max-width: 1100px; margin: 16px auto 0; padding: 0 18px; }
+  .stats-card {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 16px 18px;
+  }
+  .kpis { display: flex; gap: 24px; flex-wrap: wrap; }
+  .kpi { display: flex; flex-direction: column; gap: 2px; }
+  .kpi .v { font: 700 22px/1 var(--display); font-variant-numeric: tabular-nums; }
+  .kpi .l { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .05em; }
+  .kpi.owned .v { color: var(--good); }
+  .kpi.wishlist .v { color: var(--warn); }
+  .kpi.unjudged .v { color: var(--text-dim); }
+  .kpi.trash .v { color: var(--accent); }
+  .propbar {
+    display: flex; height: 8px; border-radius: 999px; overflow: hidden;
+    margin-top: 14px; background: var(--bg-elev-2);
+  }
+  .propbar i { display: block; }
+  .propbar .owned { background: var(--good); }
+  .propbar .wishlist { background: var(--warn); }
+  .propbar .unjudged { background: #c2c6cd; }
+  .propbar .trash { background: var(--accent); }
+  .byconsole { margin-top: 14px; }
+  .byconsole > summary {
+    cursor: pointer; font: 600 12px var(--sans); color: var(--text-dim); list-style: none;
+  }
+  .byconsole > summary::-webkit-details-marker { display: none; }
+  .crow {
+    display: grid; grid-template-columns: 132px 1fr auto; align-items: center;
+    gap: 10px; margin-top: 8px; font-size: 12px;
+  }
+  .crow .pl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .crow .cbar { height: 8px; border-radius: 999px; background: var(--accent-tint); overflow: hidden; }
+  .crow .cbar i { display: block; height: 100%; background: var(--accent); }
+  .crow .cn { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .ccount { margin-top: 8px; font-size: 11px; color: var(--text-dim); }
+
+  /* feed */
+  .day-section { margin-top: 28px; }
+  .day-section h2 { font: 700 15px var(--display); margin: 0 0 12px; letter-spacing: -.01em; }
+  .trash-acc {
+    margin-top: 12px; border: 1px solid var(--border);
+    border-radius: var(--radius-sm); background: var(--bg-elev); overflow: hidden;
+  }
+  .trash-acc > summary {
+    cursor: pointer; padding: 10px 14px; font: 600 13px var(--sans);
+    color: var(--accent); list-style: none;
+  }
+  .trash-acc > summary::-webkit-details-marker { display: none; }
+  .trash-acc .grid { padding: 14px; }
+  details.earlier { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 6px; }
+  details.earlier > summary {
+    cursor: pointer; font: 700 15px var(--display); padding: 10px 0; list-style: none;
+  }
+  details.earlier > summary::-webkit-details-marker { display: none; }
 </style>
 </head>
 <body>
@@ -98,49 +162,55 @@
       <span class="stamp">Updated 29 Aug 2026</span>
     </div>
     <div class="counts" id="counts"></div>
-    <div class="seg" id="status">
-      <button data-v="all" class="active">All</button>
-      <button data-v="owned">Owned</button>
-      <button data-v="wishlist">Wishlist</button>
-      <button data-v="trash">Trash</button>
-    </div>
     <div class="searchbar">
       <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off">
     </div>
-    <button class="platrow" id="platBtn" aria-expanded="false">
-      <span class="title" id="platTitle">All Frankie Games</span>
-      <span class="chev">⌄</span>
-    </button>
+    <div class="filters">
+      <label><input type="checkbox" id="fOwned"> Owned</label>
+      <label><input type="checkbox" id="fWish"> Wishlist</label>
+      <button class="platrow" id="platBtn" aria-expanded="false">
+        <span class="title" id="platTitle">All Frankie Games</span>
+        <span class="chev">⌄</span>
+      </button>
+    </div>
   </div>
   <div class="picker" id="picker" style="display:none"><div class="inner" id="pickerInner"></div></div>
 </header>
-<main><div class="grid" id="grid"></div></main>
+<section id="stats"></section>
+<main><div id="feed"></div></main>
 <script src="data.js"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
+  var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
   // Trash is huge (100k+) — its own file, fetched only on the first search or
-  // Trash-segment click. Until then TRASH is empty and trash searches say "load".
+  // when the day-feed needs its per-day "trashed" accordions.
   var TRASH = [], trashState = 'none';  // none | loading | ready
-  function loadTrash(then) {
-    if (trashState === 'ready') return then();
-    if (trashState === 'loading') return;
+  function loadTrash() {
+    if (trashState === 'loading' || trashState === 'ready') return;
     trashState = 'loading';
     var sc = document.createElement('script');
     sc.src = 'trash.js';
-    sc.onload = function () { TRASH = window.TRASH || []; trashState = 'ready'; then(); };
+    sc.onload = function () {
+      TRASH = window.TRASH || [];
+      // trash rows carry the merge key as `ig_id` to keep bytes down elsewhere.
+      TRASH.forEach(function (t) { if (t.ig_id != null && t.igdb_id == null) t.igdb_id = t.ig_id; });
+      trashState = 'ready';
+      render();
+    };
     sc.onerror = function () { trashState = 'none'; };
     document.head.appendChild(sc);
-    render();  // show a "loading trashed games…" state immediately
+    render();  // show a "loading…" state immediately
   }
-  var labelBySlug = {}; PLATFORMS.forEach(function (p) { labelBySlug[p.slug] = p.label; });
+  var labelBySlug = {};
+  PLATFORMS.forEach(function (p) { labelBySlug[p.slug] = p.label; });
+  (STATS.byConsole || []).forEach(function (c) { if (!labelBySlug[c.slug]) labelBySlug[c.slug] = c.label; });
 
-  var ownedTotal = GAMES.filter(function (g) { return g.status === 'owned'; }).length;
-  var wishTotal = GAMES.filter(function (g) { return g.status === 'wishlist'; }).length;
   document.getElementById('counts').textContent =
-    ownedTotal + ' owned · ' + wishTotal + ' wishlisted';
+    (STATS.owned || 0) + ' owned · ' + (STATS.wishlist || 0) + ' wishlisted';
 
-  var state = { q: '', platform: '', status: 'all' };
-  var MAX_RESULTS = 400;
+  var state = { q: '', platform: '', owned: false, wishlist: false };
+  var MAX = 600;
+  var IGDB_IMG = 'https://images.igdb.com/igdb/image/upload/';
 
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -153,51 +223,209 @@
     d.textContent = img.getAttribute('data-mono') || '?';
     img.replaceWith(d);
   };
+  function coverUrl(g) { return g.cover || (g.ig ? IGDB_IMG + g.ig + '.jpg' : null); }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
-  var IGDB_IMG = 'https://images.igdb.com/igdb/image/upload/';
-  var BADGE = { owned: 'Owned', wishlist: 'Wishlist', trash: 'Trash' };
-  function card(g) {
-    var st = g.status || 'trash';  // trash.js rows carry no status field
-    var label = labelBySlug[g.platform] || g.platform;
-    var sub = [label, g.year].filter(Boolean).join(' · ');
+  // ---- cross-platform merge (mirrors the desktop wishlist view) ----------
+  // One card per game (keyed by igdb_id); each console it's on = one row with an
+  // owned / wishlist / trash pill. Read-only — no status controls.
+  function groupByGame(list) {
+    var map = {}, order = [];
+    for (var i = 0; i < list.length; i++) {
+      var g = list[i];
+      var key = g.igdb_id != null ? 'i' + g.igdb_id : 'm' + g.id;
+      var grp = map[key];
+      if (!grp) { grp = { rep: g, bySlug: {}, rows: [], d: null }; map[key] = grp; order.push(key); }
+      if (g.d && (!grp.d || g.d > grp.d)) grp.d = g.d;
+      if (!grp.bySlug[g.platform]) {
+        var row = { slug: g.platform, label: labelBySlug[g.platform] || g.platform, status: g.status || 'trash' };
+        grp.bySlug[g.platform] = row;
+        grp.rows.push(row);
+      }
+    }
+    return order.map(function (k) {
+      var grp = map[k];
+      grp.rows.sort(function (a, b) { return a.label.localeCompare(b.label); });
+      return grp;
+    });
+  }
+
+  function mergedCard(grp) {
+    var g = grp.rep;
     var mono = esc((g.name || '?').charAt(0).toUpperCase());
-    var cover = g.cover || (g.ig ? IGDB_IMG + g.ig + '.jpg' : null);
-    var art = cover
+    var cov = coverUrl(g);
+    var art = cov
       ? '<img class="cover" loading="lazy" alt="" data-mono="' + mono +
-        '" src="' + esc(cover) + '" onerror="thumbFail(this)">'
+        '" src="' + esc(cov) + '" onerror="thumbFail(this)">'
       : '<div class="mono">' + mono + '</div>';
+    var multi = grp.rows.length > 1;
+    var sub = multi
+      ? (g.year ? g.year + ' · ' : '') + grp.rows.length + ' consoles'
+      : [labelBySlug[g.platform] || g.platform, g.year].filter(Boolean).join(' · ');
+    var rows = grp.rows.map(function (r) {
+      return '<div class="merged-row"><span class="pl">' + esc(r.label) +
+        '</span><span class="pill ' + r.status + '">' + cap(r.status) + '</span></div>';
+    }).join('');
     return '<div class="card">' + art +
       '<div class="meta"><div class="name">' + esc(g.name) + '</div>' +
       '<div class="sub">' + esc(sub) + '</div>' +
-      '<span class="badge ' + st + '">' + (BADGE[st] || st) +
-      '</span></div></div>';
+      '<div class="merged-rows">' + rows + '</div></div></div>';
+  }
+
+  function byPlatform(list) {
+    return state.platform ? list.filter(function (g) { return g.platform === state.platform; }) : list;
+  }
+  function statusSet() {
+    var s = {};
+    if (state.owned) s.owned = 1;
+    if (state.wishlist) s.wishlist = 1;
+    return s;
+  }
+  function gridHtml(groups) {
+    if (!groups.length) return '<div class="empty">Nothing here.</div>';
+    var capped = groups.length > MAX;
+    return '<div class="grid">' + groups.slice(0, MAX).map(mergedCard).join('') + '</div>' +
+      (capped ? '<div class="empty">Showing first ' + MAX + ' — narrow it with search or a console.</div>' : '');
+  }
+  function fmtDay(day) {
+    var dt = new Date(day + 'T00:00');
+    if (isNaN(dt)) return day;
+    return dt.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+  }
+
+  // ---- stats panel (mirrors the desktop "All consoles" LibrarySnapshot) --
+  function renderStats() {
+    var el = document.getElementById('stats');
+    var bc = STATS.byConsole || [];
+    var o, w, u, t;
+    if (state.platform) {
+      var c = bc.filter(function (x) { return x.slug === state.platform; })[0] || { owned: 0, wishlist: 0, trash: 0 };
+      o = c.owned; w = c.wishlist; t = c.trash; u = null;
+    } else {
+      o = STATS.owned || 0; w = STATS.wishlist || 0; u = STATS.unjudged || 0; t = STATS.trash || 0;
+    }
+    var grand = (o + w + (u || 0) + t) || 1;
+    function kpi(cls, val, lab) {
+      return val == null ? '' :
+        '<div class="kpi ' + cls + '"><span class="v">' + val.toLocaleString() +
+        '</span><span class="l">' + lab + '</span></div>';
+    }
+    function seg(cls, val) {
+      return val ? '<i class="' + cls + '" style="width:' + (val / grand * 100).toFixed(2) + '%"></i>' : '';
+    }
+    var open = false;
+    try { open = localStorage.getItem('pub:stats-open') === '1'; } catch (e) {}
+    var kept = bc.filter(function (x) { return (x.owned + x.wishlist) > 0; });
+    var maxKept = kept.reduce(function (m, x) { return Math.max(m, x.owned + x.wishlist); }, 1);
+    var rows = kept.slice(0, 8).map(function (x) {
+      var k = x.owned + x.wishlist;
+      return '<div class="crow"><span class="pl">' + esc(x.label) +
+        '</span><span class="cbar"><i style="width:' + (k / maxKept * 100).toFixed(1) + '%"></i></span>' +
+        '<span class="cn">' + k.toLocaleString() + '</span></div>';
+    }).join('');
+    var more = kept.length > 8 ? '<div class="ccount">+' + (kept.length - 8) + ' more consoles</div>' : '';
+    el.innerHTML = '<div class="stats-card"><div class="kpis">' +
+      kpi('owned', o, 'Owned') + kpi('wishlist', w, 'Wishlist') +
+      kpi('unjudged', u, 'Unjudged') + kpi('trash', t, 'Trash') +
+      '</div><div class="propbar">' + seg('owned', o) + seg('wishlist', w) +
+      seg('unjudged', u || 0) + seg('trash', t) + '</div>' +
+      (kept.length && !state.platform
+        ? '<details class="byconsole"' + (open ? ' open' : '') +
+          '><summary>by console</summary>' + rows + more + '</details>'
+        : '') +
+      '</div>';
+    var d = el.querySelector('.byconsole');
+    if (d) d.addEventListener('toggle', function () {
+      try { localStorage.setItem('pub:stats-open', d.open ? '1' : '0'); } catch (e) {}
+    });
   }
 
   function render() {
+    renderStats();
+    var feed = document.getElementById('feed');
     var q = state.q.trim().toLowerCase();
-    var grid = document.getElementById('grid');
-    var wantTrash = q.length >= 2 || state.status === 'trash';
-    if (wantTrash && trashState !== 'ready') {
-      if (trashState === 'none') loadTrash(render);
-      grid.innerHTML = '<div class="empty">Loading trashed games…</div>';
+    if (q.length === 1) { feed.innerHTML = '<div class="empty">Keep typing…</div>'; return; }
+
+    // --- SEARCH: owned/wishlist first, trashed in an accordion after ---
+    if (q.length >= 2) {
+      if (trashState !== 'ready') {
+        if (trashState === 'none') loadTrash();
+        feed.innerHTML = '<div class="empty">Loading…</div>';
+        return;
+      }
+      var ss = statusSet(), useStatus = state.owned || state.wishlist;
+      var ow = byPlatform(GAMES).filter(function (g) {
+        if ((g.name || '').toLowerCase().indexOf(q) === -1) return false;
+        return !useStatus || ss[g.status];
+      });
+      var tr = byPlatform(TRASH).filter(function (g) {
+        return (g.name || '').toLowerCase().indexOf(q) !== -1;
+      });
+      var owG = groupByGame(ow), trG = groupByGame(tr);
+      var html = owG.length ? gridHtml(owG) : '<div class="empty">No owned or wishlisted games match.</div>';
+      if (trG.length && !useStatus) {
+        html += '<details class="trash-acc" open><summary>Trashed (' + trG.length +
+          ')</summary>' + gridHtml(trG) + '</details>';
+      }
+      feed.innerHTML = html;
       return;
     }
-    if (q.length === 1) { grid.innerHTML = '<div class="empty">Keep typing…</div>'; return; }
-    // Searching spans owned + wishlist + trash; browsing without a query respects
-    // the segment (trash only under the Trash segment).
-    var source = q ? GAMES.concat(TRASH) : (state.status === 'trash' ? TRASH : GAMES);
-    var list = [];
-    for (var i = 0; i < source.length && list.length < MAX_RESULTS; i++) {
-      var g = source[i];
-      if (!q && state.status !== 'all' && (g.status || 'trash') !== state.status) continue;
-      if (state.platform && g.platform !== state.platform) continue;
-      if (q && (g.name || '').toLowerCase().indexOf(q) === -1) continue;
-      list.push(g);
+
+    // --- CHECKBOX FILTER: flat A–Z grid, no dates, no trash ---
+    if (state.owned || state.wishlist) {
+      var set = statusSet();
+      var list = byPlatform(GAMES).filter(function (g) { return set[g.status]; });
+      var groups = groupByGame(list).sort(function (a, b) {
+        return (a.rep.name || '').localeCompare(b.rep.name || '');
+      });
+      feed.innerHTML = gridHtml(groups);
+      return;
     }
-    grid.innerHTML = list.length
-      ? list.map(card).join('') +
-        (list.length >= MAX_RESULTS ? '<div class="empty">Showing first ' + MAX_RESULTS + ' — refine your search.</div>' : '')
-      : '<div class="empty">No games match.</div>';
+
+    // --- DEFAULT: per-day feed ---
+    if (trashState !== 'ready') {
+      if (trashState === 'none') loadTrash();
+      feed.innerHTML = '<div class="empty">Loading feed…</div>';
+      return;
+    }
+    var ownedG = groupByGame(byPlatform(GAMES));
+    var trashG = groupByGame(byPlatform(TRASH).filter(function (g) { return g.d; }));
+    var buckets = {}, earlier = { cards: [], trash: [] };
+    ownedG.forEach(function (grp) {
+      if (grp.d) (buckets[grp.d] = buckets[grp.d] || { cards: [], trash: [] }).cards.push(grp);
+      else earlier.cards.push(grp);
+    });
+    trashG.forEach(function (grp) {
+      if (grp.d) (buckets[grp.d] = buckets[grp.d] || { cards: [], trash: [] }).trash.push(grp);
+      else earlier.trash.push(grp);
+    });
+    var days = Object.keys(buckets).sort().reverse();
+    if (!days.length && !earlier.cards.length) {
+      feed.innerHTML = '<div class="empty">Nothing yet.</div>';
+      return;
+    }
+    var out = '';
+    days.forEach(function (day) {
+      var b = buckets[day];
+      out += '<section class="day-section"><h2>' + esc(fmtDay(day)) + '</h2>';
+      out += b.cards.length ? gridHtml(b.cards)
+        : '<div class="empty">No new owned or wishlisted games.</div>';
+      if (b.trash.length) {
+        out += '<details class="trash-acc"><summary>Trashed (' + b.trash.length +
+          ')</summary>' + gridHtml(b.trash) + '</details>';
+      }
+      out += '</section>';
+    });
+    if (earlier.cards.length || earlier.trash.length) {
+      out += '<details class="earlier"><summary>Earlier</summary>';
+      if (earlier.cards.length) out += gridHtml(earlier.cards);
+      if (earlier.trash.length) {
+        out += '<details class="trash-acc"><summary>Trashed (' + earlier.trash.length +
+          ')</summary>' + gridHtml(earlier.trash) + '</details>';
+      }
+      out += '</details>';
+    }
+    feed.innerHTML = out;
   }
 
   // ---- platform picker (custom, not a <select>) --------------------------
@@ -248,12 +476,8 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePicker(); });
 
   document.getElementById('q').addEventListener('input', function (e) { state.q = e.target.value; render(); });
-  document.getElementById('status').addEventListener('click', function (e) {
-    var b = e.target.closest('button'); if (!b) return;
-    state.status = b.dataset.v;
-    [].forEach.call(this.children, function (c) { c.classList.toggle('active', c === b); });
-    render();
-  });
+  document.getElementById('fOwned').addEventListener('change', function (e) { state.owned = e.target.checked; render(); });
+  document.getElementById('fWish').addEventListener('change', function (e) { state.wishlist = e.target.checked; render(); });
 
   render();
 </script>
