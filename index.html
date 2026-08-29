@@ -76,6 +76,11 @@
   }
   .picker button:hover, .picker button.here { background: var(--accent-tint); }
   .picker button .n { color: var(--text-dim); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .picker .pickgroup {
+    margin: 16px 14px 6px; color: var(--text-dim); font-size: 10px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .7px;
+  }
+  .picker .pickgroup:first-child { margin-top: 8px; }
   main { max-width: 1100px; margin: 0 auto; padding: 16px 18px 40px; }
   .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
   .card {
@@ -505,15 +510,28 @@
   }
   function buildPicker() {
     var c = platCounts();
-    var slugs = PLATFORMS.map(function (p) { return p.slug; })
-      .filter(function (s) { return c[s]; })
-      .sort(function (a, b) { return (labelBySlug[a] || a).localeCompare(labelBySlug[b] || b); });
+    // Group by manufacturer exactly like the desktop app sidebar: groups A–Z
+    // with "Arcade" pinned last, platforms within a group sorted by label.
+    var groups = {};
+    PLATFORMS.forEach(function (p) {
+      if (!c[p.slug]) return;
+      var g = p.group || 'Arcade';
+      (groups[g] = groups[g] || []).push(p);
+    });
+    var names = Object.keys(groups).sort(function (a, b) {
+      if (a === 'Arcade') return 1;
+      if (b === 'Arcade') return -1;
+      return a.localeCompare(b);
+    });
+    var total = Object.keys(c).reduce(function (t, k) { return t + c[k]; }, 0);
     var rows = ['<button data-slug="" class="' + (state.platform ? '' : 'here') +
-      '">All Platforms <span class="n">' +
-      Object.keys(c).reduce(function (t, k) { return t + c[k]; }, 0) + '</span></button>'];
-    slugs.forEach(function (s) {
-      rows.push('<button data-slug="' + esc(s) + '" class="' + (s === state.platform ? 'here' : '') +
-        '">' + esc(labelBySlug[s] || s) + ' <span class="n">' + c[s] + '</span></button>');
+      '">All Platforms <span class="n">' + fmt(total) + '</span></button>'];
+    names.forEach(function (mfr) {
+      rows.push('<div class="pickgroup">' + esc(mfr) + '</div>');
+      groups[mfr].sort(function (a, b) { return a.label.localeCompare(b.label); }).forEach(function (p) {
+        rows.push('<button data-slug="' + esc(p.slug) + '" class="' + (p.slug === state.platform ? 'here' : '') +
+          '">' + esc(p.label) + ' <span class="n">' + fmt(c[p.slug]) + '</span></button>');
+      });
     });
     document.getElementById('pickerInner').innerHTML = rows.join('');
   }
