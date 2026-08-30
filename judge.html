@@ -211,7 +211,7 @@
   <button id="closeCfg" class="ghost">Cancel</button>
 </div>
 
-<script src="unjudged.js?v=0e11cd90b9c2"></script>
+<script src="unjudged.js?v=f3f8c011b5f5"></script>
 <script>
   // Baked at publish. QUEUE_URL = the Cloudflare Worker; JUDGE_ENDPOINT = an
   // optional Tailscale Funnel fast-path straight to the desktop. The queue SECRET
@@ -223,7 +223,7 @@
   // Bumped every publish (sha1 of unjudged.js). The "already judged" memory is
   // scoped to it, so a fresh desktop sync (new list) lets everything be judged
   // again, while closing/reopening the page in between does not.
-  var JUDGE_VER = "0e11cd90b9c2";
+  var JUDGE_VER = "f3f8c011b5f5";
   var LAST_PULL = "Updated 29 Aug 2026";
 
   function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
