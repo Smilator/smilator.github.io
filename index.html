@@ -151,6 +151,7 @@
   /* feed */
   .day-section { margin-top: 28px; }
   .day-section h2 { font: 700 15px var(--display); margin: 0 0 12px; letter-spacing: -.01em; }
+  .day-section h2 .daytally { font: 500 12px var(--sans); color: var(--text-dim); }
   .trash-acc {
     margin-top: 12px; border: 1px solid var(--border);
     border-radius: var(--radius-sm); background: var(--bg-elev); overflow: hidden;
@@ -173,7 +174,7 @@
   <div class="hwrap">
     <div class="brand">
       <span class="wordmark">Franken<b>stein</b></span>
-      <span class="stamp">Updated 31 Aug 2026</span>
+      <span class="stamp">Aggiornato 31 Ago 2026</span>
     </div>
     <div class="seg" id="view">
       <button data-v="activity" class="active">Activity</button>
@@ -359,8 +360,11 @@
   function fmtDay(day) {
     var dt = new Date(day + 'T00:00');
     if (isNaN(dt)) return day;
-    return dt.toLocaleDateString('en-GB', { weekday: 'long' }) + ', ' +
-      dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+    var cap1 = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
+    var wd = dt.toLocaleDateString('it-IT', { weekday: 'long' });
+    var rest = dt.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })
+      .replace(/\p{L}+/u, function (m) { return cap1(m); });  // "31 agosto 2026" -> "31 Agosto 2026"
+    return cap1(wd) + ', ' + rest;
   }
 
   // ---- stats panel (mirrors the desktop "All consoles" LibrarySnapshot) --
@@ -481,7 +485,15 @@
     var out = '';
     days.forEach(function (day) {
       var b = buckets[day];
-      out += '<section class="day-section"><h2>' + esc(fmtDay(day)) + '</h2>';
+      // wishlist count for the day = merged cards with at least one wishlist row
+      var wl = b.cards.filter(function (grp) {
+        return (grp.rows || []).some(function (r) { return r.status === 'wishlist'; });
+      }).length;
+      var tr = b.trash.length;
+      var tally = (wl || tr)
+        ? ' <span class="daytally">(' + fmt(wl) + ' wishlist - ' + fmt(tr) + ' trash)</span>'
+        : '';
+      out += '<section class="day-section"><h2>' + esc(fmtDay(day)) + tally + '</h2>';
       if (b.cards.length) out += gridHtml(b.cards);
       if (b.trash.length) {
         out += '<details class="trash-acc"><summary>Trashed (' + b.trash.length +
