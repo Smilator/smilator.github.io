@@ -173,7 +173,7 @@
   <div class="hwrap">
     <div class="brand">
       <span class="wordmark">Franken<b>stein</b></span>
-      <span class="stamp">Updated 30 Aug 2026</span>
+      <span class="stamp">Updated 31 Aug 2026</span>
     </div>
     <div class="seg" id="view">
       <button data-v="activity" class="active">Activity</button>
@@ -199,7 +199,7 @@
 </header>
 <section id="stats" style="display:none"></section>
 <main><div id="feed"></div></main>
-<script src="data.js?v=113bcb6a6af0"></script>
+<script src="data.js?v=0c300b7c557c"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
@@ -210,7 +210,7 @@
     if (trashState === 'loading' || trashState === 'ready') return;
     trashState = 'loading';
     var sc = document.createElement('script');
-    sc.src = 'trash.js?v=06d23872005a';
+    sc.src = 'trash.js?v=2e432e4780d6';
     sc.onload = function () {
       TRASH = window.TRASH || [];
       // trash rows carry the merge key as `ig_id` to keep bytes down elsewhere.
