@@ -389,12 +389,15 @@
       sub = [esc(labelBySlug[g.platform] || g.platform), yr].filter(Boolean).join(' · ');
       rows = '<div class="merged-row"><span class="pill ' + only.status + '">' +
         slabel(only.status) + '</span></div>';
-    } else {
-      // All-platforms view: year + overall tag. Trashed-everywhere stops there;
-      // if it's kept anywhere, always list the owned/wishlist platforms by name —
-      // whether that's one platform or several.
+    } else if (overall === 'trash') {
+      // Trashed on every platform it exists on → just year + the Trashed tag.
       sub = (yr ? '<span>' + yr + '</span>' : '') + tag;
-      rows = overall === 'trash' ? '' : keep.map(function (r) {
+      rows = '';
+    } else {
+      // Kept somewhere → year only on the sub line; the owned/wishlist status
+      // chip lives on each platform row (one row or several), never duplicated.
+      sub = yr ? '<span>' + yr + '</span>' : '';
+      rows = keep.map(function (r) {
         return '<div class="merged-row"><span class="pl">' + esc(r.label) +
           '</span><span class="pill ' + r.status + '">' + slabel(r.status) + '</span></div>';
       }).join('');
