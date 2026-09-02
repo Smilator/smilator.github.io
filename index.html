@@ -34,6 +34,10 @@
   .wordmark b { color: inherit; font-weight: inherit; }
   .brandmark { width: 24px; height: 23px; flex: none; display: block; }
   .stamp { font-size: 11px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .classificaLink {
+    margin-left: auto; font-size: 12px; font-weight: 600; text-decoration: none;
+    color: var(--accent); background: var(--accent-tint); padding: 5px 10px; border-radius: 999px;
+  }
   .counts { color: var(--text-dim); font-size: 13px; margin-top: 3px; }
   .seg { display: flex; width: 100%; margin-top: 12px; border: 1px solid var(--border);
     border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-elev-2); }
@@ -114,6 +118,9 @@
     border-radius: 999px; padding: 6px 8px; font-size: 11px; font-weight: 600; text-decoration: none;
   }
   .cardbtn:active { transform: scale(.96); }
+  .votebtn { background: var(--accent-tint); border-color: var(--accent-tint); color: var(--accent); }
+  .votebtn.voted { background: var(--good-tint); border-color: var(--good-tint); color: var(--good); }
+  .votebtn .voten { font-variant-numeric: tabular-nums; opacity: .8; }
   .meta { padding: 10px 11px 12px; }
   .name { font-weight: 600; font-size: 14px; line-height: 1.3; }
   .sub { color: var(--text-dim); font-size: 12px; margin-top: 3px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
@@ -198,6 +205,7 @@
       <img class="brandmark" src="favicon.svg" alt="" width="24" height="23">
       <span class="wordmark">Frankenstein</span>
       <span class="stamp">Aggiornato 2 Set 2026</span>
+      <a class="classificaLink" href="classifica.html">🏆 Classifica</a>
     </div>
     <div class="counts" id="counts"></div>
     <div class="seg" id="view">
@@ -225,10 +233,32 @@
 </div>
 <section id="stats" style="display:none"></section>
 <main><div id="feed"></div></main>
-<script src="data.js?v=700d198b3b59"></script>
+<script src="data.js?v=9b2bdb39bcd2"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
+  // "Save it from the Trash" upvote: a fetch straight to a Google Form's
+  // response endpoint, no page navigation, no account needed. The site stays
+  // static — this is just a client posting to Google's infra, same as the
+  // form itself would. Tallied into classifica.html on the next daily publish.
+  var VOTE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfck4TIVc3NTWdDp7M-Zt5P3My4eS5JJgov58ftG_aB87KC4Q/formResponse", VOTE_ENTRY_ID = "entry.1802538607";
+  function voteTrash(btn, key) {
+    try { if (localStorage.getItem('votedTrash_' + key) === '1') return; } catch (e) {}
+    try {
+      var body = VOTE_ENTRY_ID + '=' + encodeURIComponent(key);
+      fetch(VOTE_FORM_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body
+      }).catch(function () {});
+    } catch (e) {}
+    try { localStorage.setItem('votedTrash_' + key, '1'); } catch (e) {}
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('voted');
+      btn.innerHTML = 'Votato ✓';
+    }
+  }
   // Trash is huge (100k+) — its own file, fetched only on the first search or
   // when the day-feed needs its per-day "trashed" accordions.
   var TRASH = [], trashState = 'none';  // none | loading | ready
@@ -342,8 +372,9 @@
       var g = list[i];
       var key = g.igdb_id != null ? 'i' + g.igdb_id : 'm' + g.id;
       var grp = map[key];
-      if (!grp) { grp = { rep: g, bySlug: {}, rows: [], d: null }; map[key] = grp; order.push(key); }
+      if (!grp) { grp = { rep: g, bySlug: {}, rows: [], d: null, ts: null, key: key }; map[key] = grp; order.push(key); }
       if (g.d && (!grp.d || g.d > grp.d)) grp.d = g.d;
+      if (g.ts && (!grp.ts || g.ts > grp.ts)) grp.ts = g.ts;
       // prefer a rep that actually has a trailer / igdb slug for the card buttons
       if (!grp.rep.vid && g.vid) grp.rep.vid = g.vid;
       if (!grp.rep.sl && g.sl) grp.rep.sl = g.sl;
@@ -410,10 +441,20 @@
       : 'https://www.igdb.com/search?type=1&q=' + encodeURIComponent(g.name || '');
     var gUrl = 'https://www.google.com/search?q=' +
       encodeURIComponent((g.name || '') + ' ' + (labelBySlug[g.platform] || g.platform || '') + ' game');
+    var voteBtn = '';
+    if (overall === 'trash') {
+      var voted = false;
+      try { voted = localStorage.getItem('votedTrash_' + grp.key) === '1'; } catch (e) {}
+      var vn = g.v || 0;
+      voteBtn = '<button class="cardbtn votebtn' + (voted ? ' voted' : '') +
+        '" onclick="voteTrash(this,&#39;' + esc(grp.key) + '&#39;)"' + (voted ? ' disabled' : '') + '>' +
+        (voted ? 'Votato ✓' : '👍 SAVE') +
+        (vn ? ' <span class="voten">' + fmt(vn) + '</span>' : '') + '</button>';
+    }
     var btns = '<div class="cardbtns">' +
       '<a class="cardbtn" href="' + esc(igdbUrl) + '" target="_blank" rel="noopener noreferrer">IGDB</a>' +
       '<a class="cardbtn" href="' + esc(gUrl) + '" target="_blank" rel="noopener noreferrer">Google</a>' +
-      '</div>';
+      voteBtn + '</div>';
     return '<div class="card">' + art +
       '<div class="meta"><div class="name">' + esc(g.name) + '</div>' +
       '<div class="sub">' + sub + '</div>' +
@@ -590,6 +631,18 @@
     trashG.forEach(function (grp) {
       if (grp.d) (buckets[grp.d] = buckets[grp.d] || { cards: [], trash: [] }).trash.push(grp);
       else earlier.trash.push(grp);
+    });
+    // Within a day, newest status change first (falls back to name for ties /
+    // pre-timestamp rows).
+    var byRecent = function (a, b) {
+      if (a.ts && b.ts && a.ts !== b.ts) return a.ts < b.ts ? 1 : -1;
+      if (a.ts && !b.ts) return -1;
+      if (!a.ts && b.ts) return 1;
+      return (a.rep.name || '').localeCompare(b.rep.name || '');
+    };
+    Object.keys(buckets).forEach(function (day) {
+      buckets[day].cards.sort(byRecent);
+      buckets[day].trash.sort(byRecent);
     });
     var days = Object.keys(buckets).sort().reverse();
     if (!days.length && !earlier.cards.length) {
