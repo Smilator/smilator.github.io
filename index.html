@@ -198,12 +198,12 @@
       <span class="wordmark">Frankenstein</span>
       <span class="stamp">Aggiornato 2 Set 2026</span>
     </div>
+    <div class="counts" id="counts"></div>
     <div class="seg" id="view">
       <button data-v="activity" class="active">Activity</button>
       <button data-v="collection">Collection</button>
     </div>
     <div id="colbar" style="display:none">
-      <div class="counts" id="counts"></div>
       <button class="platrow" id="platBtn" aria-expanded="false">
         <span class="title" id="platTitle">All Platforms</span>
         <span class="chev">▾</span>
@@ -477,7 +477,7 @@
       var c = bc.filter(function (x) { return x.slug === state.platform; })[0] || { owned: 0, wishlist: 0, trash: 0 };
       o = c.owned; w = c.wishlist; t = c.trash; u = null;
     } else {
-      o = STATS.owned || 0; w = STATS.wishlist || 0; u = STATS.unjudged || 0; t = STATS.trash || 0;
+      o = STATS.owned || 0; w = STATS.wishlist || 0; u = null; t = STATS.trash || 0;
     }
     var grand = (o + w + (u || 0) + t) || 1;
     function kpi(cls, val, lab) {
@@ -568,7 +568,17 @@
       return;
     }
     var ownedG = groupByGame(GAMES);
-    var trashG = groupByGame(TRASH.filter(function (g) { return g.d; }));
+    // A game kept (owned/wishlisted) on ANY platform shouldn't also appear in the
+    // day-feed's "Trashed" accordion — on at least one platform it survived.
+    var keptKey = {};
+    GAMES.forEach(function (g) {
+      keptKey[g.igdb_id != null ? 'i' + g.igdb_id : 'm' + g.id] = true;
+    });
+    var trashG = groupByGame(TRASH.filter(function (g) { return g.d; }))
+      .filter(function (grp) {
+        var g = grp.rep;
+        return !keptKey[g.igdb_id != null ? 'i' + g.igdb_id : 'm' + g.id];
+      });
     var buckets = {}, earlier = { cards: [], trash: [] };
     ownedG.forEach(function (grp) {
       if (grp.d) (buckets[grp.d] = buckets[grp.d] || { cards: [], trash: [] }).cards.push(grp);
