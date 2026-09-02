@@ -42,7 +42,8 @@
     padding: 9px 6px; font: 600 13px var(--sans); cursor: pointer;
   }
   .seg button.active { background: var(--accent); color: #fff; }
-  #colbar { margin-top: 4px; }
+  .colbar-wrap { position: relative; }
+  #colbar { max-width: 1100px; margin: 0 auto; padding: 10px 18px 2px; }
   .filters { display: flex; align-items: center; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
   .filters label {
     display: flex; align-items: center; gap: 6px;
@@ -203,23 +204,25 @@
       <button data-v="activity" class="active">Activity</button>
       <button data-v="collection">Collection</button>
     </div>
-    <div id="colbar" style="display:none">
-      <button class="platrow" id="platBtn" aria-expanded="false">
-        <span class="title" id="platTitle">All Platforms</span>
-        <span class="chev">▾</span>
-      </button>
-      <div class="searchbar">
-        <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off" enterkeyhint="search">
-      </div>
-      <div class="filters">
-        <label><input type="checkbox" id="fOwned" checked> Owned</label>
-        <label><input type="checkbox" id="fWish" checked> Wishlist</label>
-        <label><input type="checkbox" id="fTrash"> Trashed</label>
-      </div>
+  </div>
+</header>
+<div class="colbar-wrap">
+  <div id="colbar" style="display:none">
+    <button class="platrow" id="platBtn" aria-expanded="false">
+      <span class="title" id="platTitle">All Platforms</span>
+      <span class="chev">▾</span>
+    </button>
+    <div class="searchbar">
+      <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off" enterkeyhint="search">
+    </div>
+    <div class="filters">
+      <label><input type="checkbox" id="fOwned" checked> Owned</label>
+      <label><input type="checkbox" id="fWish" checked> Wishlist</label>
+      <label><input type="checkbox" id="fTrash"> Trashed</label>
     </div>
   </div>
   <div class="picker" id="picker" style="display:none"><div class="inner" id="pickerInner"></div></div>
-</header>
+</div>
 <section id="stats" style="display:none"></section>
 <main><div id="feed"></div></main>
 <script src="data.js?v=735c3683af50"></script>
