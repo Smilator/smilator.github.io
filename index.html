@@ -163,20 +163,41 @@
   .propbar .wishlist { background: var(--warn); }
   .propbar .unjudged { background: #c2c6cd; }
   .propbar .trash { background: var(--accent); }
-  .byconsole { margin-top: 14px; }
+  .byconsole { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 2px; }
   .byconsole > summary {
-    cursor: pointer; font: 600 12px var(--sans); color: var(--text-dim); list-style: none;
+    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px;
+    margin: 0 -6px; padding: 10px 6px; border-radius: var(--radius-sm);
+    font: 700 13px var(--display); color: var(--text); transition: background .15s;
   }
   .byconsole > summary::-webkit-details-marker { display: none; }
-  .crow {
-    display: grid; grid-template-columns: 132px 1fr auto; align-items: center;
-    gap: 10px; margin-top: 8px; font-size: 12px;
+  .byconsole > summary:hover { background: var(--bg-elev-2); }
+  .byconsole > summary .chev {
+    flex: none; font-size: 11px; color: var(--text-dim); transition: transform .2s;
   }
-  .crow .pl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .crow .cbar { height: 8px; border-radius: 999px; background: var(--accent-tint); overflow: hidden; }
-  .crow .cbar i { display: block; height: 100%; background: var(--accent); }
-  .crow .cn { color: var(--text-dim); font-variant-numeric: tabular-nums; }
-  .ccount { margin-top: 8px; font-size: 11px; color: var(--text-dim); }
+  .byconsole[open] > summary .chev { transform: rotate(90deg); }
+  .byconsole > summary .n {
+    margin-left: auto; font: 600 11px var(--sans); color: var(--text-dim);
+    background: var(--bg-elev-2); padding: 2px 9px; border-radius: 999px;
+  }
+  .byconsole .legend { display: flex; gap: 14px; margin: 2px 6px 10px; font-size: 11px; color: var(--text-dim); }
+  .byconsole .legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .byconsole .legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .byconsole .legend .lo { background: var(--good); }
+  .byconsole .legend .lw { background: var(--warn); }
+  .crow {
+    display: grid; grid-template-columns: 118px 1fr auto; align-items: center;
+    gap: 10px; padding: 6px; border-radius: 8px; font-size: 12px; transition: background .15s;
+  }
+  .crow:hover { background: var(--bg-elev-2); }
+  .crow .pl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
+  .crow .cbar {
+    height: 10px; border-radius: 999px; background: var(--bg-elev-2); overflow: hidden; display: flex;
+  }
+  .crow .cbar i { display: block; height: 100%; }
+  .crow .cbar .o { background: var(--good); }
+  .crow .cbar .w { background: var(--warn); }
+  .crow .cn { color: var(--text-dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ccount { margin-top: 4px; padding: 8px 6px; font-size: 11px; color: var(--text-dim); text-align: center; }
 
   /* feed */
   .day-section { margin-top: 28px; }
@@ -388,6 +409,15 @@
     return order.map(function (k) {
       var grp = map[k];
       grp.rows.sort(function (a, b) { return a.label.localeCompare(b.label); });
+      // Overall status: owned if owned anywhere, else wishlist if kept anywhere,
+      // else trash — ONLY when every platform it exists on is trashed. Computed
+      // here (not per-view) so the owned/wishlist/trash checkboxes always filter
+      // on a game's true merged status, never on one row seen in isolation (a
+      // title wishlisted on NES but trashed on DOS must never pass the Trash
+      // filter just because its DOS row got filtered into view alone).
+      grp.overall = grp.rows.some(function (r) { return r.status === 'owned'; })
+        ? 'owned'
+        : (grp.rows.some(function (r) { return r.status === 'wishlist'; }) ? 'wishlist' : 'trash');
       return grp;
     });
   }
@@ -409,10 +439,9 @@
     function slabel(s) { return s === 'trash' ? 'Trashed' : cap(s); }
     // Platforms where the game is actually kept (owned or wishlisted).
     var keep = grp.rows.filter(function (r) { return r.status === 'owned' || r.status === 'wishlist'; });
-    // Overall tag: owned if owned anywhere, else wishlist if wishlisted anywhere,
-    // else trash (trashed on every platform it exists on).
-    var overall = grp.rows.some(function (r) { return r.status === 'owned'; })
-      ? 'owned' : (keep.length ? 'wishlist' : 'trash');
+    // Overall tag — computed once in groupByGame() so the status filters and
+    // the card itself always agree.
+    var overall = grp.overall;
 
     // `sub` is built as trusted HTML (text pieces esc()'d individually).
     var yr = g.year ? esc(String(g.year)) : '';
@@ -539,11 +568,14 @@
     var maxKept = kept.reduce(function (m, x) { return Math.max(m, x.owned + x.wishlist); }, 1);
     var rows = kept.slice(0, 8).map(function (x) {
       var k = x.owned + x.wishlist;
+      var op = (x.owned / maxKept * 100).toFixed(1), wp = (x.wishlist / maxKept * 100).toFixed(1);
       return '<div class="crow"><span class="pl">' + esc(x.label) +
-        '</span><span class="cbar"><i style="width:' + (k / maxKept * 100).toFixed(1) + '%"></i></span>' +
-        '<span class="cn">' + fmt(k) + '</span></div>';
+        '</span><span class="cbar">' +
+        (x.owned ? '<i class="o" style="width:' + op + '%"></i>' : '') +
+        (x.wishlist ? '<i class="w" style="width:' + wp + '%"></i>' : '') +
+        '</span><span class="cn">' + fmt(k) + '</span></div>';
     }).join('');
-    var more = kept.length > 8 ? '<div class="ccount">+' + (kept.length - 8) + ' more consoles</div>' : '';
+    var more = kept.length > 8 ? '<div class="ccount">+' + (kept.length - 8) + ' altre console</div>' : '';
     el.innerHTML = '<div class="stats-card"><div class="kpis">' +
       kpi('owned', o, 'Owned') + kpi('wishlist', w, 'Wishlist') +
       kpi('unjudged', u, 'Unjudged') + kpi('trash', t, 'Trash') +
@@ -551,7 +583,9 @@
       seg('unjudged', u || 0) + seg('trash', t) + '</div>' +
       (kept.length && !state.platform
         ? '<details class="byconsole"' + (open ? ' open' : '') +
-          '><summary>by console</summary>' + rows + more + '</details>'
+          '><summary><span class="chev">▸</span>Per console<span class="n">' + kept.length + '</span></summary>' +
+          '<div class="legend"><span><i class="lo"></i>Owned</span><span><i class="lw"></i>Wishlist</span></div>' +
+          rows + more + '</details>'
         : '') +
       '</div>';
     var d = el.querySelector('.byconsole');
@@ -593,13 +627,17 @@
       return;
     }
 
-    var src = byPlatform(state.trash ? GAMES.concat(TRASH) : GAMES)
-      .filter(function (g) { return set[g.status || 'trash']; });
-    var groups = q.length >= 2
-      ? groupByGame(bySearch(src, q))
-      : groupByGame(src).sort(function (a, b) {
-          return (a.rep.name || '').localeCompare(b.rep.name || '');
-        });
+    // Full context (every row for a game, kept AND trash) goes into grouping —
+    // status filtering happens AFTER, on the merged grp.overall, never on a raw
+    // row in isolation. Filtering rows first would strip out e.g. the NES
+    // wishlist row of a game only checked "Trashed", leaving just its DOS trash
+    // row to group alone — making a kept-elsewhere game wrongly pass the filter.
+    var src = byPlatform(state.trash ? GAMES.concat(TRASH) : GAMES);
+    var groups = (q.length >= 2 ? groupByGame(bySearch(src, q)) : groupByGame(src))
+      .filter(function (grp) { return set[grp.overall]; });
+    if (q.length < 2) {
+      groups.sort(function (a, b) { return (a.rep.name || '').localeCompare(b.rep.name || ''); });
+    }
     showCollection(groups);
   }
 
