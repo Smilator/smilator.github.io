@@ -226,7 +226,7 @@
     <div class="brand">
       <img class="brandmark" src="favicon.svg" alt="" width="24" height="23">
       <span class="wordmark">Frankenstein</span>
-      <span class="stamp">Aggiornato 3 Set 2026</span>
+      <span class="stamp">Aggiornato 4 Set 2026</span>
       <a class="classificaLink" href="classifica.html">🏆 Rank</a>
     </div>
     <div class="counts" id="counts"></div>
@@ -255,7 +255,7 @@
 </div>
 <section id="stats" style="display:none"></section>
 <main><div id="feed"></div></main>
-<script src="data.js?v=c43305d02b63"></script>
+<script src="data.js?v=e3a94d4bc55b"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
@@ -288,7 +288,7 @@
     if (trashState === 'loading' || trashState === 'ready') return;
     trashState = 'loading';
     var sc = document.createElement('script');
-    sc.src = 'trash.js?v=6279cca6acf8';
+    sc.src = 'trash.js?v=9cdf39b638b7';
     sc.onload = function () {
       TRASH = window.TRASH || [];
       // trash rows carry the merge key as `ig_id` to keep bytes down elsewhere.
