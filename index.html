@@ -33,13 +33,12 @@
   .wordmark { font: 700 22px/1 var(--display); letter-spacing: -.01em; }
   .wordmark b { color: inherit; font-weight: inherit; }
   .brandmark { width: 24px; height: 23px; flex: none; display: block; }
-  .stamp { font-size: 11px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
   .classificaLink {
     margin-left: auto; font-size: 12px; font-weight: 600; text-decoration: none;
     color: var(--accent); background: var(--accent-tint); padding: 5px 10px; border-radius: 999px;
     white-space: nowrap; flex: none;
   }
-  .counts { color: var(--text-dim); font-size: 13px; margin-top: 3px; }
+  .counts { color: var(--text-dim); font-size: 13px; margin-top: 3px; font-variant-numeric: tabular-nums; }
   .seg { display: flex; width: 100%; margin-top: 12px; border: 1px solid var(--border);
     border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-elev-2); }
   .seg button {
@@ -226,7 +225,6 @@
     <div class="brand">
       <img class="brandmark" src="favicon.svg" alt="" width="24" height="23">
       <span class="wordmark">Frankenstein</span>
-      <span class="stamp">Aggiornato 4 Set 2026</span>
       <a class="classificaLink" href="classifica.html">🏆 Rank</a>
     </div>
     <div class="counts" id="counts"></div>
@@ -259,6 +257,7 @@
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
+  var LAST_PULL = "Updated 4 Sep 2026, 17:36";
   // "Save it from the Trash" upvote: a fetch straight to a Google Form's
   // response endpoint, no page navigation, no account needed. The site stays
   // static — this is just a client posting to Google's infra, same as the
@@ -307,7 +306,7 @@
   function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
   document.getElementById('counts').textContent =
-    fmt(STATS.owned || 0) + ' owned · ' + fmt(STATS.wishlist || 0) + ' wishlisted';
+    LAST_PULL + ' · ' + fmt(STATS.owned || 0) + ' owned · ' + fmt(STATS.wishlist || 0) + ' wishlisted';
 
   var state = { view: 'activity', q: '', platform: '', owned: true, wishlist: true, trash: false };
   var MAX = 600;
