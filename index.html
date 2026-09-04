@@ -278,7 +278,7 @@
     if (btn) {
       btn.disabled = true;
       btn.classList.add('voted');
-      btn.innerHTML = 'Votato ✓';
+      btn.innerHTML = 'Saved ✓';
     }
   }
   // Trash is huge (100k+) — its own file, fetched only on the first search or
@@ -478,7 +478,7 @@
       var vn = g.v || 0;
       voteBtn = '<div class="cardbtns"><button class="cardbtn votebtn' + (voted ? ' voted' : '') +
         '" onclick="voteTrash(this,&#39;' + esc(grp.key) + '&#39;)"' + (voted ? ' disabled' : '') + '>' +
-        (voted ? 'Votato ✓' : '👍 SAVE') +
+        (voted ? 'Saved ✓' : '👍 SAVE') +
         (vn ? ' <span class="voten">' + fmt(vn) + '</span>' : '') + '</button></div>';
     }
     var btns = '<div class="cardbtns">' +
