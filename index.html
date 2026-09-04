@@ -255,7 +255,7 @@
 </div>
 <section id="stats" style="display:none"></section>
 <main><div id="feed"></div></main>
-<script src="data.js?v=035a0528e747"></script>
+<script src="data.js?v=65590369a719"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
@@ -278,7 +278,7 @@
     if (btn) {
       btn.disabled = true;
       btn.classList.add('voted');
-      btn.innerHTML = 'Votato ✓';
+      btn.innerHTML = 'Saved ✓';
     }
   }
   // Trash is huge (100k+) — its own file, fetched only on the first search or
@@ -288,7 +288,7 @@
     if (trashState === 'loading' || trashState === 'ready') return;
     trashState = 'loading';
     var sc = document.createElement('script');
-    sc.src = 'trash.js?v=28c2dd64979a';
+    sc.src = 'trash.js?v=3d696df1b9ad';
     sc.onload = function () {
       TRASH = window.TRASH || [];
       // trash rows carry the merge key as `ig_id` to keep bytes down elsewhere.
@@ -478,7 +478,7 @@
       var vn = g.v || 0;
       voteBtn = '<div class="cardbtns"><button class="cardbtn votebtn' + (voted ? ' voted' : '') +
         '" onclick="voteTrash(this,&#39;' + esc(grp.key) + '&#39;)"' + (voted ? ' disabled' : '') + '>' +
-        (voted ? 'Votato ✓' : '👍 SAVE') +
+        (voted ? 'Saved ✓' : '👍 SAVE') +
         (vn ? ' <span class="voten">' + fmt(vn) + '</span>' : '') + '</button></div>';
     }
     var btns = '<div class="cardbtns">' +
