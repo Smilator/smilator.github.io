@@ -14,6 +14,7 @@
     --bg: #f4f4f6; --bg-elev: #ffffff; --bg-elev-2: #eef0f2;
     --border: #e2e2e6; --text: #14161a; --text-dim: #6b7280;
     --accent: #7e14ff; --accent-tint: #f1e5ff;
+    --bad: #dc2626; --bad-tint: #fdecef;
     --good: #16a34a; --good-tint: #e7f6ec; --warn: #b45309; --warn-tint: #fdf0e3;
     --radius: 16px; --radius-sm: 10px;
     --shadow-sm: 0 1px 2px rgba(20,22,26,.06), 0 1px 3px rgba(20,22,26,.05);
@@ -136,7 +137,7 @@
   }
   .pill.owned { background: var(--good-tint); color: var(--good); }
   .pill.wishlist { background: var(--warn-tint); color: var(--warn); }
-  .pill.trash { background: var(--accent-tint); color: var(--accent); }
+  .pill.trash { background: var(--bad-tint); color: var(--bad); }
   .empty { color: var(--text-dim); text-align: center; padding: 40px 20px; }
 
   /* stats panel */
@@ -152,7 +153,7 @@
   .kpi.owned .v { color: var(--good); }
   .kpi.wishlist .v { color: var(--warn); }
   .kpi.unjudged .v { color: var(--text-dim); }
-  .kpi.trash .v { color: var(--accent); }
+  .kpi.trash .v { color: var(--bad); }
   .propbar {
     display: flex; height: 8px; border-radius: 999px; overflow: hidden;
     margin-top: 14px; background: var(--bg-elev-2);
@@ -161,7 +162,7 @@
   .propbar .owned { background: var(--good); }
   .propbar .wishlist { background: var(--warn); }
   .propbar .unjudged { background: #c2c6cd; }
-  .propbar .trash { background: var(--accent); }
+  .propbar .trash { background: var(--bad); }
   .byconsole { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 2px; }
   .byconsole > summary {
     cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px;
@@ -257,7 +258,7 @@
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
-  var LAST_PULL = "Updated 4 Sep 2026, 17:50";
+  var LAST_PULL = "Updated 4 Sep 2026, 19:56";
   // "Save it from the Trash" upvote: a fetch straight to a Google Form's
   // response endpoint, no page navigation, no account needed. The site stays
   // static — this is just a client posting to Google's infra, same as the

@@ -13,6 +13,7 @@
     --bg: #f4f4f6; --bg-elev: #ffffff; --bg-elev-2: #eef0f2;
     --border: #e2e2e6; --text: #14161a; --text-dim: #6b7280;
     --accent: #7e14ff; --accent-tint: #f1e5ff;
+    --bad: #dc2626; --bad-tint: #fdecef;
     --good: #16a34a; --good-tint: #e7f6ec; --good-border: #bfe6cb;
     --warn: #b45309; --warn-tint: #fdf0e3;
     --radius: 16px; --radius-sm: 10px;
@@ -142,7 +143,7 @@
   }
   .row button:active { transform: scale(.93); }
   .wish.active { background: var(--good-tint); color: var(--good); box-shadow: inset 0 0 0 1px var(--good-border); }
-  .trash.active { background: var(--accent-tint); color: var(--accent); box-shadow: inset 0 0 0 1px #f4b8c4; }
+  .trash.active { background: var(--bad-tint); color: var(--bad); box-shadow: inset 0 0 0 1px #f4b8c4; }
 
   .nav { display: flex; gap: 10px; margin-top: 16px; }
   .nav button {
@@ -187,7 +188,7 @@
     <div class="hrow">
       <img class="brandmark" src="favicon.png" alt="" width="24" height="24">
       <span class="wordmark">Frankenstein</span>
-      <span class="stamp">judge · Updated 4 Sep 2026, 17:50</span>
+      <span class="stamp">judge · Updated 4 Sep 2026, 19:56</span>
       <button class="gear" id="gearBtn" title="Settings">&#9881;</button>
     </div>
     <button class="platBtn" id="platBtn" aria-expanded="false">
@@ -227,7 +228,7 @@
   // scoped to it, so a fresh desktop sync (new list) lets everything be judged
   // again, while closing/reopening the page in between does not.
   var JUDGE_VER = "1008aaf28886";
-  var LAST_PULL = "Updated 4 Sep 2026, 17:50";
+  var LAST_PULL = "Updated 4 Sep 2026, 19:56";
 
   function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
   function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
