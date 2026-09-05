@@ -1,1 +1,1 @@
-window.CLASSIFICA = [];
+window.CLASSIFICA = [{"name": "Barbie Adventure: Riding Club", "platform": "windows", "year": 1998, "ig": "t_cover_big/cocd9n", "v": 1, "platformLabel": "PC (Windows)"}, {"name": "Washington Prime", "platform": "windows", "ig": "t_cover_big/cobdqn", "v": 1, "platformLabel": "PC (Windows)"}];
