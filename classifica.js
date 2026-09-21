@@ -1,1 +1,1 @@
-window.CLASSIFICA = [{"name": "Oh My Doug!", "platform": "windows", "ig": "t_cover_big/coc5fh", "v": 1, "platformLabel": "PC (Windows)"}];
+window.CLASSIFICA = [{"name": "Oh My Doug!", "platform": "windows", "ig": "t_cover_big/coc5fh", "v": 1, "platformLabel": "PC (Windows)"}, {"name": "Solaire", "platform": "windows", "ig": "t_cover_big/cocj9o", "v": 1, "platformLabel": "PC (Windows)"}];
