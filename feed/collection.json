@@ -16691,7 +16691,7 @@
 [55097,5,1,"Project Neptune"],
 [55103,1,0,"Boxing"],
 [55104,1,0,"Skiing"],
-[55105,1,1,"Bridge"],
+[55105,1,0,"Bridge"],
 [55109,41,1,"Industries of Titan"],
 [55112,49,1,"Fist of the North Star: Lost Paradise"],
 [55123,41,1,"X4: Foundations"],
@@ -27004,8 +27004,8 @@
 [419122,41,1,"Phasmos"],
 [419272,41,1,"Lunokhod"]
 ],
-"generated_at":"2026-09-22T06:27:23+00:00",
+"generated_at":"2026-09-23T05:51:59+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7904,"rows":311017,"skipped_no_igdb_id":565,"trash":284015,"wishlist":19098},
+"stats":{"duplicates_collapsed":134,"owned":7905,"rows":311017,"skipped_no_igdb_id":565,"trash":284015,"wishlist":19097},
 "verdicts":["owned","wishlist","trash"]
 }
