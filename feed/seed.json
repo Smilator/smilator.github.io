@@ -1,6 +1,6 @@
 {
 "format":1,
-"generated_at":"2026-09-23T05:52:00+00:00",
+"generated_at":"2026-09-24T05:48:39+00:00",
 "platforms":[
 {
 "auto_skip_igdb":false,
@@ -17,7 +17,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"7 / 12",
 "extensions":null,
 "igdb_platform_id":50,
 "retrobat_name":"3do",
@@ -29,7 +29,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"37 / 33",
 "extensions":null,
 "igdb_platform_id":37,
 "retrobat_name":"3ds",
@@ -269,7 +269,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"11 / 15",
 "extensions":null,
 "igdb_platform_id":59,
 "retrobat_name":"atari2600",
@@ -281,7 +281,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"11 / 15",
 "extensions":null,
 "igdb_platform_id":66,
 "retrobat_name":"atari5200",
@@ -293,7 +293,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"11 / 15",
 "extensions":null,
 "igdb_platform_id":60,
 "retrobat_name":"atari7800",
@@ -341,7 +341,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":52,
 "retrobat_name":"atomiswave",
@@ -749,7 +749,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"15 / 19",
 "extensions":null,
 "igdb_platform_id":13,
 "retrobat_name":"dos",
@@ -773,7 +773,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"1 / 1",
 "extensions":null,
 "igdb_platform_id":23,
 "retrobat_name":"dreamcast",
@@ -869,7 +869,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"26 / 29",
 "extensions":null,
 "igdb_platform_id":99,
 "retrobat_name":"Famicom",
@@ -893,7 +893,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"26 / 29",
 "extensions":null,
 "igdb_platform_id":51,
 "retrobat_name":"fds",
@@ -977,7 +977,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":"1 / 1",
+"boxart_aspect_ratio":"24 / 13",
 "extensions":null,
 "igdb_platform_id":307,
 "retrobat_name":"gameandwatch",
@@ -1001,7 +1001,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"18 / 25",
 "extensions":null,
 "igdb_platform_id":21,
 "retrobat_name":"gamecube",
@@ -1013,7 +1013,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":35,
 "retrobat_name":"gamegear",
@@ -1073,7 +1073,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"103 / 102",
 "extensions":null,
 "igdb_platform_id":24,
 "retrobat_name":"gba",
@@ -1277,7 +1277,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":62,
 "retrobat_name":"jaguar",
@@ -1385,7 +1385,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"22 / 27",
 "extensions":null,
 "igdb_platform_id":61,
 "retrobat_name":"lynx",
@@ -1397,7 +1397,7 @@
 {
 "auto_skip_igdb":true,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":52,
 "retrobat_name":"mame",
@@ -1409,7 +1409,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"27 / 38",
 "extensions":null,
 "igdb_platform_id":64,
 "retrobat_name":"mastersystem",
@@ -1421,7 +1421,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"12 / 17",
 "extensions":null,
 "igdb_platform_id":78,
 "retrobat_name":"megacd",
@@ -1433,7 +1433,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"27 / 38",
 "extensions":null,
 "igdb_platform_id":29,
 "retrobat_name":"megadrive",
@@ -1469,7 +1469,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"3 / 4",
 "extensions":null,
 "igdb_platform_id":384,
 "retrobat_name":"Meta Quest",
@@ -1481,7 +1481,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"3 / 4",
 "extensions":null,
 "igdb_platform_id":386,
 "retrobat_name":"Meta Quest 2",
@@ -1493,7 +1493,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"3 / 4",
 "extensions":null,
 "igdb_platform_id":471,
 "retrobat_name":"Meta Quest 3",
@@ -1505,7 +1505,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":52,
 "retrobat_name":"model2",
@@ -1517,7 +1517,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":52,
 "retrobat_name":"model3",
@@ -1601,7 +1601,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"15 / 11",
 "extensions":null,
 "igdb_platform_id":4,
 "retrobat_name":"n64",
@@ -1613,7 +1613,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"15 / 11",
 "extensions":null,
 "igdb_platform_id":416,
 "retrobat_name":"n64dd",
@@ -1649,7 +1649,7 @@
 {
 "auto_skip_igdb":true,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":52,
 "retrobat_name":"naomi",
@@ -1673,7 +1673,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":"1 / 1",
+"boxart_aspect_ratio":"19 / 17",
 "extensions":null,
 "igdb_platform_id":20,
 "retrobat_name":"nds",
@@ -1721,7 +1721,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":18,
 "retrobat_name":"nes",
@@ -1745,7 +1745,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":"1 / 1",
+"boxart_aspect_ratio":"15 / 17",
 "extensions":null,
 "igdb_platform_id":119,
 "retrobat_name":"ngp",
@@ -1757,7 +1757,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":"1 / 1",
+"boxart_aspect_ratio":"6 / 7",
 "extensions":null,
 "igdb_platform_id":120,
 "retrobat_name":"ngpc",
@@ -2069,7 +2069,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"5 / 7",
 "extensions":null,
 "igdb_platform_id":8,
 "retrobat_name":"ps2",
@@ -2081,7 +2081,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"29 / 34",
 "extensions":null,
 "igdb_platform_id":9,
 "retrobat_name":"ps3",
@@ -2093,7 +2093,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 15",
 "extensions":null,
 "igdb_platform_id":48,
 "retrobat_name":"ps4",
@@ -2105,7 +2105,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 15",
 "extensions":null,
 "igdb_platform_id":167,
 "retrobat_name":"ps5",
@@ -2117,7 +2117,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"7 / 12",
 "extensions":null,
 "igdb_platform_id":38,
 "retrobat_name":"psp",
@@ -2129,7 +2129,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"18 / 25",
 "extensions":null,
 "igdb_platform_id":46,
 "retrobat_name":"psvita",
@@ -2141,7 +2141,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 15",
 "extensions":null,
 "igdb_platform_id":165,
 "retrobat_name":"psvr",
@@ -2153,7 +2153,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 15",
 "extensions":null,
 "igdb_platform_id":390,
 "retrobat_name":"psvr2",
@@ -2165,7 +2165,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"7 / 6",
 "extensions":null,
 "igdb_platform_id":7,
 "retrobat_name":"psx",
@@ -2261,7 +2261,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"9 / 16",
 "extensions":null,
 "igdb_platform_id":306,
 "retrobat_name":"satellaview",
@@ -2273,7 +2273,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"11 / 17",
 "extensions":null,
 "igdb_platform_id":32,
 "retrobat_name":"saturn",
@@ -2309,7 +2309,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"27 / 38",
 "extensions":null,
 "igdb_platform_id":30,
 "retrobat_name":"sega32x",
@@ -2333,7 +2333,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"9 / 16",
 "extensions":null,
 "igdb_platform_id":58,
 "retrobat_name":"Super Famicom",
@@ -2345,7 +2345,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 18",
 "extensions":null,
 "igdb_platform_id":84,
 "retrobat_name":"sg1000",
@@ -2393,7 +2393,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"26 / 19",
 "extensions":null,
 "igdb_platform_id":19,
 "retrobat_name":"snes",
@@ -2609,7 +2609,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 21",
 "extensions":null,
 "igdb_platform_id":130,
 "retrobat_name":"switch",
@@ -2621,7 +2621,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 21",
 "extensions":null,
 "igdb_platform_id":508,
 "retrobat_name":"Nintendo Switch 2",
@@ -2645,7 +2645,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":52,
 "retrobat_name":"teknoparrot",
@@ -2705,7 +2705,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":52,
 "retrobat_name":"triforce",
@@ -2765,7 +2765,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":70,
 "retrobat_name":"vectrex",
@@ -2801,7 +2801,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"28 / 25",
 "extensions":null,
 "igdb_platform_id":87,
 "retrobat_name":"virtualboy",
@@ -2849,7 +2849,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"5 / 7",
 "extensions":null,
 "igdb_platform_id":5,
 "retrobat_name":"wii",
@@ -2861,7 +2861,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"5 / 7",
 "extensions":null,
 "igdb_platform_id":41,
 "retrobat_name":"wiiu",
@@ -2873,7 +2873,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"5 / 7",
 "extensions":null,
 "igdb_platform_id":6,
 "retrobat_name":"windows",
@@ -2885,7 +2885,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":"1 / 1",
+"boxart_aspect_ratio":"19 / 26",
 "extensions":null,
 "igdb_platform_id":57,
 "retrobat_name":"wswan",
@@ -2897,7 +2897,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":"1 / 1",
+"boxart_aspect_ratio":"9 / 13",
 "extensions":null,
 "igdb_platform_id":123,
 "retrobat_name":"wswanc",
@@ -2933,7 +2933,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"5 / 7",
 "extensions":null,
 "igdb_platform_id":11,
 "retrobat_name":"xbox",
@@ -2945,7 +2945,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"5 / 7",
 "extensions":null,
 "igdb_platform_id":12,
 "retrobat_name":"xbox360",
@@ -2957,7 +2957,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 15",
 "extensions":null,
 "igdb_platform_id":49,
 "retrobat_name":"xboxone",
@@ -2969,7 +2969,7 @@
 {
 "auto_skip_igdb":false,
 "bios_required":null,
-"boxart_aspect_ratio":null,
+"boxart_aspect_ratio":"13 / 15",
 "extensions":null,
 "igdb_platform_id":169,
 "retrobat_name":"xboxseriesx",
