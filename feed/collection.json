@@ -1939,6 +1939,7 @@
 [2446,5,0,"Commander Keen 6: Aliens Ate My Babysitter"],
 [2447,12,0,"Commander Keen"],
 [2449,27,0,"Lightning Returns : Final Fantasy XIII"],
+[2450,41,1,"Vendetta Online"],
 [2453,5,1,"Burntime"],
 [2454,5,1,"Captive"],
 [2455,5,1,"Challenge of the Five Realms"],
@@ -26601,6 +26602,7 @@
 [387005,17,0,"Master of Monsters"],
 [387020,52,1,"Dragon Ball: Xenoverse 3"],
 [387070,59,1,"Super Battle Golf"],
+[387118,30,1,"The Dream Circus"],
 [387130,15,1,"Resident Evil 2: Arcade"],
 [387137,30,1,"The Bistro: Ryouri & Wine no Shokunin tachi"],
 [387439,30,1,"Rescue 24 Hours"],
@@ -27010,8 +27012,8 @@
 [419122,41,1,"Phasmos"],
 [419272,41,1,"Lunokhod"]
 ],
-"generated_at":"2026-09-24T05:48:38+00:00",
+"generated_at":"2026-09-25T05:50:17+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7905,"rows":311165,"skipped_no_igdb_id":565,"trash":284157,"wishlist":19103},
+"stats":{"duplicates_collapsed":134,"owned":7905,"rows":311185,"skipped_no_igdb_id":565,"trash":284175,"wishlist":19105},
 "verdicts":["owned","wishlist","trash"]
 }
