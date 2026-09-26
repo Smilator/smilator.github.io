@@ -218,6 +218,15 @@
     cursor: pointer; font: 700 15px var(--display); padding: 10px 0; list-style: none;
   }
   details.earlier > summary::-webkit-details-marker { display: none; }
+  .pager {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin: 32px 0 8px; font: 500 13px var(--sans); color: var(--text-dim);
+  }
+  .pager button {
+    font: 600 13px var(--sans); padding: 8px 14px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--accent-tint); background: var(--accent-tint); color: var(--accent);
+  }
+  .pager button:disabled { opacity: .4; cursor: default; }
 </style>
 </head>
 <body>
@@ -308,7 +317,7 @@
 
   document.getElementById('counts').textContent = LAST_PULL;
 
-  var state = { view: 'activity', q: '', platform: '', owned: true, wishlist: true, trash: false };
+  var state = { view: 'activity', page: 0, q: '', platform: '', owned: true, wishlist: true, trash: false };
   var MAX = 600;
   var IGDB_IMG = 'https://images.igdb.com/igdb/image/upload/';
 
@@ -687,8 +696,14 @@
       feed.innerHTML = '<div class="empty">Nothing yet.</div>';
       return;
     }
+    // Paginate: DAYS_PER_PAGE days per page, newest page first; "Earlier"
+    // (undated rows) rides on the last page.
+    var pages = Math.max(1, Math.ceil(days.length / DAYS_PER_PAGE));
+    if (state.page >= pages) state.page = pages - 1;
+    var last = state.page === pages - 1;
+    var pageDays = days.slice(state.page * DAYS_PER_PAGE, (state.page + 1) * DAYS_PER_PAGE);
     var out = '';
-    days.forEach(function (day) {
+    pageDays.forEach(function (day) {
       var b = buckets[day];
       // wishlist count for the day = merged cards with at least one wishlist row
       var wl = b.cards.filter(function (grp) {
@@ -706,7 +721,7 @@
       }
       out += '</section>';
     });
-    if (earlier.cards.length || earlier.trash.length) {
+    if (last && (earlier.cards.length || earlier.trash.length)) {
       out += '<details class="earlier"><summary>Earlier</summary>';
       if (earlier.cards.length) out += gridHtml(earlier.cards);
       if (earlier.trash.length) {
@@ -715,8 +730,22 @@
       }
       out += '</details>';
     }
+    if (pages > 1) {
+      out += '<nav class="pager">' +
+        '<button data-p="' + (state.page - 1) + '"' + (state.page === 0 ? ' disabled' : '') + '>← Newer</button>' +
+        '<span>Page ' + (state.page + 1) + ' of ' + pages + '</span>' +
+        '<button data-p="' + (state.page + 1) + '"' + (last ? ' disabled' : '') + '>Older →</button>' +
+        '</nav>';
+    }
     feed.innerHTML = out;
   }
+  var DAYS_PER_PAGE = 5;
+  document.getElementById('feed').addEventListener('click', function (e) {
+    var b = e.target.closest('.pager button'); if (!b || b.disabled) return;
+    state.page = +b.dataset.p;
+    render();
+    window.scrollTo(0, 0);
+  });
 
   // ---- platform picker (custom, not a <select>) --------------------------
   function platCounts() {
