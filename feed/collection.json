@@ -19788,6 +19788,7 @@
 [97330,15,0,"Hoops"],
 [97337,31,1,"Daibouken: Saint Elmos no Kiseki"],
 [97338,30,1,"Mahoutsukai ni Naru Houhou"],
+[97339,31,1,"Paneltia Story: Karen no Daibouken"],
 [97363,26,1,"Choro Q Works"],
 [97364,30,1,"Choro Q 3"],
 [97373,0,1,"Game Doraemon: Nobita no Takara-jima"],
@@ -22640,6 +22641,7 @@
 [203658,17,1,"Lion King II"],
 [203659,17,1,"Mulan"],
 [203722,36,1,"Dave the Diver"],
+[203752,36,1,"Fountains"],
 [203767,26,1,"Golf Navigator Vol.1"],
 [203768,26,1,"Golf Navigator Vol.2"],
 [203769,26,1,"Golf Navigator Vol.3"],
@@ -27025,6 +27027,7 @@
 [418729,41,1,"Stella Astrum"],
 [418735,41,1,"TomoTomo"],
 [418760,41,1,"Ghosted"],
+[418853,41,1,"Who Gave Them Weapons"],
 [418900,41,1,"Gasoline"],
 [419033,41,1,"Wane"],
 [419036,41,1,"Dust Till Dawn"],
@@ -27034,12 +27037,16 @@
 [419450,30,1,"Ooumi Nobunaga Den: Geten II"],
 [419541,41,1,"Foole's World"],
 [419580,41,1,"Fireworks Incremental"],
+[419610,64,1,"Story of Seasons: Your Wonderful Life"],
 [419761,41,1,"Overdrive Breakout"],
 [419801,41,1,"Rabbits Also Kill: Rezero"],
-[419849,41,1,"Backtrace: Mechanisms for Forgetting"]
+[419849,41,1,"Backtrace: Mechanisms for Forgetting"],
+[420266,41,1,"Potato.exe: A Game About Spinning a Wheel to Download Potatoes"],
+[420499,30,1,"Doki Doki Poyatchio!!"],
+[420555,41,1,"Blutkapelle"]
 ],
-"generated_at":"2026-09-28T05:59:14+00:00",
+"generated_at":"2026-09-29T14:25:43+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7905,"rows":311415,"skipped_no_igdb_id":565,"trash":284379,"wishlist":19131},
+"stats":{"duplicates_collapsed":134,"owned":7905,"rows":311516,"skipped_no_igdb_id":565,"trash":284473,"wishlist":19138},
 "verdicts":["owned","wishlist","trash"]
 }

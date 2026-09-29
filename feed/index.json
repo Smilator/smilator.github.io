@@ -1,13 +1,13 @@
 {
-    "generated_at":  "2026-09-28T05:59:15.6678884Z",
+    "generated_at":  "2026-09-29T14:25:45.6112377Z",
     "files":  {
                   "collection":  "collection.json",
                   "seed":  "seed.json",
                   "metadata":  "metadata.json"
               },
     "sizes_bytes":  {
-                        "metadata.json":  16843001,
-                        "collection.json":  1049166,
+                        "metadata.json":  16845835,
+                        "collection.json":  1049493,
                         "seed.json":  109016
                     }
 }
