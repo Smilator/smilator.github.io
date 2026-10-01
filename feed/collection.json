@@ -26455,6 +26455,7 @@
 [372883,53,1,"Mulan 2125"],
 [372884,12,0,"Dave Mirra Freestyle BMX"],
 [373021,36,1,"Avatar Legends: The Fighting Game"],
+[373061,41,1,"Asteroid Boom Cosmic Courier"],
 [373440,26,1,"Pilot ni Narou! 2"],
 [373474,15,1,"Road Burners"],
 [373491,36,1,"Dogpile"],
@@ -26648,6 +26649,7 @@
 [388463,36,1,"Culdcept The First Saturn Tribute"],
 [388464,52,1,"Horizon Hunters Gathering"],
 [388543,36,1,"Cute Astro"],
+[388665,41,1,"Alaturka"],
 [388776,41,1,"Bones and Coins"],
 [388782,30,1,"AubirdForce"],
 [389079,36,1,"Dark Quest: Remastered"],
@@ -27045,8 +27047,8 @@
 [420499,30,1,"Doki Doki Poyatchio!!"],
 [420555,41,1,"Blutkapelle"]
 ],
-"generated_at":"2026-09-30T06:10:34+00:00",
+"generated_at":"2026-10-01T05:59:15+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7905,"rows":311516,"skipped_no_igdb_id":565,"trash":284473,"wishlist":19138},
+"stats":{"duplicates_collapsed":134,"owned":7905,"rows":311540,"skipped_no_igdb_id":565,"trash":284495,"wishlist":19140},
 "verdicts":["owned","wishlist","trash"]
 }
