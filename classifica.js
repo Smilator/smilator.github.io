@@ -1,1 +1,1 @@
-window.CLASSIFICA = [{"name": "Alaturka", "platform": "windows", "year": 2026, "ig": "t_cover_big/cobg9r", "v": 1, "platformLabel": "PC (Windows)"}, {"name": "Asteroid Boom Cosmic Courier", "platform": "windows", "year": 2026, "ig": "t_cover_big/coao4e", "v": 1, "platformLabel": "PC (Windows)"}];
+window.CLASSIFICA = [];
