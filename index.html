@@ -263,11 +263,11 @@
 </div>
 <section id="stats" style="display:none"></section>
 <main><div id="feed"></div></main>
-<script src="data.js?v=1a8abc17a753"></script>
+<script src="data.js?v=85290d7d3476"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
-  var LAST_PULL = "Updated 1 Oct 2026, 08:27";
+  var LAST_PULL = "Updated 2 Oct 2026, 08:15";
   // "Save it from the Trash" upvote: a fetch straight to a Google Form's
   // response endpoint, no page navigation, no account needed. The site stays
   // static — this is just a client posting to Google's infra, same as the
@@ -297,7 +297,7 @@
     if (trashState === 'loading' || trashState === 'ready') return;
     trashState = 'loading';
     var sc = document.createElement('script');
-    sc.src = 'trash.js?v=8ce186143269';
+    sc.src = 'trash.js?v=11e0d04ce00b';
     sc.onload = function () {
       TRASH = window.TRASH || [];
       // trash rows carry the merge key as `ig_id` to keep bytes down elsewhere.
