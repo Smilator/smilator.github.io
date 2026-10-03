@@ -26874,6 +26874,7 @@
 [405461,36,1,"Touhou Koumakyou: New Classic - the Embodiment of Scarlet Devil"],
 [405468,59,1,"Derby Stallion 2"],
 [405470,36,1,"Nobunaga's Ambition: Hishou"],
+[405631,53,1,"Horizon Sandbox"],
 [405632,15,1,"Quake: Arcade Tournament Edition"],
 [405798,36,1,"Escape From Vlogger: Runaway"],
 [405904,36,1,"Namco Legendary Mountains"],
@@ -27054,12 +27055,14 @@
 [419040,41,1,"Marked for Mayhem"],
 [419122,41,1,"Phasmos"],
 [419272,41,1,"Lunokhod"],
+[419279,41,1,"Anomaly Center"],
 [419287,41,1,"Trust the System"],
 [419450,30,1,"Ooumi Nobunaga Den: Geten II"],
 [419541,41,1,"Foole's World"],
 [419580,41,1,"Fireworks Incremental"],
 [419610,64,1,"Story of Seasons: Your Wonderful Life"],
 [419688,41,1,"Camp Paradise: Island Resort Tycoon"],
+[419755,41,1,"That's Exactly What a Wolf Would Say!"],
 [419761,41,1,"Overdrive Breakout"],
 [419801,41,1,"Rabbits Also Kill: Rezero"],
 [419849,41,1,"Backtrace: Mechanisms for Forgetting"],
@@ -27067,10 +27070,11 @@
 [420499,30,1,"Doki Doki Poyatchio!!"],
 [420555,41,1,"Blutkapelle"],
 [420796,41,1,"Honey or Else"],
-[420882,41,1,"Island Treasures"]
+[420882,41,1,"Island Treasures"],
+[421014,41,1,"Age of Harvest"]
 ],
-"generated_at":"2026-10-02T06:06:16+00:00",
+"generated_at":"2026-10-03T08:42:39+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7905,"rows":311953,"skipped_no_igdb_id":565,"trash":284886,"wishlist":19162},
+"stats":{"duplicates_collapsed":134,"owned":7905,"rows":312076,"skipped_no_igdb_id":565,"trash":285005,"wishlist":19166},
 "verdicts":["owned","wishlist","trash"]
 }
