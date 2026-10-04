@@ -7,262 +7,494 @@
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Frankenstein</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+  // Lucide paths (same icon set as the app), inlined so the site stays static.
+  var ICONS = {
+    star: '<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>',
+    heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+    x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+    dashed: '<path d="M10.1 2.182a10 10 0 0 1 3.8 0"/><path d="M13.9 21.818a10 10 0 0 1-3.8 0"/><path d="M17.609 3.721a10 10 0 0 1 2.69 2.7"/><path d="M2.182 13.9a10 10 0 0 1 0-3.8"/><path d="M20.279 17.609a10 10 0 0 1-2.7 2.69"/><path d="M21.818 10.1a10 10 0 0 1 0 3.8"/><path d="M3.721 6.391a10 10 0 0 1 2.7-2.69"/><path d="M6.391 20.279a10 10 0 0 1-2.69-2.7"/>',
+    search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+    down: '<path d="m6 9 6 6 6-6"/>',
+    right: '<path d="m9 18 6-6-6-6"/>',
+    left: '<path d="m15 18-6-6 6-6"/>',
+    back: '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
+    trophy: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>',
+    moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+    play: '<path d="M6 3l14 9-14 9z" fill="currentColor"/>',
+    thumb: '<path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    ext: '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3"/>',
+    gear: '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>'
+  };
+  function icon(name, size) {
+    var s = size || 14;
+    return '<svg class="ic" width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+      ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || '') + '</svg>';
+  }
+  // Status look, mirrors frontend/src/components/status.tsx.
+  var STATUS = {
+    owned: { icon: 'star', label: 'Owned' },
+    wishlist: { icon: 'heart', label: 'Wishlist' },
+    unjudged: { icon: 'dashed', label: 'Unjudged' },
+    trash: { icon: 'x', label: 'Trashed' }
+  };
+  function themeIcon() {
+    return icon(document.documentElement.getAttribute('data-theme') === 'light' ? 'moon' : 'sun', 16);
+  }
+  function toggleTheme(btn) {
+    var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    if (btn) btn.innerHTML = themeIcon();
+  }
+</script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap');
   :root {
+    color-scheme: dark;
+    --bg: oklch(0.16 0.01 275);
+    --bg-sunk: oklch(0.13 0.01 275);
+    --surface: oklch(0.2 0.012 275);
+    --surface-2: oklch(0.24 0.012 275);
+    --surface-3: oklch(0.3 0.012 275);
+    --line: oklch(0.26 0.012 275);
+    --line-strong: oklch(0.34 0.012 275);
+    --scrim: rgb(6 6 12 / 0.62);
+    --glass: rgb(10 10 16 / 0.72);
+    --header-bg: rgb(22 22 30 / 0.78);
+    --text: oklch(0.96 0.005 275);
+    --text-2: oklch(0.76 0.01 275);
+    --text-3: oklch(0.6 0.01 275);
+    --accent: oklch(0.68 0.21 295);
+    --accent-hover: oklch(0.73 0.2 295);
+    --accent-soft: oklch(0.68 0.21 295 / 0.16);
+    --accent-text: oklch(0.82 0.13 295);
+    --on-accent: #fff;
+    --st-owned: oklch(0.8 0.14 160);
+    --st-wishlist: oklch(0.74 0.17 355);
+    --st-unjudged: oklch(0.76 0.01 275);
+    --st-trash: oklch(0.62 0.01 275);
+    --st-review: oklch(0.84 0.15 85);
+    --st-requested: oklch(0.78 0.12 250);
+    --good: var(--st-owned);
+    --warn: var(--st-review);
+    --bad: oklch(0.7 0.19 25);
+    --font-ui: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, Consolas, monospace;
+    --r-xs: 4px; --r-sm: 6px; --r-md: 8px; --r-lg: 10px; --r-xl: 14px; --r-pill: 999px;
+    --sh-card: 0 2px 8px rgb(0 0 0 / 0.3);
+    --sh-card-hover: 0 0 0 2px var(--accent), 0 14px 30px rgb(0 0 0 / 0.5);
+    --sh-pop: 0 18px 50px rgb(0 0 0 / 0.5), 0 0 0 1px var(--line);
+    --sh-glow: 0 6px 20px oklch(0.68 0.21 295 / 0.35);
+    --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+    --ease: cubic-bezier(.2, .7, .2, 1);
+    --dur: 180ms;
+  }
+  [data-theme="light"] {
     color-scheme: light;
-    --bg: #f4f4f6; --bg-elev: #ffffff; --bg-elev-2: #eef0f2;
-    --border: #e2e2e6; --text: #14161a; --text-dim: #6b7280;
-    --accent: #7e14ff; --accent-tint: #f1e5ff;
-    --bad: #dc2626; --bad-tint: #fdecef;
-    --good: #16a34a; --good-tint: #e7f6ec; --warn: #b45309; --warn-tint: #fdf0e3;
-    --radius: 16px; --radius-sm: 10px;
-    --shadow-sm: 0 1px 2px rgba(20,22,26,.06), 0 1px 3px rgba(20,22,26,.05);
-    --shadow-md: 0 8px 30px rgba(20,22,26,.14);
-    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-    --display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+    --bg: oklch(0.975 0.003 275);
+    --bg-sunk: oklch(0.95 0.005 275);
+    --surface: #fff;
+    --surface-2: oklch(0.955 0.005 275);
+    --surface-3: oklch(0.91 0.007 275);
+    --line: oklch(0.91 0.006 275);
+    --line-strong: oklch(0.84 0.008 275);
+    --scrim: rgb(20 20 30 / 0.45);
+    --header-bg: rgb(249 249 252 / 0.82);
+    --text: oklch(0.2 0.01 275);
+    --text-2: oklch(0.44 0.01 275);
+    --text-3: oklch(0.56 0.01 275);
+    --accent: oklch(0.55 0.24 295);
+    --accent-hover: oklch(0.5 0.24 295);
+    --accent-soft: oklch(0.55 0.24 295 / 0.1);
+    --accent-text: oklch(0.5 0.24 295);
+    --st-owned: oklch(0.55 0.13 160);
+    --st-wishlist: oklch(0.58 0.2 355);
+    --st-unjudged: oklch(0.5 0.01 275);
+    --st-trash: oklch(0.55 0.01 275);
+    --st-review: oklch(0.62 0.14 75);
+    --st-requested: oklch(0.52 0.15 255);
+    --bad: oklch(0.55 0.2 25);
+    --sh-card: 0 1px 3px rgb(20 20 40 / 0.12);
+    --sh-card-hover: 0 0 0 2px var(--accent), 0 12px 26px rgb(20 20 40 / 0.18);
+    --sh-pop: 0 18px 50px rgb(20 20 40 / 0.18), 0 0 0 1px var(--line);
+  }
+  /* Pills and overlays that sit ON box art keep dark glass + the DARK hues. */
+  .on-art {
+    --st-owned: oklch(0.8 0.14 160);
+    --st-wishlist: oklch(0.74 0.17 355);
+    --st-unjudged: oklch(0.76 0.01 275);
+    --st-trash: oklch(0.62 0.01 275);
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 var(--sans); }
-  a { color: inherit; }
-  header {
-    position: sticky; top: 0; z-index: 20; background: var(--bg-elev);
-    border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 13px/1.45 var(--font-ui); }
+  a { color: var(--accent-text); text-decoration: none; }
+  button { font: inherit; cursor: pointer; color: inherit; }
+  button:focus-visible, a:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+  .ic { flex: none; display: block; }
+  .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+  /* header */
+  .top {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--header-bg); backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    border-bottom: 1px solid var(--line);
   }
-  .hwrap { max-width: 1100px; margin: 0 auto; padding: 14px 18px 12px; }
-  .brand { display: flex; align-items: center; gap: 9px; }
-  .wordmark { font: 700 22px/1 var(--display); letter-spacing: -.01em; }
-  .wordmark b { color: inherit; font-weight: inherit; }
-  .brandmark { width: 24px; height: 23px; flex: none; display: block; }
-  .classificaLink {
-    margin-left: auto; font-size: 12px; font-weight: 600; text-decoration: none;
-    color: var(--accent); background: var(--accent-tint); padding: 5px 10px; border-radius: 999px;
-    white-space: nowrap; flex: none;
+  .brand { display: flex; align-items: center; gap: 9px; color: var(--text); min-width: 0; }
+  .brand img { width: 26px; height: 26px; flex: none; display: block; }
+  .brand__word { font-weight: 800; font-size: 16px; letter-spacing: -0.03em; }
+
+  /* controls (cabinet.css) */
+  .icon-btn {
+    flex: none; width: 34px; height: 34px; padding: 0; border: none; border-radius: var(--r-md);
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--surface); color: var(--text); transition: background var(--dur) var(--ease);
   }
-  .counts { color: var(--text-dim); font-size: 13px; margin-top: 3px; font-variant-numeric: tabular-nums; }
-  .seg { display: flex; width: 100%; margin-top: 12px; border: 1px solid var(--border);
-    border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-elev-2); }
-  .seg button {
-    flex: 1 1 0; background: transparent; color: var(--text-dim); border: 0;
-    padding: 9px 6px; font: 600 13px var(--sans); cursor: pointer;
+  .icon-btn:hover { background: var(--surface-2); }
+  .btn {
+    flex: none; white-space: nowrap; height: 34px; padding: 0 11px; border: none;
+    display: inline-flex; align-items: center; gap: 6px; border-radius: var(--r-md);
+    background: var(--surface); color: var(--text); font-size: 13px; font-weight: 500;
+    transition: background var(--dur) var(--ease);
   }
-  .seg button.active { background: var(--accent); color: #fff; }
+  .btn:hover { background: var(--surface-2); text-decoration: none; }
+  .btn:disabled { opacity: .45; cursor: default; }
+  .btn--primary { background: var(--accent); color: var(--on-accent); font-weight: 600; box-shadow: var(--sh-glow); }
+  .btn--primary:hover { background: var(--accent-hover); }
+  .btn-sm {
+    flex: none; display: inline-flex; align-items: center; gap: 4px; height: 26px; padding: 0 8px;
+    border: none; border-radius: var(--r-sm); background: var(--surface-2); color: var(--text);
+    font-size: 12px; font-weight: 500; white-space: nowrap;
+  }
+  .btn-sm:hover { background: var(--surface-3); text-decoration: none; }
+  .field {
+    display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 11px;
+    border-radius: var(--r-md); background: var(--surface); color: var(--text-3);
+  }
+  .field:focus-within { box-shadow: 0 0 0 2px var(--accent-soft), inset 0 0 0 1px var(--accent); }
+  .field input {
+    flex: 1; min-width: 0; height: 100%; padding: 0; border: none; outline: none;
+    background: transparent; color: var(--text); font: 14px var(--font-ui);
+  }
+  .field input::placeholder { color: var(--text-3); }
+  .field input::-webkit-search-cancel-button { filter: grayscale(1); opacity: .6; }
+  .seg {
+    display: flex; gap: 2px; padding: 3px; border-radius: var(--r-lg);
+    background: var(--surface); overflow-x: auto; scrollbar-width: none;
+  }
+  .seg::-webkit-scrollbar { display: none; }
+  .seg__item {
+    flex: none; white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    height: 30px; padding: 0 12px; border: none; border-radius: 7px;
+    background: transparent; color: var(--text-2); font-size: 13px; font-weight: 500;
+  }
+  .seg__item:hover { background: var(--surface-2); color: var(--text); }
+  .seg__item--on, .seg__item--on:hover { background: var(--surface-3); color: var(--text); }
+  .empty { color: var(--text-3); padding: 48px 16px; text-align: center; }
+</style>
+<style>
+  :root { --card-min: 168px; --wrap: 1180px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  .top__row { display: flex; align-items: center; gap: 8px; height: 58px; }
+  .top__spacer { flex: 1; }
+  .top__sub { display: flex; align-items: center; gap: 14px; padding-bottom: 12px; }
+  .top__counts { font-size: 11px; color: var(--text-3); margin-left: auto; text-align: right; }
+
+  /* collection head: big platform title + toolbar */
   .colbar-wrap { position: relative; }
-  #colbar { max-width: 1100px; margin: 0 auto; padding: 10px 18px 2px; }
-  .filters { display: flex; align-items: center; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
-  .filters label {
-    display: flex; align-items: center; gap: 6px;
-    font: 600 13px var(--sans); color: var(--text-dim); cursor: pointer;
+  .colbar { padding-top: 22px; display: flex; flex-direction: column; gap: 14px; }
+  .plattitle {
+    align-self: flex-start; display: flex; align-items: center; gap: 8px; max-width: 100%;
+    background: none; border: none; padding: 0; color: var(--text);
   }
-  .filters input { accent-color: var(--accent); width: 16px; height: 16px; }
-  #colbar .platrow { margin-top: 10px; }
-  #colbar .platrow .title { font: 700 18px/1.1 var(--display); letter-spacing: -.01em; }
-  .searchbar { margin-top: 10px; }
-  .searchbar input {
-    width: 100%; background: var(--bg-elev); color: var(--text);
-    border: 1px solid var(--border); border-radius: var(--radius-sm);
-    padding: 11px 13px; font-size: 15px;
+  .plattitle .title {
+    font-size: 32px; line-height: 1; font-weight: 800; letter-spacing: -0.035em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .searchbar input:focus { outline: 2px solid var(--accent-tint); border-color: var(--accent); }
-  .platrow {
-    display: flex; align-items: center; gap: 8px; margin-top: 12px;
-    background: none; border: 0; padding: 0; color: inherit; cursor: pointer; font: inherit;
+  .plattitle .chev {
+    flex: none; width: 28px; height: 28px; border-radius: var(--r-md); background: var(--surface);
+    color: var(--text-2); display: flex; align-items: center; justify-content: center;
+    transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
   }
-  .platrow .title { font: 700 26px/1.1 var(--display); letter-spacing: -.02em; text-align: left; }
-  .platrow .chev {
-    color: var(--text-dim); transition: transform .15s; font-size: 14px; line-height: 1;
-    display: flex; align-items: center; align-self: center;
+  .plattitle:hover .chev { background: var(--surface-2); color: var(--text); }
+  .plattitle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+  .toolbar { display: flex; align-items: center; gap: 10px; }
+  .toolbar .field { flex: 1 1 auto; min-width: 0; }
+  .toolbar .filters { flex: none; }
+  .filters { display: flex; gap: 4px; padding: 3px; border-radius: var(--r-lg); background: var(--surface); }
+  .fchip {
+    position: relative; display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 11px;
+    border-radius: 7px; color: var(--text-3); font-size: 13px; font-weight: 500; cursor: pointer;
+    user-select: none; transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
   }
-  .platrow[aria-expanded="true"] .chev { transform: rotate(180deg); }
+  .fchip input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+  .fchip:hover { background: var(--surface-2); color: var(--text-2); }
+  .fchip:has(input:checked) { background: var(--accent-soft); color: var(--text); box-shadow: inset 0 0 0 1.5px var(--accent); }
+  .fchip .ic { color: var(--text-3); }
+  .fchip--owned:has(input:checked) .ic { color: var(--st-owned); }
+  .fchip--wishlist:has(input:checked) .ic { color: var(--st-wishlist); }
+  .fchip--trash:has(input:checked) .ic { color: var(--st-trash); }
+  .fchip:has(input:focus-visible) { box-shadow: var(--focus-ring); }
+  .fchip:has(input:checked:focus-visible) { box-shadow: inset 0 0 0 1.5px var(--accent), var(--focus-ring); }
+
+  /* platform picker (sidebar platform list, as a popover) */
   .picker {
-    position: absolute; left: 0; right: 0; z-index: 30; background: var(--bg-elev);
-    border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md);
-    max-height: 70vh; overflow: auto;
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 30; margin-top: 8px;
+    pointer-events: none;
   }
-  .picker .inner { max-width: 1100px; margin: 0 auto; padding: 6px; }
-  .picker button {
-    display: flex; width: 100%; justify-content: space-between; align-items: center;
-    background: none; border: 0; color: var(--text); font: 500 15px var(--sans);
-    padding: 12px 14px; cursor: pointer; border-radius: var(--radius-sm);
+  .picker .inner {
+    pointer-events: auto; max-width: 420px; max-height: min(70vh, 640px); overflow: auto;
+    margin-left: max(24px, calc((100vw - var(--wrap)) / 2 + 24px)); margin-right: 16px;
+    background: var(--surface); border-radius: var(--r-xl); box-shadow: var(--sh-pop);
+    padding: 6px; display: flex; flex-direction: column; gap: 1px;
   }
-  .picker button:hover, .picker button.here { background: var(--accent-tint); }
-  .picker button .n { color: var(--text-dim); font-size: 13px; font-variant-numeric: tabular-nums; }
-  .picker .pickgroup {
-    margin: 16px 14px 6px; color: var(--text-dim); font-size: 10px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: .7px;
+  .plist__head {
+    padding: 12px 8px 4px; color: var(--text-3); font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
   }
-  .picker .pickgroup:first-child { margin-top: 8px; }
-  main { max-width: 1100px; margin: 0 auto; padding: 16px 18px 40px; }
-  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
-  .card {
-    background: var(--bg-elev); border: 1px solid var(--border);
-    border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
+  .plat {
+    display: flex; align-items: center; gap: 10px; width: 100%; min-height: 36px; padding: 5px 8px;
+    border: none; border-radius: var(--r-md); background: none; color: var(--text);
+    font-size: 13px; text-align: left;
   }
-  .coverwrap { position: relative; aspect-ratio: 3/4; background: var(--bg-elev-2); }
-  .cover { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
-  .mono {
+  .plat:hover { background: var(--surface-2); }
+  .plat--on, .plat--on:hover { background: var(--accent-soft); color: var(--accent-text); font-weight: 600; }
+  .plat__tile {
+    flex: none; width: 26px; height: 26px; border-radius: var(--r-sm); background: var(--surface-2);
+    color: var(--text-2); display: flex; align-items: center; justify-content: center;
+    font: 600 7px var(--font-mono); letter-spacing: -0.02em;
+  }
+  .plat--on .plat__tile { color: var(--accent-text); background: var(--accent-soft); }
+  .plat__name { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .plat__count { flex: none; font-size: 11px; color: var(--text-3); }
+  .plat--on .plat__count { color: var(--accent-text); }
+
+  /* snapshot (LibrarySnapshot) */
+  #stats { margin-top: 16px; }
+  .snap {
+    border-radius: 12px; background: var(--surface); border: 1px solid var(--line);
+    padding: 14px 16px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .snap__row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .snap__kpis { display: flex; gap: 22px; flex-wrap: wrap; }
+  .snap__kpi { display: flex; align-items: center; gap: 7px; }
+  .snap__kpi b { font: 600 18px var(--font-mono); letter-spacing: -0.02em; }
+  .snap__kpi-label { font-size: 12px; color: var(--text-3); }
+  .snap__bar { flex: 1; min-width: 120px; display: flex; height: 8px; gap: 2px; border-radius: 4px; overflow: hidden; }
+  .snap__bar i { display: block; height: 100%; }
+  .snap__more {
+    align-self: flex-start; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 8px 0 4px;
+    margin: -4px 0 -4px -4px; border: none; border-radius: var(--r-sm); background: none;
+    color: var(--text-2); font-size: 12px; font-weight: 500;
+  }
+  .snap__more:hover { background: var(--surface-2); color: var(--text); }
+  .snap__more .ic { transition: transform var(--dur) var(--ease); }
+  .snap--open .snap__more .ic { transform: rotate(90deg); }
+  .snap__consoles {
+    display: none; grid-template-columns: 1fr 1fr; gap: 6px 28px;
+    padding-top: 12px; border-top: 1px solid var(--line);
+  }
+  .snap--open .snap__consoles { display: grid; }
+  .snap__console { display: grid; grid-template-columns: 120px 1fr 64px; align-items: center; gap: 10px; font-size: 12px; }
+  .snap__console-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .snap__console-bar { height: 6px; border-radius: 3px; background: var(--surface-2); display: flex; overflow: hidden; }
+  .snap__console-bar i { display: block; height: 100%; }
+  .snap__console-n { font-size: 11px; color: var(--text-2); text-align: right; white-space: nowrap; }
+  .snap__foot { grid-column: 1 / -1; font-size: 11px; color: var(--text-3); padding-top: 4px; }
+
+  main { padding-top: 18px; padding-bottom: 48px; }
+
+  /* game grid + merged cards (cabinet.css .gc / .gc--merged) */
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
+    gap: 14px; align-items: stretch;
+  }
+  .gc {
+    position: relative; min-width: 0; display: flex; flex-direction: column;
+    background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--sh-card);
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  @media (hover: hover) {
+    .gc:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--sh-card-hover); z-index: 2; }
+    .gc:hover .gc__acts { opacity: 1; }
+  }
+  .gc__art {
+    position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+    border-radius: var(--r-lg) var(--r-lg) 0 0; background: var(--surface-2);
+  }
+  .gc__art > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gc__art iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 3; }
+  .gc__noart {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    font: 700 40px var(--display); color: #c2c6cd; background: var(--bg-elev-2);
+    padding: 12px 12px 48px; text-align: center; font-size: 12px; color: var(--text-3);
+    background: repeating-linear-gradient(135deg, var(--surface-2) 0 10px, var(--surface) 10px 20px);
   }
-  .coverwrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .playBtn {
-    position: absolute; inset: 0; margin: auto; width: 44px; height: 44px; border-radius: 50%;
-    background: rgba(0,0,0,.5); color: #fff; border: 1px solid rgba(255,255,255,.35);
-    font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    padding-left: 3px; z-index: 2;
+  .gc__hit { position: absolute; inset: 0; z-index: 1; }
+  .gc__top {
+    position: absolute; left: 6px; right: 6px; top: 6px; z-index: 2; pointer-events: none;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 4px;
   }
-  .playBtn:active { transform: scale(.94); }
-  .cardbtns { display: flex; gap: 6px; margin-top: 10px; }
-  .cardbtn {
-    flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; gap: 5px;
-    background: var(--bg-elev-2); border: 1px solid var(--border); color: var(--text);
-    border-radius: 999px; padding: 6px 8px; font-size: 11px; font-weight: 600; text-decoration: none;
+  .gc__top > * { pointer-events: auto; }
+  .pill-art {
+    flex: 0 1 auto; min-width: 0; display: flex; align-items: center; gap: 5px; height: 22px;
+    padding: 0 8px 0 6px; border-radius: var(--r-pill); background: var(--glass);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    color: #fff; font-size: 11px; font-weight: 500; white-space: nowrap; overflow: hidden;
   }
-  .cardbtn:active { transform: scale(.96); }
-  .votebtn { background: var(--accent-tint); border-color: var(--accent-tint); color: var(--accent); }
-  .votebtn.voted { background: var(--good-tint); border-color: var(--good-tint); color: var(--good); }
-  .votebtn .voten { font-variant-numeric: tabular-nums; opacity: .8; }
-  .meta { padding: 10px 11px 12px; }
-  .name { font-weight: 600; font-size: 14px; line-height: 1.3; }
-  .sub { color: var(--text-dim); font-size: 12px; margin-top: 3px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-  .merged-rows { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
-  .merged-row {
-    display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    font-size: 11px; color: var(--text-dim);
+  .pill-art .ic { width: 12px; height: 12px; }
+  .pill-art--owned .ic { color: var(--st-owned); }
+  .pill-art--wishlist .ic { color: var(--st-wishlist); }
+  .pill-art--trash .ic { color: var(--st-trash); }
+  .gc__acts { display: flex; gap: 4px; flex: none; opacity: .92; transition: opacity var(--dur) var(--ease); }
+  .pill-more {
+    flex: none; width: 26px; height: 26px; padding: 0; border: none; border-radius: var(--r-pill);
+    display: flex; align-items: center; justify-content: center;
+    background: rgb(10 10 16 / 0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    color: #fff; font: 700 11px var(--font-ui);
   }
-  .merged-row .pl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .pill {
-    flex: none; font-size: 10px; font-weight: 700; padding: 1px 7px;
-    border-radius: 999px; letter-spacing: .02em;
+  .pill-more:hover { background: var(--accent); text-decoration: none; }
+  .gc__caption {
+    position: absolute; inset: auto 0 0 0; z-index: 0; padding: 28px 9px 8px;
+    background: linear-gradient(transparent, rgb(8 8 14 / 0.92));
+    display: flex; flex-direction: column; gap: 3px;
   }
-  .pill.owned { background: var(--good-tint); color: var(--good); }
-  .pill.wishlist { background: var(--warn-tint); color: var(--warn); }
-  .pill.trash { background: var(--bad-tint); color: var(--bad); }
-  .empty { color: var(--text-dim); text-align: center; padding: 40px 20px; }
+  .gc__title {
+    font-size: 13px; font-weight: 600; color: #fff; line-height: 1.25;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .gc__meta { font: 500 10px var(--font-mono); color: rgb(255 255 255 / 0.65); white-space: nowrap; overflow: hidden; }
+  .mgc__rows { flex: 1; padding: 5px; display: flex; flex-direction: column; gap: 2px; }
+  .mgc__row { display: flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 3px 0 7px; border-radius: 7px; }
+  .mgc__row-label { flex: 1; min-width: 0; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rstat {
+    flex: none; width: 26px; height: 22px; border-radius: var(--r-sm);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rstat .ic { width: 12px; height: 12px; }
+  .rstat--owned { color: var(--st-owned); background: color-mix(in oklch, var(--st-owned) 16%, transparent); }
+  .rstat--wishlist { color: var(--st-wishlist); background: color-mix(in oklch, var(--st-wishlist) 16%, transparent); }
+  .rstat--trash { color: var(--st-trash); background: var(--surface-2); }
+  .mgc__row--extra { display: none; }
+  .gc--open .mgc__row--extra { display: flex; }
+  .mgc__more {
+    align-self: flex-start; height: 24px; margin: 2px 0 0 4px; padding: 0 8px; border: none;
+    border-radius: var(--r-sm); background: transparent; color: var(--accent-text); font-size: 11px; font-weight: 600;
+  }
+  .mgc__more:hover { background: var(--accent-soft); }
+  .mgc__req {
+    display: flex; align-items: center; gap: 6px; padding: 6px 6px 3px; margin-top: 2px;
+    border-top: 1px solid var(--line);
+  }
+  .mgc__rows--trash .mgc__req { border-top: 0; margin-top: auto; }
+  .mgc__votes { flex: 1; display: flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: var(--st-requested); }
+  .mgc__votes--zero { color: var(--text-3); font-weight: 500; }
+  .votebtn { background: var(--accent-soft); color: var(--accent-text); font-weight: 600; }
+  .votebtn:hover { background: var(--accent); color: var(--on-accent); }
+  .votebtn.voted, .votebtn.voted:hover {
+    background: color-mix(in oklch, var(--st-owned) 16%, transparent); color: var(--st-owned); cursor: default;
+  }
+  .gc--trash .gc__art > img { filter: saturate(.55) brightness(.85); }
 
-  /* stats panel */
-  #stats { max-width: 1100px; margin: 16px auto 0; padding: 0 18px; }
-  .stats-card {
-    background: var(--bg-elev); border: 1px solid var(--border);
-    border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 16px 18px;
+  /* activity feed */
+  .day { margin-top: 30px; }
+  .day:first-child { margin-top: 6px; }
+  .day__h { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 0 0 12px; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+  .day__tally { display: inline-flex; align-items: center; gap: 10px; font: 500 11px var(--font-mono); color: var(--text-3); letter-spacing: 0; }
+  .day__tally span { display: inline-flex; align-items: center; gap: 4px; }
+  .day__tally .t-w .ic { color: var(--st-wishlist); }
+  .day__tally .t-t .ic { color: var(--st-trash); }
+  .acc { margin-top: 12px; border-radius: 12px; background: var(--bg-sunk); border: 1px solid var(--line); }
+  .acc > summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px;
+    height: 40px; padding: 0 12px; border-radius: 12px; color: var(--text-2); font-size: 13px; font-weight: 500;
   }
-  .kpis { display: flex; gap: 24px; flex-wrap: wrap; }
-  .kpi { display: flex; flex-direction: column; gap: 2px; }
-  .kpi .v { font: 700 22px/1 var(--display); font-variant-numeric: tabular-nums; }
-  .kpi .l { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .05em; }
-  .kpi.owned .v { color: var(--good); }
-  .kpi.wishlist .v { color: var(--warn); }
-  .kpi.unjudged .v { color: var(--text-dim); }
-  .kpi.trash .v { color: var(--bad); }
-  .propbar {
-    display: flex; height: 8px; border-radius: 999px; overflow: hidden;
-    margin-top: 14px; background: var(--bg-elev-2);
-  }
-  .propbar i { display: block; }
-  .propbar .owned { background: var(--good); }
-  .propbar .wishlist { background: var(--warn); }
-  .propbar .unjudged { background: #c2c6cd; }
-  .propbar .trash { background: var(--bad); }
-  .byconsole { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 2px; }
-  .byconsole > summary {
-    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px;
-    margin: 0 -6px; padding: 10px 6px; border-radius: var(--radius-sm);
-    font: 700 13px var(--display); color: var(--text); transition: background .15s;
-  }
-  .byconsole > summary::-webkit-details-marker { display: none; }
-  .byconsole > summary:hover { background: var(--bg-elev-2); }
-  .byconsole > summary .chev {
-    flex: none; font-size: 11px; color: var(--text-dim); transition: transform .2s;
-  }
-  .byconsole[open] > summary .chev { transform: rotate(90deg); }
-  .byconsole > summary .n {
-    margin-left: auto; font: 600 11px var(--sans); color: var(--text-dim);
-    background: var(--bg-elev-2); padding: 2px 9px; border-radius: 999px;
-  }
-  .byconsole .legend { display: flex; gap: 14px; margin: 2px 6px 10px; font-size: 11px; color: var(--text-dim); }
-  .byconsole .legend span { display: inline-flex; align-items: center; gap: 5px; }
-  .byconsole .legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-  .byconsole .legend .lo { background: var(--good); }
-  .byconsole .legend .lw { background: var(--warn); }
-  .crow {
-    display: grid; grid-template-columns: 118px 1fr auto; align-items: center;
-    gap: 10px; padding: 6px; border-radius: 8px; font-size: 12px; transition: background .15s;
-  }
-  .crow:hover { background: var(--bg-elev-2); }
-  .crow .pl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
-  .crow .cbar {
-    height: 10px; border-radius: 999px; background: var(--bg-elev-2); overflow: hidden; display: flex;
-  }
-  .crow .cbar i { display: block; height: 100%; }
-  .crow .cbar .o { background: var(--good); }
-  .crow .cbar .w { background: var(--warn); }
-  .crow .cn { color: var(--text-dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .ccount { margin-top: 4px; padding: 8px 6px; font-size: 11px; color: var(--text-dim); text-align: center; }
+  .acc > summary::-webkit-details-marker { display: none; }
+  .acc > summary:hover { color: var(--text); background: var(--surface); }
+  .acc > summary .n { font: 500 11px var(--font-mono); color: var(--text-3); background: var(--surface-2); padding: 1px 7px; border-radius: var(--r-pill); }
+  .acc > summary .chev { margin-left: auto; color: var(--text-3); transition: transform var(--dur) var(--ease); }
+  .acc[open] > summary .chev { transform: rotate(90deg); }
+  .acc__body { padding: 4px 12px 14px; }
+  .acc--earlier { margin-top: 30px; background: none; border-width: 1px 0 0; border-radius: 0; }
+  .acc--earlier > summary { padding: 0; height: 52px; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); border-radius: 0; }
+  .acc--earlier > summary:hover { background: none; }
+  .acc--earlier > .acc__body { padding: 0; }
+  .pager { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 36px 0 8px; font-size: 12px; color: var(--text-3); }
 
-  /* feed */
-  .day-section { margin-top: 28px; }
-  .day-section h2 { font: 700 15px var(--display); margin: 0 0 12px; letter-spacing: -.01em; }
-  .day-section h2 .daytally { font: 500 12px var(--sans); color: var(--text-dim); }
-  .trash-acc {
-    margin-top: 12px; border: 1px solid var(--border);
-    border-radius: var(--radius-sm); background: var(--bg-elev); overflow: hidden;
+  /* phones */
+  @media (max-width: 720px) {
+    :root { --card-min: 140px; }
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .top__row { height: 52px; }
+    .top__sub { flex-wrap: wrap; gap: 6px 12px; }
+    .top__sub .seg { flex: 1 1 100%; }
+    .top__sub .seg__item { flex: 1 1 0; justify-content: center; }
+    .top__counts { margin-left: 0; text-align: left; }
+    .colbar { padding-top: 16px; gap: 12px; }
+    .plattitle .title { font-size: 26px; }
+    .toolbar { flex-wrap: wrap; }
+    .toolbar .field { flex-basis: 100%; }
+    .toolbar .filters { flex: 1 1 100%; }
+    .fchip { flex: 1 1 0; justify-content: center; padding: 0 6px; }
+    .picker .inner { margin-left: 16px; max-width: none; }
+    .snap__consoles { grid-template-columns: 1fr; }
+    .snap__console { grid-template-columns: 96px 1fr 52px; }
+    .grid { gap: 10px; }
+    .gc__acts { opacity: 1; }
+    .btn--label-hide span { display: none; }
   }
-  .trash-acc > summary {
-    cursor: pointer; padding: 10px 14px; font: 600 13px var(--sans);
-    color: var(--accent); list-style: none;
-  }
-  .trash-acc > summary::-webkit-details-marker { display: none; }
-  .trash-acc .grid { padding: 14px; }
-  details.earlier { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 6px; }
-  details.earlier > summary {
-    cursor: pointer; font: 700 15px var(--display); padding: 10px 0; list-style: none;
-  }
-  details.earlier > summary::-webkit-details-marker { display: none; }
-  .pager {
-    display: flex; align-items: center; justify-content: center; gap: 14px;
-    margin: 32px 0 8px; font: 500 13px var(--sans); color: var(--text-dim);
-  }
-  .pager button {
-    font: 600 13px var(--sans); padding: 8px 14px; border-radius: 999px; cursor: pointer;
-    border: 1px solid var(--accent-tint); background: var(--accent-tint); color: var(--accent);
-  }
-  .pager button:disabled { opacity: .4; cursor: default; }
 </style>
 </head>
 <body>
-<header>
-  <div class="hwrap">
-    <div class="brand">
-      <img class="brandmark" src="favicon.png" alt="" width="24" height="24">
-      <span class="wordmark">Frankenstein</span>
-      <a class="classificaLink" href="classifica.html">🏆 Rank</a>
-    </div>
-    <div class="counts" id="counts"></div>
+<header class="top">
+  <div class="wrap top__row">
+    <a class="brand" href="index.html"><img src="favicon.png" alt="" width="26" height="26"><span class="brand__word">Frankenstein</span></a>
+    <span class="top__spacer"></span>
+    <a class="btn btn--label-hide" href="classifica.html" id="rankLink" title="Save-from-the-trash leaderboard"></a>
+    <button class="icon-btn" id="themeBtn" title="Toggle light / dark" aria-label="Toggle light / dark theme"></button>
+  </div>
+  <div class="wrap top__sub">
     <div class="seg" id="view">
-      <button data-v="activity" class="active">Activity</button>
-      <button data-v="collection">Collection</button>
+      <button class="seg__item seg__item--on" data-v="activity">Activity</button>
+      <button class="seg__item" data-v="collection">Collection</button>
     </div>
+    <div class="top__counts num" id="counts"></div>
   </div>
 </header>
 <div class="colbar-wrap">
-  <div id="colbar" style="display:none">
-    <button class="platrow" id="platBtn" aria-expanded="false">
+  <div id="colbar" class="wrap colbar" style="display:none">
+    <button class="plattitle" id="platBtn" aria-expanded="false" aria-haspopup="listbox">
       <span class="title" id="platTitle">All Platforms</span>
-      <span class="chev">▾</span>
+      <span class="chev" id="platChev"></span>
     </button>
-    <div class="searchbar">
-      <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off" enterkeyhint="search">
-    </div>
-    <div class="filters">
-      <label><input type="checkbox" id="fOwned" checked> Owned</label>
-      <label><input type="checkbox" id="fWish" checked> Wishlist</label>
-      <label><input type="checkbox" id="fTrash"> Trashed</label>
+    <div class="toolbar">
+      <label class="field" id="qField">
+        <input id="q" type="search" placeholder="Search every Frankie game…" autocomplete="off" enterkeyhint="search">
+      </label>
+      <div class="filters" role="group" aria-label="Status">
+        <label class="fchip fchip--owned"><input type="checkbox" id="fOwned" checked><span data-ic="star"></span>Owned</label>
+        <label class="fchip fchip--wishlist"><input type="checkbox" id="fWish" checked><span data-ic="heart"></span>Wishlist</label>
+        <label class="fchip fchip--trash"><input type="checkbox" id="fTrash"><span data-ic="x"></span>Trashed</label>
+      </div>
     </div>
   </div>
-  <div class="picker" id="picker" style="display:none"><div class="inner" id="pickerInner"></div></div>
+  <div class="picker" id="picker" style="display:none"><div class="inner" id="pickerInner" role="listbox"></div></div>
 </div>
-<section id="stats" style="display:none"></section>
-<main><div id="feed"></div></main>
+<section id="stats" class="wrap" style="display:none"></section>
+<main class="wrap"><div id="feed"></div></main>
 <script src="data.js?v=209743556230"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
@@ -287,7 +519,7 @@
     if (btn) {
       btn.disabled = true;
       btn.classList.add('voted');
-      btn.innerHTML = 'Saved ✓';
+      btn.innerHTML = icon('check', 12) + 'Saved';
     }
   }
   // Trash is huge (100k+) — its own file, fetched only on the first search or
@@ -327,9 +559,9 @@
     });
   }
   window.thumbFail = function (img) {
-    var d = document.createElement('div');
-    d.className = 'mono';
-    d.textContent = img.getAttribute('data-mono') || '?';
+    var d = document.createElement('span');
+    d.className = 'gc__noart';
+    d.textContent = img.getAttribute('data-name') || '?';
     img.replaceWith(d);
   };
   function coverUrl(g) { return g.cover || (g.ig ? IGDB_IMG + g.ig + '.jpg' : null); }
@@ -430,74 +662,80 @@
     });
   }
 
+  // One merged card, same anatomy as the desktop MergedGameCard: cover with a
+  // glass status pill + caption, then one row per console with a read-only
+  // status badge (no judge controls here). Cover click = IGDB.
+  var MAX_ROWS = 3;
   function mergedCard(grp) {
     var g = grp.rep;
-    var mono = esc((g.name || '?').charAt(0).toUpperCase());
+    var overall = grp.overall;
+    var st = STATUS[overall] || STATUS.trash;
     var cov = coverUrl(g);
     var inner = cov
-      ? '<img class="cover" loading="lazy" alt="" data-mono="' + mono +
+      ? '<img loading="lazy" alt="" data-name="' + esc(g.name || '?') +
         '" src="' + esc(cov) + '" onerror="thumbFail(this)">'
-      : '<div class="mono">' + mono + '</div>';
-    var vid = ytId(g.vid);
-    var play = vid
-      ? '<button class="playBtn" title="Play trailer" onclick="playCardTrailer(this,&#39;' + vid + '&#39;)">&#9654;</button>'
-      : '';
-    var art = '<div class="coverwrap">' + inner + play + '</div>';
-
-    function slabel(s) { return s === 'trash' ? 'Trashed' : cap(s); }
-    // Platforms where the game is actually kept (owned or wishlisted).
-    var keep = grp.rows.filter(function (r) { return r.status === 'owned' || r.status === 'wishlist'; });
-    // Overall tag — computed once in groupByGame() so the status filters and
-    // the card itself always agree.
-    var overall = grp.overall;
-
-    // `sub` is built as trusted HTML (text pieces esc()'d individually).
-    var yr = g.year ? esc(String(g.year)) : '';
-    var tag = '<span class="pill ' + overall + '">' + slabel(overall) + '</span>';
-    var sub, rows;
-    if (state.platform) {
-      // A single console is selected — show that console + its status, as before.
-      var only = grp.rows[0] || { status: overall };
-      sub = [esc(labelBySlug[g.platform] || g.platform), yr].filter(Boolean).join(' · ');
-      rows = '<div class="merged-row"><span class="pill ' + only.status + '">' +
-        slabel(only.status) + '</span></div>';
-    } else if (overall === 'trash') {
-      // Trashed on every platform it exists on → just year + the Trashed tag.
-      sub = (yr ? '<span>' + yr + '</span>' : '') + tag;
-      rows = '';
-    } else {
-      // Kept somewhere → year only on the sub line; the owned/wishlist status
-      // chip lives on each platform row (one row or several), never duplicated.
-      sub = yr ? '<span>' + yr + '</span>' : '';
-      rows = keep.map(function (r) {
-        return '<div class="merged-row"><span class="pl">' + esc(r.label) +
-          '</span><span class="pill ' + r.status + '">' + slabel(r.status) + '</span></div>';
-      }).join('');
-    }
+      : '<span class="gc__noart">' + esc(g.name || '?') + '</span>';
     var igdbUrl = g.sl
       ? 'https://www.igdb.com/games/' + encodeURIComponent(g.sl)
       : 'https://www.igdb.com/search?type=1&q=' + encodeURIComponent(g.name || '');
     var gUrl = 'https://www.google.com/search?q=' +
       encodeURIComponent((g.name || '') + ' ' + (labelBySlug[g.platform] || g.platform || '') + ' game');
-    var voteBtn = '';
+    var vid = ytId(g.vid);
+    var acts = '<span class="gc__acts">' +
+      (vid ? '<button class="pill-more" title="Play trailer" aria-label="Play trailer" onclick="playCardTrailer(this,&#39;' +
+        vid + '&#39;)">' + icon('play', 11) + '</button>' : '') +
+      '<a class="pill-more" href="' + esc(gUrl) + '" target="_blank" rel="noopener noreferrer" title="Search on Google" aria-label="Search on Google">G</a>' +
+      '</span>';
+
+    // Meta line: year · N consoles (only counting the consoles shown as rows).
+    var keep = grp.rows.filter(function (r) { return r.status === 'owned' || r.status === 'wishlist'; });
+    var rowsList = state.platform ? grp.rows.slice(0, 1) : keep;
+    var meta = [g.year ? String(g.year) : '—',
+      rowsList.length > 1 ? rowsList.length + ' consoles' : (rowsList[0] ? rowsList[0].label : '')]
+      .filter(Boolean).join(' · ');
+
+    var art = '<div class="gc__art coverwrap on-art">' + inner +
+      '<a class="gc__hit" href="' + esc(igdbUrl) + '" target="_blank" rel="noopener noreferrer" title="Open on IGDB" aria-label="' +
+        esc(g.name || '') + ' on IGDB"></a>' +
+      '<div class="gc__top"><span class="pill-art pill-art--' + overall + '">' + icon(st.icon, 12) +
+        '<span>' + st.label + '</span></span>' + acts + '</div>' +
+      '<div class="gc__caption"><div class="gc__title">' + esc(g.name) + '</div>' +
+        '<div class="gc__meta">' + esc(meta) + '</div></div>' +
+      '</div>';
+
+    var rows = rowsList.map(function (r, i) {
+      var rs = STATUS[r.status] || STATUS.trash;
+      return '<div class="mgc__row' + (i >= MAX_ROWS ? ' mgc__row--extra' : '') + '">' +
+        '<span class="mgc__row-label" title="' + esc(r.label) + '">' + esc(r.label) + '</span>' +
+        '<span class="rstat rstat--' + r.status + '" title="' + rs.label + ' on ' + esc(r.label) + '">' +
+        icon(rs.icon, 12) + '</span></div>';
+    }).join('');
+    if (rowsList.length > MAX_ROWS) {
+      var extra = rowsList.length - MAX_ROWS;
+      rows += '<button class="mgc__more" onclick="toggleRows(this,' + extra + ')">+' + extra +
+        ' more console' + (extra === 1 ? '' : 's') + '</button>';
+    }
+
+    var vote = '';
     if (overall === 'trash') {
       var voted = false;
       try { voted = localStorage.getItem('votedTrash_' + grp.key) === '1'; } catch (e) {}
       var vn = g.v || 0;
-      voteBtn = '<div class="cardbtns"><button class="cardbtn votebtn' + (voted ? ' voted' : '') +
-        '" onclick="voteTrash(this,&#39;' + esc(grp.key) + '&#39;)"' + (voted ? ' disabled' : '') + '>' +
-        (voted ? 'Saved ✓' : '👍 SAVE') +
-        (vn ? ' <span class="voten">' + fmt(vn) + '</span>' : '') + '</button></div>';
+      vote = '<div class="mgc__req"><span class="mgc__votes num' + (vn ? '' : ' mgc__votes--zero') +
+        '" title="Votes to save it from the trash">' + icon('thumb', 12) + fmt(vn) + ' ' + (vn === 1 ? 'vote' : 'votes') +
+        '</span><button class="btn-sm votebtn' + (voted ? ' voted' : '') + '" onclick="voteTrash(this,&#39;' +
+        esc(grp.key) + '&#39;)"' + (voted ? ' disabled' : '') + ' title="Vote to save it from the trash">' +
+        (voted ? icon('check', 12) + 'Saved' : 'Save it') + '</button></div>';
     }
-    var btns = '<div class="cardbtns">' +
-      '<a class="cardbtn" href="' + esc(igdbUrl) + '" target="_blank" rel="noopener noreferrer">IGDB</a>' +
-      '<a class="cardbtn" href="' + esc(gUrl) + '" target="_blank" rel="noopener noreferrer">Google</a>' +
-      '</div>' + voteBtn;
-    return '<div class="card">' + art +
-      '<div class="meta"><div class="name">' + esc(g.name) + '</div>' +
-      '<div class="sub">' + sub + '</div>' +
-      (rows ? '<div class="merged-rows">' + rows + '</div>' : '') + btns + '</div></div>';
+    var trashOnly = overall === 'trash' && !state.platform;
+    return '<div class="gc' + (overall === 'trash' ? ' gc--trash' : '') + '">' + art +
+      '<div class="mgc__rows' + (trashOnly ? ' mgc__rows--trash' : '') + '">' + (trashOnly ? '' : rows) + vote + '</div></div>';
   }
+  window.toggleRows = function (btn, extra) {
+    var card = btn.closest('.gc');
+    var open = card.classList.toggle('gc--open');
+    btn.textContent = open ? 'Show less' : '+' + extra + ' more console' + (extra === 1 ? '' : 's');
+  };
 
   function byPlatform(list) {
     return state.platform ? list.filter(function (g) { return g.platform === state.platform; }) : list;
@@ -554,51 +792,52 @@
   function renderStats() {
     var el = document.getElementById('stats');
     var bc = STATS.byConsole || [];
-    var o, w, u, t;
+    var o, w, t;
     if (state.platform) {
       var c = bc.filter(function (x) { return x.slug === state.platform; })[0] || { owned: 0, wishlist: 0, trash: 0 };
-      o = c.owned; w = c.wishlist; t = c.trash; u = null;
+      o = c.owned; w = c.wishlist; t = c.trash;
     } else {
-      o = STATS.owned || 0; w = STATS.wishlist || 0; u = null; t = STATS.trash || 0;
+      o = STATS.owned || 0; w = STATS.wishlist || 0; t = STATS.trash || 0;
     }
-    var grand = (o + w + (u || 0) + t) || 1;
-    function kpi(cls, val, lab) {
-      return val == null ? '' :
-        '<div class="kpi ' + cls + '"><span class="v">' + fmt(val) +
-        '</span><span class="l">' + lab + '</span></div>';
+    var grand = (o + w + t) || 1;
+    function kpi(key, val) {
+      var m = STATUS[key];
+      return '<span class="snap__kpi">' + icon(m.icon, 14).replace('class="ic"', 'class="ic" style="color:var(--st-' + key + ')"') +
+        '<b>' + fmt(val) + '</b><span class="snap__kpi-label">' + m.label + '</span></span>';
     }
-    function seg(cls, val) {
-      return val ? '<i class="' + cls + '" style="width:' + (val / grand * 100).toFixed(2) + '%"></i>' : '';
+    function seg(key, val) {
+      return val ? '<i style="background:var(--st-' + key + ');width:' + (val / grand * 100).toFixed(2) + '%"></i>' : '';
     }
     var open = false;
     try { open = localStorage.getItem('pub:stats-open') === '1'; } catch (e) {}
     var kept = bc.filter(function (x) { return (x.owned + x.wishlist) > 0; });
     var maxKept = kept.reduce(function (m, x) { return Math.max(m, x.owned + x.wishlist); }, 1);
-    var rows = kept.slice(0, 8).map(function (x) {
-      var k = x.owned + x.wishlist;
+    var SHOWN = 12;
+    var rows = kept.slice(0, SHOWN).map(function (x) {
       var op = (x.owned / maxKept * 100).toFixed(1), wp = (x.wishlist / maxKept * 100).toFixed(1);
-      return '<div class="crow"><span class="pl">' + esc(x.label) +
-        '</span><span class="cbar">' +
-        (x.owned ? '<i class="o" style="width:' + op + '%"></i>' : '') +
-        (x.wishlist ? '<i class="w" style="width:' + wp + '%"></i>' : '') +
-        '</span><span class="cn">' + fmt(k) + '</span></div>';
+      return '<div class="snap__console"><span class="snap__console-name" title="' + esc(x.label) + '">' + esc(x.label) +
+        '</span><span class="snap__console-bar">' +
+        (x.owned ? '<i style="background:var(--st-owned);width:' + op + '%"></i>' : '') +
+        (x.wishlist ? '<i style="background:var(--st-wishlist);width:' + wp + '%"></i>' : '') +
+        '</span><span class="snap__console-n num">' + fmt(x.owned) + ' · ' + fmt(x.wishlist) + '</span></div>';
     }).join('');
-    var more = kept.length > 8 ? '<div class="ccount">+' + (kept.length - 8) + ' altre console</div>' : '';
-    el.innerHTML = '<div class="stats-card"><div class="kpis">' +
-      kpi('owned', o, 'Owned') + kpi('wishlist', w, 'Wishlist') +
-      kpi('unjudged', u, 'Unjudged') + kpi('trash', t, 'Trash') +
-      '</div><div class="propbar">' + seg('owned', o) + seg('wishlist', w) +
-      seg('unjudged', u || 0) + seg('trash', t) + '</div>' +
-      (kept.length && !state.platform
-        ? '<details class="byconsole"' + (open ? ' open' : '') +
-          '><summary><span class="chev">▸</span>Per console<span class="n">' + kept.length + '</span></summary>' +
-          '<div class="legend"><span><i class="lo"></i>Owned</span><span><i class="lw"></i>Wishlist</span></div>' +
-          rows + more + '</details>'
+    var more = kept.length > SHOWN ? '<div class="snap__foot">+' + (kept.length - SHOWN) + ' more consoles</div>' : '';
+    var perConsole = kept.length && !state.platform;
+    el.innerHTML = '<div class="snap' + (open && perConsole ? ' snap--open' : '') + '">' +
+      '<div class="snap__row"><div class="snap__kpis">' + kpi('owned', o) + kpi('wishlist', w) + kpi('trash', t) +
+      '</div><div class="snap__bar">' + seg('owned', o) + seg('wishlist', w) + seg('trash', t) + '</div></div>' +
+      (perConsole
+        ? '<button class="snap__more" id="snapMore" aria-expanded="' + open + '">' + icon('right', 14) +
+          'Per console <span class="num" style="color:var(--text-3)">' + kept.length + '</span></button>' +
+          '<div class="snap__consoles">' + rows + more + '</div>'
         : '') +
       '</div>';
-    var d = el.querySelector('.byconsole');
-    if (d) d.addEventListener('toggle', function () {
-      try { localStorage.setItem('pub:stats-open', d.open ? '1' : '0'); } catch (e) {}
+    var b = document.getElementById('snapMore');
+    if (b) b.addEventListener('click', function () {
+      var snap = el.querySelector('.snap');
+      var isOpen = snap.classList.toggle('snap--open');
+      b.setAttribute('aria-expanded', isOpen);
+      try { localStorage.setItem('pub:stats-open', isOpen ? '1' : '0'); } catch (e) {}
     });
   }
 
@@ -609,7 +848,7 @@
     // stats hide while searching the collection — the results take the space
     document.getElementById('stats').style.display = (activity || searching) ? 'none' : '';
     [].forEach.call(document.getElementById('view').children, function (b) {
-      b.classList.toggle('active', b.dataset.v === state.view);
+      b.classList.toggle('seg__item--on', b.dataset.v === state.view);
     });
     if (activity) renderActivity();
     else renderCollection();
@@ -711,35 +950,38 @@
       }).length;
       var tr = b.trash.length;
       var tally = (wl || tr)
-        ? ' <span class="daytally">(' + fmt(wl) + ' wishlist - ' + fmt(tr) + ' trash)</span>'
+        ? '<span class="day__tally"><span class="t-w" title="Wishlisted">' + icon('heart', 11) + fmt(wl) +
+          '</span><span class="t-t" title="Trashed">' + icon('x', 11) + fmt(tr) + '</span></span>'
         : '';
-      out += '<section class="day-section"><h2>' + esc(fmtDay(day)) + tally + '</h2>';
+      out += '<section class="day"><h2 class="day__h">' + esc(fmtDay(day)) + tally + '</h2>';
       if (b.cards.length) out += gridHtml(b.cards);
-      if (b.trash.length) {
-        out += '<details class="trash-acc"><summary>Trashed (' + b.trash.length +
-          ')</summary>' + gridHtml(b.trash) + '</details>';
-      }
+      if (b.trash.length) out += trashAcc(b.trash);
       out += '</section>';
     });
     if (last && (earlier.cards.length || earlier.trash.length)) {
-      out += '<details class="earlier"><summary>Earlier</summary>';
+      out += '<details class="acc acc--earlier"><summary>Earlier' + icon('right', 16).replace('class="ic"', 'class="ic chev"') +
+        '</summary><div class="acc__body">';
       if (earlier.cards.length) out += gridHtml(earlier.cards);
-      if (earlier.trash.length) {
-        out += '<details class="trash-acc"><summary>Trashed (' + earlier.trash.length +
-          ')</summary>' + gridHtml(earlier.trash) + '</details>';
-      }
-      out += '</details>';
+      if (earlier.trash.length) out += trashAcc(earlier.trash);
+      out += '</div></details>';
     }
     if (pages > 1) {
       out += '<nav class="pager">' +
-        '<button data-p="' + (state.page - 1) + '"' + (state.page === 0 ? ' disabled' : '') + '>← Newer</button>' +
-        '<span>Page ' + (state.page + 1) + ' of ' + pages + '</span>' +
-        '<button data-p="' + (state.page + 1) + '"' + (last ? ' disabled' : '') + '>Older →</button>' +
+        '<button class="btn" data-p="' + (state.page - 1) + '"' + (state.page === 0 ? ' disabled' : '') + '>' +
+          icon('left', 14) + 'Newer</button>' +
+        '<span class="num">' + (state.page + 1) + ' / ' + pages + '</span>' +
+        '<button class="btn" data-p="' + (state.page + 1) + '"' + (last ? ' disabled' : '') + '>Older' +
+          icon('right', 14) + '</button>' +
         '</nav>';
     }
     feed.innerHTML = out;
   }
   var DAYS_PER_PAGE = 5;
+  function trashAcc(groups) {
+    return '<details class="acc"><summary>' + icon('x', 14) + 'Trashed <span class="n">' + fmt(groups.length) +
+      '</span>' + icon('right', 14).replace('class="ic"', 'class="ic chev"') + '</summary><div class="acc__body">' +
+      gridHtml(groups) + '</div></details>';
+  }
   document.getElementById('feed').addEventListener('click', function (e) {
     var b = e.target.closest('.pager button'); if (!b || b.disabled) return;
     state.page = +b.dataset.p;
@@ -770,13 +1012,18 @@
       return a.localeCompare(b);
     });
     var total = Object.keys(c).reduce(function (t, k) { return t + c[k]; }, 0);
-    var rows = ['<button data-slug="" class="' + (state.platform ? '' : 'here') +
-      '">All Platforms <span class="n">' + fmt(total) + '</span></button>'];
+    function plat(slug, label, tile, n) {
+      return '<button role="option" data-slug="' + esc(slug) + '" class="plat' + (slug === state.platform ? ' plat--on' : '') +
+        '" aria-selected="' + (slug === state.platform) + '"><span class="plat__tile">' + tile +
+        '</span><span class="plat__name">' + esc(label) + '</span><span class="plat__count num">' + fmt(n) + '</span></button>';
+    }
+    // Console codes in the tile, like the desktop sidebar (shortCode in status.tsx).
+    function code(slug) { return esc(slug.replace(/[^a-z0-9]/gi, '').slice(0, 5).toUpperCase()); }
+    var rows = [plat('', 'All Platforms', 'ALL', total)];
     names.forEach(function (mfr) {
-      rows.push('<div class="pickgroup">' + esc(mfr) + '</div>');
+      rows.push('<div class="plist__head">' + esc(mfr) + '</div>');
       groups[mfr].sort(function (a, b) { return a.label.localeCompare(b.label); }).forEach(function (p) {
-        rows.push('<button data-slug="' + esc(p.slug) + '" class="' + (p.slug === state.platform ? 'here' : '') +
-          '">' + esc(p.label) + ' <span class="n">' + fmt(c[p.slug]) + '</span></button>');
+        rows.push(plat(p.slug, p.label, code(p.slug), c[p.slug]));
       });
     });
     document.getElementById('pickerInner').innerHTML = rows.join('');
@@ -829,6 +1076,15 @@
       render();
     });
   });
+
+  // Chrome icons + theme toggle (ICONS / icon() / toggleTheme() come from _CABINET_HEAD).
+  [].forEach.call(document.querySelectorAll('[data-ic]'), function (el) { el.outerHTML = icon(el.getAttribute('data-ic'), 14); });
+  document.getElementById('qField').insertAdjacentHTML('afterbegin', icon('search', 15));
+  document.getElementById('platChev').innerHTML = icon('down', 16);
+  document.getElementById('rankLink').innerHTML = icon('trophy', 14) + '<span>Rank</span>';
+  var themeBtn = document.getElementById('themeBtn');
+  themeBtn.innerHTML = themeIcon();
+  themeBtn.addEventListener('click', function () { toggleTheme(themeBtn); });
 
   render();
 </script>
