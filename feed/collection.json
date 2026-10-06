@@ -24290,6 +24290,7 @@
 [259941,11,0,"Doom"],
 [259942,13,0,"Doom"],
 [259944,60,1,"Doom"],
+[260303,41,1,"Garbage Country"],
 [260321,59,1,"Fatal Fury: City of the Wolves"],
 [260487,49,1,"Granblue Fantasy Versus: Rising - Free Edition"],
 [260733,1,0,"Night Driver"],
@@ -26094,6 +26095,7 @@
 [345542,64,1,"Teenage Mutant Ninja Turtles: Empire City"],
 [345570,47,1,"Shaberu! DS Cooking Navi"],
 [345656,36,1,"Dark Quest 4"],
+[345954,52,1,"The Trolley Solution"],
 [345982,36,1,"Rune Dice"],
 [346035,36,1,"Ball x Pit"],
 [346147,15,1,"Fatal Fury: Wild Ambition"],
@@ -27079,10 +27081,12 @@
 [420796,41,1,"Honey or Else"],
 [420882,41,1,"Island Treasures"],
 [421014,41,1,"Age of Harvest"],
-[421199,41,1,"ShadowComm. Associate Studio: Enterprise Edition"]
+[421199,41,1,"ShadowComm. Associate Studio: Enterprise Edition"],
+[421444,41,1,"Legacy Code"],
+[421464,41,1,"Ultrapolis"]
 ],
-"generated_at":"2026-10-05T05:53:30+00:00",
+"generated_at":"2026-10-06T05:45:00+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7907,"rows":312251,"skipped_no_igdb_id":565,"trash":285172,"wishlist":19172},
+"stats":{"duplicates_collapsed":134,"owned":7907,"rows":312344,"skipped_no_igdb_id":565,"trash":285261,"wishlist":19176},
 "verdicts":["owned","wishlist","trash"]
 }
