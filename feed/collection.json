@@ -26725,6 +26725,7 @@
 [392201,41,1,"Alex & Arty"],
 [392370,41,1,"F-22: Air Dominance Fighter"],
 [392403,24,0,"Big Tournament Golf"],
+[392483,41,1,"Crayola Magic 3D Coloring Book"],
 [392540,41,1,"Zad Archery"],
 [392560,21,0,"F355 Challenge 2: International Course Edition"],
 [392768,30,1,"Sengoku Mugen"],
@@ -26736,6 +26737,7 @@
 [393104,60,1,"Pok\u00e9mon Waves"],
 [393105,60,1,"Pok\u00e9mon Winds"],
 [393182,26,0,"Tekken 4"],
+[393329,22,1,"Silent Service"],
 [393420,54,1,"Tekken 6: Bloodline Rebellion"],
 [393563,36,1,"Heave Ho 2"],
 [393584,41,1,"Sunset Summit"],
@@ -26750,6 +26752,7 @@
 [394041,54,1,"Tekken Tag Tournament 2 Unlimited"],
 [394174,15,1,"Teraburst"],
 [394193,47,1,"Metal Fight Beyblade: Bakushin Susanow Attacks!"],
+[394227,5,1,"Siege"],
 [394235,5,1,"Tales of the Unknown: Volume I - The Bard's Tale"],
 [394237,55,1,"The Bard's Tale"],
 [394282,60,1,"Hoa 2"],
@@ -26826,6 +26829,7 @@
 [399392,30,1,"Kururin Pa!"],
 [399394,65,1,"One More Delve"],
 [399755,53,1,"Vanilla"],
+[399774,26,1,"RTL Ski Jumping 2007"],
 [399877,53,1,"Robot Run"],
 [400001,41,1,"Permaban"],
 [400033,16,1,"Ultima IV"],
@@ -27147,8 +27151,8 @@
 [422281,41,1,"Diceminoes"],
 [422341,41,1,"They Keep Rolling: Incremental Ball Roller"]
 ],
-"generated_at":"2026-10-10T06:19:32+00:00",
+"generated_at":"2026-10-10T07:10:31+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7911,"rows":313451,"skipped_no_igdb_id":565,"trash":286306,"wishlist":19234},
+"stats":{"duplicates_collapsed":134,"owned":7911,"rows":313643,"skipped_no_igdb_id":565,"trash":286494,"wishlist":19238},
 "verdicts":["owned","wishlist","trash"]
 }
