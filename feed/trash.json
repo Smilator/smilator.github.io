@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-10-10T07:10:31+00:00",
+"generated_at":"2026-10-11T11:37:42+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -182915,6 +182915,7 @@
 "40198":["Scrambled Egg","https://images.igdb.com/igdb/image/upload/t_cover_big/co6gjp.jpg"],
 "401982":["Forgotten Depths","https://images.igdb.com/igdb/image/upload/t_cover_big/coc2up.jpg"],
 "401983":["KimiNozo Duelist","https://images.igdb.com/igdb/image/upload/t_cover_big/coc5jb.jpg"],
+"401986":["Ayu Mayu Alternative","https://images.igdb.com/igdb/image/upload/t_cover_big/coc2uz.jpg"],
 "401987":["Brothel Virgin: The Crimson Reverie","https://images.igdb.com/igdb/image/upload/t_cover_big/coc58i.jpg"],
 "401989":["Asema","https://images.igdb.com/igdb/image/upload/t_cover_big/coc2v4.jpg"],
 "40199":["Scooter Shooter","https://images.igdb.com/igdb/image/upload/t_cover_big/kvs4ubzldh2fodusqd6h.jpg"],
@@ -222338,7 +222339,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":222334,"trash":286494},
+"stats":{"named":222335,"trash":286497},
 "trash":[
 [3,41],
 [4,41],
@@ -445973,6 +445974,8 @@
 [325398,52],
 [325399,36],
 [325399,49],
+[325399,50],
+[325399,51],
 [325399,52],
 [325400,36],
 [325401,36],
@@ -497513,6 +497516,7 @@
 [401979,41],
 [401982,41],
 [401983,41],
+[401986,41],
 [401987,41],
 [401989,41],
 [401991,41],

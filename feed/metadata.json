@@ -25932,6 +25932,6 @@
 },
 "fields":["name","desc","developer","publisher","genre","release_date","rating","players","igdb_slug","cover_url","igdb_video_id"],
 "format":2,
-"generated_at":"2026-10-10T07:10:31+00:00",
+"generated_at":"2026-10-11T11:37:42+00:00",
 "stats":{"games":25929,"with_cover":25768}
 }
