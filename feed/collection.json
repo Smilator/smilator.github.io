@@ -12007,6 +12007,7 @@
 [39415,15,0,"Simpsons Bowling"],
 [39417,15,1,"Silent Dragon"],
 [39418,15,1,"Space Bomber"],
+[39419,15,1,"Pinball Action"],
 [39420,15,0,"Groove on Fight - Gouketsuji Ichizoku 3"],
 [39420,31,1,"Groove on Fight"],
 [39422,15,0,"Bubble Symphony"],
@@ -17683,7 +17684,7 @@
 [66245,59,1,"Lupiton's Wonder Palette"],
 [66246,59,1,"Little Romance"],
 [66247,59,1,"Loopy Town no Oheya ga Hoshii!"],
-[66248,59,1,"Harihari Seal Paradise"],
+[66248,59,0,"Harihari Seal Paradise"],
 [66249,59,1,"Dream Change: Kokin-chan no Fashion Party"],
 [66250,59,1,"Wanwan Aijou Monogatari"],
 [66260,47,1,"Phineas and Ferb Ride Again"],
@@ -27201,8 +27202,8 @@
 [423220,0,1,"LEGO Marvel's Avengers"],
 [423302,41,1,"Crabrun"]
 ],
-"generated_at":"2026-10-15T05:53:11+00:00",
+"generated_at":"2026-10-16T05:39:08+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7913,"rows":314485,"skipped_no_igdb_id":565,"trash":287286,"wishlist":19286},
+"stats":{"duplicates_collapsed":134,"owned":7914,"rows":314609,"skipped_no_igdb_id":565,"trash":287409,"wishlist":19286},
 "verdicts":["owned","wishlist","trash"]
 }
