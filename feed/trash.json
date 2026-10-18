@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-10-18T17:00:20+00:00",
+"generated_at":"2026-10-18T17:03:17+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -195032,6 +195032,7 @@
 "424329":["Standard Procedures","https://images.igdb.com/igdb/image/upload/t_cover_big/cod681.jpg"],
 "424333":["Slavlands: Tribes at War","https://images.igdb.com/igdb/image/upload/t_cover_big/cod68m.jpg"],
 "42434":["Apocalypse II","https://images.igdb.com/igdb/image/upload/t_cover_big/co2uw7.jpg"],
+"424340":["Fiak","https://images.igdb.com/igdb/image/upload/t_cover_big/cod68s.jpg"],
 "42437":["Ultima: The Black Gate","https://images.igdb.com/igdb/image/upload/t_cover_big/co4atm.jpg"],
 "42438":["Turn and Burn: No-Fly Zone","https://images.igdb.com/igdb/image/upload/t_cover_big/co3i9n.jpg"],
 "42439":["Fushigi no Dungeon: Torneko no Daibouken","https://images.igdb.com/igdb/image/upload/t_cover_big/co2sr8.jpg"],
@@ -223340,7 +223341,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":223336,"trash":288050},
+"stats":{"named":223337,"trash":288051},
 "trash":[
 [3,41],
 [4,41],
@@ -511391,6 +511392,7 @@
 [424327,41],
 [424328,41],
 [424329,41],
-[424333,41]
+[424333,41],
+[424340,41]
 ]
 }
