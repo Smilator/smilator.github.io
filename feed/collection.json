@@ -26003,6 +26003,7 @@
 [331215,52,1,"Saros"],
 [331282,22,1,"Sky Shark"],
 [331315,36,1,"Castle of Shikigami 3"],
+[331378,36,1,"Vice: Magic City Mayhem"],
 [331617,22,1,"Rescue: The Embassy Mission"],
 [331653,47,1,"Katekyou Hitman Reborn! DS: Vongola Shiki Taisen Battle Sugoroku"],
 [331746,15,1,"Turkey Hunting USA"],
@@ -27119,7 +27120,6 @@
 [411549,41,1,"Warlords"],
 [411706,36,1,"Croc 2: Kingdom of the Gobbos"],
 [411986,41,1,"Lootdeck"],
-[411997,52,1,"Wand & Order: Tidy up the magic shop!"],
 [412077,41,1,"Deathmate"],
 [412085,41,1,"Factory Default: Build, Trade, Repeat"],
 [412111,36,1,"The Immortal John Triptych"],
@@ -27349,10 +27349,11 @@
 [424060,41,1,"The Debtician"],
 [424106,41,1,"Link Loop"],
 [424222,41,1,"Quatiica Motorsports"],
-[424304,41,1,"Shared Custody"]
+[424304,41,1,"Shared Custody"],
+[424308,36,1,"What Do You Meme? The Video Game"]
 ],
-"generated_at":"2026-10-19T06:40:15+00:00",
+"generated_at":"2026-10-19T06:44:39+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":318253,"skipped_no_igdb_id":565,"trash":290904,"wishlist":19431},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":318361,"skipped_no_igdb_id":565,"trash":291011,"wishlist":19432},
 "verdicts":["owned","wishlist","trash"]
 }
