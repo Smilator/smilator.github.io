@@ -493,7 +493,7 @@
 </div>
 <section id="stats" class="wrap" style="display:none"></section>
 <main class="wrap"><div id="feed"></div></main>
-<script src="data.js?v=f98d5f8b7131"></script>
+<script src="data.js?v=3a61e695aec1"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
@@ -527,7 +527,7 @@
     if (trashState === 'loading' || trashState === 'ready') return;
     trashState = 'loading';
     var sc = document.createElement('script');
-    sc.src = 'trash.js?v=2551e7aca678';
+    sc.src = 'trash.js?v=22da6c0c0eec';
     sc.onload = function () {
       TRASH = window.TRASH || [];
       // trash rows carry the merge key as `ig_id` to keep bytes down elsewhere.
