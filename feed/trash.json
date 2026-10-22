@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-10-22T06:17:37+00:00",
+"generated_at":"2026-10-22T06:20:47+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -196068,6 +196068,7 @@
 "424929":["Manual Teller Machine","https://images.igdb.com/igdb/image/upload/t_cover_big/cod70j.jpg"],
 "424937":["Babel Legacy","https://images.igdb.com/igdb/image/upload/t_cover_big/cod70v.jpg"],
 "42494":["Jeff's Shoot'Em Up","https://images.igdb.com/igdb/image/upload/t_cover_big/co5z1k.jpg"],
+"424942":["Sump","https://images.igdb.com/igdb/image/upload/t_cover_big/cod717.jpg"],
 "424943":["Who Heckled?","https://images.igdb.com/igdb/image/upload/t_cover_big/cod727.jpg"],
 "424949":["Abdication","https://images.igdb.com/igdb/image/upload/t_cover_big/cod721.jpg"],
 "424950":["Cinderwake","https://images.igdb.com/igdb/image/upload/t_cover_big/cod72a.jpg"],
@@ -224638,7 +224639,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":224634,"trash":291507},
+"stats":{"named":224635,"trash":291508},
 "trash":[
 [3,41],
 [4,41],
@@ -516040,6 +516041,7 @@
 [424924,41],
 [424929,41],
 [424937,41],
+[424942,41],
 [424943,41],
 [424949,41],
 [424950,41],
