@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-10-23T10:10:18+00:00",
+"generated_at":"2026-10-23T10:34:06+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -195913,6 +195913,7 @@
 "424577":["OmniMart Tycoon","https://images.igdb.com/igdb/image/upload/t_cover_big/cod6l1.jpg"],
 "424589":["Survival.io","https://images.igdb.com/igdb/image/upload/t_cover_big/cod6o7.jpg"],
 "42459":["Sonic Blast Man II","https://images.igdb.com/igdb/image/upload/t_cover_big/co8hr7.jpg"],
+"424592":["Nascor Descent","https://images.igdb.com/igdb/image/upload/t_cover_big/cod76f.jpg"],
 "4246":["Space Pirates","https://images.igdb.com/igdb/image/upload/t_cover_big/co1p60.jpg"],
 "424602":["False Testimony","https://images.igdb.com/igdb/image/upload/t_cover_big/cod6ml.jpg"],
 "424603":["The Spectacular Evermore","https://images.igdb.com/igdb/image/upload/t_cover_big/cod6mm.jpg"],
@@ -196002,6 +196003,7 @@
 "4248":["Dragon's Lair","https://images.igdb.com/igdb/image/upload/t_cover_big/co790c.jpg"],
 "42480":["NCAA Basketball","https://images.igdb.com/igdb/image/upload/t_cover_big/co5z3k.jpg"],
 "424800":["All Eyes on Me","https://images.igdb.com/igdb/image/upload/t_cover_big/cod6uo.jpg"],
+"424804":["All haul the king","https://images.igdb.com/igdb/image/upload/t_cover_big/cod6us.jpg"],
 "424817":["Last Lawn Standing","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7cf.jpg"],
 "42482":["NBA Give 'n Go","https://images.igdb.com/igdb/image/upload/t_cover_big/co5z3m.jpg"],
 "424820":["Patients","https://images.igdb.com/igdb/image/upload/t_cover_big/cod6zq.jpg"],
@@ -196239,7 +196241,9 @@
 "425290":["Danelaw","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7m7.jpg"],
 "425292":["Grit and Valor - 1949: Resistance Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7kw.jpg"],
 "4253":["Putt-Putt's Fun Pack","https://images.igdb.com/igdb/image/upload/t_cover_big/co3yw9.jpg"],
+"425323":["Overspray","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7me.jpg"],
 "42535":["Blazing Skies","https://images.igdb.com/igdb/image/upload/t_cover_big/co5yuw.jpg"],
+"425350":["Aiming Fighter","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7nx.jpg"],
 "42539":["Super Wagyan Land","https://images.igdb.com/igdb/image/upload/t_cover_big/co3bto.jpg"],
 "4254":["Mad Dog McCree","https://images.igdb.com/igdb/image/upload/t_cover_big/co9ebe.jpg"],
 "42540":["Tony Meola's Sidekicks Soccer","https://images.igdb.com/igdb/image/upload/t_cover_big/co5zfo.jpg"],
@@ -224688,7 +224692,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":224684,"trash":291574},
+"stats":{"named":224688,"trash":291578},
 "trash":[
 [3,41],
 [4,41],
@@ -515968,6 +515972,7 @@
 [424576,41],
 [424577,41],
 [424589,41],
+[424592,41],
 [424602,41],
 [424603,41],
 [424604,41],
@@ -516044,6 +516049,7 @@
 [424792,41],
 [424797,41],
 [424800,41],
+[424804,41],
 [424817,41],
 [424820,41],
 [424822,41],
@@ -516263,6 +516269,8 @@
 [425284,41],
 [425289,41],
 [425290,41],
-[425292,41]
+[425292,41],
+[425323,41],
+[425350,41]
 ]
 }
