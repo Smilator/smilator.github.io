@@ -21687,7 +21687,7 @@
 [148499,36,1,"Behind the Frame: The Finest Scenery"],
 [148506,54,1,"Tokyo Cop"],
 [148696,49,1,"Virtua Fighter 5: Ultimate Showdown"],
-[148700,51,1,"Mortal Sin"],
+[148700,52,1,"Mortal Sin"],
 [148926,53,1,"Cooking Simulator VR"],
 [148945,36,1,"Please, Touch the Artwork"],
 [149018,53,1,"Larcenauts"],
@@ -22595,7 +22595,7 @@
 [199252,52,1,"Melobot: A Last Song"],
 [199420,17,1,"Phelios"],
 [199668,60,1,"Moros Protocol"],
-[199713,41,1,"Do Not Feed the Monkeys 2099"],
+[199713,49,1,"Do Not Feed the Monkeys 2099"],
 [200001,40,0,"The House of the Dead 2 & 3 Return"],
 [200009,30,1,"Nissan Presents: Over Drivin' Skyline Memorial"],
 [200165,49,1,"Call of Duty: Modern Warfare II"],
@@ -26028,6 +26028,7 @@
 [332956,26,1,"Gambler Densetsu Tetsuya Digest"],
 [333047,36,1,"RockBeasts"],
 [333310,41,1,"Night Club Simulator"],
+[333316,51,1,"Menes: The Chainbreaker"],
 [333332,5,1,"Rock 'N Roller"],
 [333444,26,1,"The Lord of the Rings: Aragorn's Quest"],
 [333556,30,1,"Dioramos"],
@@ -27362,8 +27363,8 @@
 [425052,41,1,"Serious Sam: The Third Encounter"],
 [425150,41,1,"Forgery"]
 ],
-"generated_at":"2026-10-23T06:35:09+00:00",
+"generated_at":"2026-10-23T06:42:42+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":318881,"skipped_no_igdb_id":565,"trash":291521,"wishlist":19442},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":318936,"skipped_no_igdb_id":565,"trash":291575,"wishlist":19443},
 "verdicts":["owned","wishlist","trash"]
 }
