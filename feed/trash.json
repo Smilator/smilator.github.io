@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-10-23T06:34:49+00:00",
+"generated_at":"2026-10-23T06:35:09+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -195427,6 +195427,7 @@
 "423467":["Todd The Technician","https://images.igdb.com/igdb/image/upload/t_cover_big/cod4st.jpg"],
 "42347":["Heavily Armed","https://images.igdb.com/igdb/image/upload/t_cover_big/co7jpl.jpg"],
 "423476":["Jeon Woo-chi","https://images.igdb.com/igdb/image/upload/t_cover_big/cod4sz.jpg"],
+"423477":["Aftermath: Bunker Trader","https://images.igdb.com/igdb/image/upload/t_cover_big/cod4t9.jpg"],
 "423478":["Scale a Building","https://images.igdb.com/igdb/image/upload/t_cover_big/cod4vg.jpg"],
 "423480":["Pusher of Cube!","https://images.igdb.com/igdb/image/upload/t_cover_big/cod4td.jpg"],
 "423481":["Cards Rumble: Clash of Elements","https://images.igdb.com/igdb/image/upload/t_cover_big/cod4tf.jpg"],
@@ -196199,8 +196200,10 @@
 "42519":["Nintama Rantarou Special","https://images.igdb.com/igdb/image/upload/t_cover_big/kux49kf4z71qn8rqcjr7.jpg"],
 "425195":["The Ostrakon","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7fr.jpg"],
 "425198":["Warmachine: Rogue-Scout","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7fy.jpg"],
+"425207":["Brothel Master","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7gd.jpg"],
 "42522":["Sound Fantasy","https://images.igdb.com/igdb/image/upload/t_cover_big/co4aku.jpg"],
 "425226":["Lucky Castaway","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7hb.jpg"],
+"425243":["Anomaly Jobs: Death Row","https://images.igdb.com/igdb/image/upload/t_cover_big/cod7ir.jpg"],
 "4253":["Putt-Putt's Fun Pack","https://images.igdb.com/igdb/image/upload/t_cover_big/co3yw9.jpg"],
 "42535":["Blazing Skies","https://images.igdb.com/igdb/image/upload/t_cover_big/co5yuw.jpg"],
 "42539":["Super Wagyan Land","https://images.igdb.com/igdb/image/upload/t_cover_big/co3bto.jpg"],
@@ -224650,7 +224653,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":224646,"trash":291519},
+"stats":{"named":224649,"trash":291521},
 "trash":[
 [3,41],
 [4,41],
@@ -515419,6 +515422,7 @@
 [423465,41],
 [423467,41],
 [423476,41],
+[423477,41],
 [423478,41],
 [423480,41],
 [423481,41],
@@ -516170,6 +516174,7 @@
 [425187,41],
 [425195,41],
 [425198,41],
-[425226,41]
+[425226,41],
+[425243,41]
 ]
 }
