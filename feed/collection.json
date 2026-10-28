@@ -15002,6 +15002,7 @@
 [47196,5,1,"The Games: Winter Edition"],
 [47197,5,1,"The Games: Summer Edition"],
 [47201,15,1,"Repulse"],
+[47215,5,1,"DJ Puff's Volcanic Capers"],
 [47219,5,1,"Bop'n Rumble"],
 [47224,5,1,"Knights of Legend"],
 [47246,56,1,"Fairytale"],
@@ -22368,7 +22369,7 @@
 [189781,36,0,"Mina the Hollower"],
 [189856,53,1,"The Last Clockwinder"],
 [190013,35,0,"Wario's Woods"],
-[190280,52,1,"Tape to Tape"],
+[190280,36,1,"Tape to Tape"],
 [190483,53,1,"Propagation: Paradise Hotel"],
 [190955,53,1,"Space Control"],
 [190980,36,1,"FixFox"],
@@ -25446,6 +25447,7 @@
 [302704,52,1,"Doom: The Dark Ages"],
 [302706,30,1,"Lupin III Sansei: Cagliostro no Shiro Saikai"],
 [302711,47,1,"Snoopy DS: Let's Go Meet Snoopy and His Friends!"],
+[302962,60,1,"Burggeist"],
 [302983,36,1,"Haunted Paws"],
 [303003,41,1,"Nightmare Operator"],
 [303010,36,1,"Strange Antiquities"],
@@ -27384,8 +27386,8 @@
 [425887,41,1,"Heroes Never Die"],
 [425924,41,1,"Mailed It!"]
 ],
-"generated_at":"2026-10-28T06:24:04+00:00",
+"generated_at":"2026-10-28T06:35:50+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":319373,"skipped_no_igdb_id":565,"trash":291991,"wishlist":19464},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":319464,"skipped_no_igdb_id":565,"trash":292080,"wishlist":19466},
 "verdicts":["owned","wishlist","trash"]
 }
