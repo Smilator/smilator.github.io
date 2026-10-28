@@ -25645,6 +25645,7 @@
 [309488,22,0,"Shinobi"],
 [309518,60,1,"Lifted"],
 [309578,47,1,"Madagascar Kartz"],
+[309667,52,1,"NBA the Run"],
 [309810,60,1,"Royal Revolt Survivors"],
 [309862,36,1,"TCG Card Shop Simulator"],
 [309981,30,1,"NBA In The Zone"],
@@ -27333,7 +27334,6 @@
 [421539,41,1,"CodePhantom"],
 [421943,41,1,"Impossible Machine"],
 [421954,36,1,"Hello, Luigi!"],
-[422006,52,1,"NBA The Run: Deluxe Edition"],
 [422054,41,1,"A Matter of Murder: Second Stab"],
 [422103,41,1,"The Boba Teashop: Refill"],
 [422124,41,1,"Dr. Mancell and Mr. Flame"],
@@ -27386,7 +27386,7 @@
 [425887,41,1,"Heroes Never Die"],
 [425924,41,1,"Mailed It!"]
 ],
-"generated_at":"2026-10-28T06:35:50+00:00",
+"generated_at":"2026-10-28T16:37:50+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
 "stats":{"duplicates_collapsed":134,"owned":7918,"rows":319464,"skipped_no_igdb_id":565,"trash":292080,"wishlist":19466},
 "verdicts":["owned","wishlist","trash"]
