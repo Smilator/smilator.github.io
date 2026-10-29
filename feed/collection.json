@@ -17854,6 +17854,7 @@
 [67121,47,1,"PostPet DS: Yumemiru Momo to Fushigi no Pen"],
 [67126,28,1,"Gundam Assault Survive"],
 [67183,30,1,"Play with the Teletubbies"],
+[67195,36,1,"Witchbrook"],
 [67199,36,0,"Snipperclips Plus: Cut It Out, Together!"],
 [67202,0,1,"Style Savvy: Styling Star"],
 [67209,28,1,"Savage Moon: The Hera Campaign"],
@@ -27386,8 +27387,8 @@
 [425887,41,1,"Heroes Never Die"],
 [425924,41,1,"Mailed It!"]
 ],
-"generated_at":"2026-10-28T16:37:50+00:00",
+"generated_at":"2026-10-29T05:40:41+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":319464,"skipped_no_igdb_id":565,"trash":292080,"wishlist":19466},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":319465,"skipped_no_igdb_id":565,"trash":292080,"wishlist":19467},
 "verdicts":["owned","wishlist","trash"]
 }
