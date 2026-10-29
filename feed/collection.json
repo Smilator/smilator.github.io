@@ -27399,8 +27399,10 @@
 [424590,41,1,"Tombone: Legend of the Cave Babes"],
 [425052,41,1,"Serious Sam: The Third Encounter"],
 [425150,41,1,"Forgery"],
+[425291,41,1,"Crowcape Zero"],
 [425298,36,1,"Kiwi Boing"],
 [425428,41,1,"SwapHeads!"],
+[425460,41,1,"Nookmaker"],
 [425481,41,1,"Pick a Part"],
 [425726,41,1,"Cruisopolis: Cruise Line Tycoon"],
 [425836,41,1,"Gospel Drift"],
@@ -27411,8 +27413,8 @@
 [426338,60,1,"Winds of Viridia"],
 [426362,60,1,"Table Game World CCFolia"]
 ],
-"generated_at":"2026-10-29T06:25:22+00:00",
+"generated_at":"2026-10-29T06:27:36+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":319707,"skipped_no_igdb_id":565,"trash":292298,"wishlist":19491},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":319718,"skipped_no_igdb_id":565,"trash":292307,"wishlist":19493},
 "verdicts":["owned","wishlist","trash"]
 }
