@@ -25399,6 +25399,7 @@
 [299582,65,1,"Alien: Rogue Incursion"],
 [299593,36,1,"Promise Mascot Agency"],
 [299736,65,1,"Batman: Arkham Shadow"],
+[299752,53,1,"Smalland: Survive the Wilds VR"],
 [299774,60,1,"Goodnight Universe"],
 [299777,9,0,"Sonic the Hedgehog"],
 [299780,15,0,"Eleven Beat"],
@@ -27414,8 +27415,8 @@
 [426338,60,1,"Winds of Viridia"],
 [426362,60,1,"Table Game World CCFolia"]
 ],
-"generated_at":"2026-10-30T06:26:27+00:00",
+"generated_at":"2026-10-30T06:27:58+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":319718,"skipped_no_igdb_id":565,"trash":292306,"wishlist":19494},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":319718,"skipped_no_igdb_id":565,"trash":292305,"wishlist":19495},
 "verdicts":["owned","wishlist","trash"]
 }
