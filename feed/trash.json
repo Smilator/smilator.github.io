@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-10-30T07:21:31+00:00",
+"generated_at":"2026-10-30T07:23:07+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -196625,6 +196625,7 @@
 "425610":["Recycle Rivals","https://images.igdb.com/igdb/image/upload/t_cover_big/cod855.jpg"],
 "425612":["Floor Show","https://images.igdb.com/igdb/image/upload/t_cover_big/cod818.jpg"],
 "425613":["Hyperfrag","https://images.igdb.com/igdb/image/upload/t_cover_big/cod9dj.jpg"],
+"425618":["Diuxia","https://images.igdb.com/igdb/image/upload/t_cover_big/cod81g.jpg"],
 "425619":["My Owner's Graveyard","https://images.igdb.com/igdb/image/upload/t_cover_big/cod81h.jpg"],
 "425625":["Psychoscope","https://images.igdb.com/igdb/image/upload/t_cover_big/cod81u.jpg"],
 "425644":["Oboro no Ichi","https://images.igdb.com/igdb/image/upload/t_cover_big/cod82o.jpg"],
@@ -225373,7 +225374,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":225369,"trash":292415},
+"stats":{"named":225370,"trash":292420},
 "trash":[
 [3,41],
 [4,41],
@@ -347874,6 +347875,8 @@
 [159966,36],
 [159966,41],
 [159967,41],
+[159967,51],
+[159967,52],
 [159968,41],
 [159969,41],
 [159970,41],
@@ -490444,6 +490447,8 @@
 [381568,36],
 [381568,41],
 [381568,49],
+[381568,50],
+[381568,51],
 [381572,41],
 [381574,41],
 [381575,41],
@@ -517469,6 +517474,7 @@
 [425610,41],
 [425612,41],
 [425613,41],
+[425618,41],
 [425619,41],
 [425625,41],
 [425644,41],
