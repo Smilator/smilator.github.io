@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-10-30T07:23:07+00:00",
+"generated_at":"2026-10-31T06:05:07+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -7952,7 +7952,6 @@
 "113457":["New Adult Reality","https://images.igdb.com/igdb/image/upload/t_720p/sc5xb4.jpg"],
 "113458":["Gun Beat","https://images.igdb.com/igdb/image/upload/t_cover_big/coav1m.jpg"],
 "113459":["Ataque Marino","https://images.igdb.com/igdb/image/upload/t_cover_big/cocuyh.jpg"],
-"11346":["Her Story","https://images.igdb.com/igdb/image/upload/t_cover_big/co2gzl.jpg"],
 "113460":["Supremacy 1914","https://images.igdb.com/igdb/image/upload/t_cover_big/co42qh.jpg"],
 "113461":["Forever Forest","https://images.igdb.com/igdb/image/upload/t_cover_big/co1ieo.jpg"],
 "113463":["Diabolik Lovers Chaos Lineage","https://images.igdb.com/igdb/image/upload/t_cover_big/co1j4h.jpg"],
@@ -225374,7 +225373,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":225370,"trash":292420},
+"stats":{"named":225369,"trash":292419},
 "trash":[
 [3,41],
 [4,41],
@@ -239325,7 +239324,6 @@
 [11342,49],
 [11344,41],
 [11345,41],
-[11346,41],
 [11347,41],
 [11347,49],
 [11347,50],
