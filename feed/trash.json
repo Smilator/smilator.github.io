@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-10-31T06:39:28+00:00",
+"generated_at":"2026-10-31T06:40:38+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -197092,6 +197092,7 @@
 "42699":["Girls und Panzer: Senshado, Kiwamemasu!","https://images.igdb.com/igdb/image/upload/t_cover_big/co60r7.jpg"],
 "427":["Final Fantasy VII","https://images.igdb.com/igdb/image/upload/t_cover_big/co2kx2.jpg"],
 "4270":["Deathkeep","https://images.igdb.com/igdb/image/upload/t_cover_big/co1p52.jpg"],
+"427002":["Redemption Cemetery: Night Terrors - Collector's Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/cod9r7.jpg"],
 "42702":["Photo Kano Kiss","https://images.igdb.com/igdb/image/upload/t_cover_big/co61b6.jpg"],
 "42704":["Atelier Totori Plus: The Adventurer of Arland","https://images.igdb.com/igdb/image/upload/t_cover_big/co2vw7.jpg"],
 "42705":["Ragnarok Odyssey: Mercenary Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co9h4w.jpg"],
@@ -206790,6 +206791,8 @@
 "61074":["Age of Grit","https://images.igdb.com/igdb/image/upload/t_cover_big/co3l4n.jpg"],
 "61075":["Pocket RPG","https://images.igdb.com/igdb/image/upload/t_cover_big/co4ucu.jpg"],
 "61076":["Redemption Cemetery: Bitter Frost","https://images.igdb.com/igdb/image/upload/t_cover_big/co8m3o.jpg"],
+"61078":["Redemption Cemetery: Grave Testimony","https://images.igdb.com/igdb/image/upload/t_cover_big/dczq5a38uzcwi3vxvbz9.jpg"],
+"61079":["Redemption Cemetery: Children's Plight","https://images.igdb.com/igdb/image/upload/t_cover_big/cod9r5.jpg"],
 "61080":["Ninja Village","https://images.igdb.com/igdb/image/upload/t_cover_big/co4sjq.jpg"],
 "61085":["Steam Punks","https://images.igdb.com/igdb/image/upload/t_cover_big/co8urw.jpg"],
 "61087":["Platdude in Swamp Golf","https://images.igdb.com/igdb/image/upload/t_cover_big/zrktorczjunaai3fq165.jpg"],
@@ -225447,7 +225450,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":225443,"trash":292526},
+"stats":{"named":225446,"trash":292530},
 "trash":[
 [3,41],
 [4,41],
@@ -276247,6 +276250,8 @@
 [61074,41],
 [61075,29],
 [61076,41],
+[61078,41],
+[61079,41],
 [61080,36],
 [61080,41],
 [61080,49],
@@ -475150,6 +475155,7 @@
 [359807,36],
 [359807,52],
 [359808,36],
+[359808,50],
 [359808,52],
 [359810,36],
 [359810,49],
@@ -517974,6 +517980,7 @@
 [426934,41],
 [426936,41],
 [426960,41],
-[426967,41]
+[426967,41],
+[427002,41]
 ]
 }
