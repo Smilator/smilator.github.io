@@ -11172,6 +11172,7 @@
 [36813,49,1,"The Evil Within 2"],
 [36831,49,1,"Dissidia Final Fantasy NT"],
 [36842,5,1,"Tracker"],
+[36846,36,1,"The End Is Nigh"],
 [36868,49,1,"Bubsy: The Woolies Strike Back"],
 [36870,63,1,"No Heroes Allowed! VR"],
 [36872,50,1,"Forza Motorsport 7"],
@@ -20205,6 +20206,7 @@
 [111562,30,1,"Speed Racer"],
 [111650,41,1,"Warcraft III: Reforged"],
 [111704,53,1,"Clash of Chefs VR"],
+[111846,36,1,"Void Bastards"],
 [111904,26,1,"Shin Master of Monsters Final EX"],
 [111904,28,1,"Shin Master of Monsters Final EX"],
 [111988,36,1,"Shakes on a Plane"],
@@ -27454,8 +27456,8 @@
 [426570,41,1,"Never a Penalty"],
 [427091,41,1,"Scratcher Simulator"]
 ],
-"generated_at":"2026-11-01T08:37:51+00:00",
+"generated_at":"2026-11-01T08:40:02+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":320049,"skipped_no_igdb_id":565,"trash":292597,"wishlist":19534},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":320049,"skipped_no_igdb_id":565,"trash":292595,"wishlist":19536},
 "verdicts":["owned","wishlist","trash"]
 }
