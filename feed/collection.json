@@ -22800,7 +22800,7 @@
 [204354,49,1,"Aliens: Dark Descent"],
 [204356,52,1,"Fort Solis"],
 [204360,36,1,"Goat Simulator 3"],
-[204375,41,1,"Aloft"],
+[204375,52,1,"Aloft"],
 [204378,36,1,"Birth"],
 [204381,36,1,"The Plucky Squire"],
 [204385,22,0,"Pac-Man (Tengen)"],
@@ -27455,12 +27455,16 @@
 [426338,60,1,"Winds of Viridia"],
 [426362,60,1,"Table Game World CCFolia"],
 [426372,41,1,"Dunk"],
+[426374,41,1,"Seikyu Let's Go!"],
+[426375,17,1,"Fatal Fury"],
+[426380,17,1,"Fatal Fury 2"],
+[426486,41,1,"Stay On the White Lines"],
 [426508,36,1,"Dokapon Kingdom: Connect 2"],
 [426570,41,1,"Never a Penalty"],
 [427091,41,1,"Scratcher Simulator"]
 ],
-"generated_at":"2026-11-02T05:58:52+00:00",
+"generated_at":"2026-11-02T06:16:46+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":320051,"skipped_no_igdb_id":565,"trash":292594,"wishlist":19539},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":320150,"skipped_no_igdb_id":565,"trash":292689,"wishlist":19543},
 "verdicts":["owned","wishlist","trash"]
 }
