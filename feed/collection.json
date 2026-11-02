@@ -4188,6 +4188,7 @@
 [5328,27,0,"Metal Gear Solid V : Ground Zeroes"],
 [5330,49,1,"NBA Live 14"],
 [5331,50,1,"Powerstar Golf"],
+[5333,27,1,"Strider"],
 [5334,33,0,"Lunar : The Silver Star"],
 [5335,27,1,"Goat Simulator"],
 [5337,35,1,"3 Ninjas Kick Back"],
@@ -8887,6 +8888,7 @@
 [18863,26,1,"The King of Route 66"],
 [18864,26,0,"Blood Will Tell"],
 [18865,47,0,"Assassin's Creed II - Discovery (Europe) (En,Fr,De,Es,It,Nl,Sv,No,Da) (NDSi Enhanced)"],
+[18866,36,1,"Dead by Daylight"],
 [18873,41,1,"Chicago 1930"],
 [18902,41,1,"Star Trek - Armada"],
 [18904,41,1,"Star Trek: Armada 2"],
@@ -10796,6 +10798,7 @@
 [26853,49,1,"Micro Machines World Series"],
 [26854,41,1,"Might & Magic: Showdown"],
 [26855,36,1,"Dead Cells"],
+[26878,41,1,"Cultist Simulator"],
 [26893,41,1,"Yu-Gi-Oh! Power of Chaos: Kaiba the Revenge"],
 [26926,0,0,"Miitopia"],
 [26933,63,1,"Fate/Grand Order VR feat. Mash Kyrielight"],
@@ -27456,8 +27459,8 @@
 [426570,41,1,"Never a Penalty"],
 [427091,41,1,"Scratcher Simulator"]
 ],
-"generated_at":"2026-11-01T15:48:02+00:00",
+"generated_at":"2026-11-02T05:58:52+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7918,"rows":320049,"skipped_no_igdb_id":565,"trash":292595,"wishlist":19536},
+"stats":{"duplicates_collapsed":134,"owned":7918,"rows":320051,"skipped_no_igdb_id":565,"trash":292594,"wishlist":19539},
 "verdicts":["owned","wishlist","trash"]
 }
