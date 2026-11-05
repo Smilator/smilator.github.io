@@ -25791,6 +25791,7 @@
 [311931,41,1,"Tower Lab"],
 [311941,30,1,"Baseball Navigator"],
 [312033,11,1,"Rayman IV"],
+[312274,36,1,"The Eternal Life of Goldman"],
 [312277,52,1,"Wreckfest 2"],
 [312321,15,1,"LED Storm Rally 2011"],
 [312353,4,0,"WaiWai Drive"],
@@ -27566,8 +27567,8 @@
 [427351,41,1,"Shorted"],
 [427408,41,1,"Ashen Testament"]
 ],
-"generated_at":"2026-11-05T06:47:18+00:00",
+"generated_at":"2026-11-05T06:53:19+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":320525,"skipped_no_igdb_id":565,"trash":292961,"wishlist":19643},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":320525,"skipped_no_igdb_id":565,"trash":292960,"wishlist":19644},
 "verdicts":["owned","wishlist","trash"]
 }

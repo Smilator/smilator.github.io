@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-11-05T06:47:18+00:00",
+"generated_at":"2026-11-05T06:53:19+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -209342,7 +209342,7 @@
 "66216":["The Unsolved","https://images.igdb.com/igdb/image/upload/t_cover_big/co5y7a.jpg"],
 "66218":["VM Japan: Vantage Master - Mystic Far East","https://images.igdb.com/igdb/image/upload/t_cover_big/co686t.jpg"],
 "66219":["Lumines: Advance Pack","https://images.igdb.com/igdb/image/upload/t_cover_big/wn3hetmvmws9qupkwns4.jpg"],
-"66220":["Heir of Zendor: The Legend and The Land",""],
+"66220":["Heir of Zendor: The Legend and The Land","https://images.igdb.com/igdb/image/upload/t_cover_big/codad7.jpg"],
 "66222":["Super Real Mahjong Pocket","https://images.igdb.com/igdb/image/upload/t_cover_big/tbaxrtr9yhzbz9pzhis4.jpg"],
 "66223":["Ore no Yome: Anata Dake no Hanayome","https://images.igdb.com/igdb/image/upload/t_cover_big/co60dt.jpg"],
 "66225":["The Path of Go","https://images.igdb.com/igdb/image/upload/t_cover_big/xnljpr4buksbwqbod0a3.jpg"],
@@ -225794,7 +225794,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":225790,"trash":292961},
+"stats":{"named":225790,"trash":292960},
 "trash":[
 [3,41],
 [4,41],
@@ -442823,7 +442823,6 @@
 [312257,41],
 [312271,36],
 [312271,41],
-[312274,36],
 [312274,41],
 [312274,51],
 [312274,52],
