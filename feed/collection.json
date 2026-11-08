@@ -21484,6 +21484,7 @@
 [142790,30,1,"Stray Sheep: The Adventures of Poe and Merry"],
 [142803,36,1,"Diablo II: Resurrected"],
 [142901,52,1,"The Day Before"],
+[142941,36,1,"Potion Craft"],
 [142985,53,1,"Vail"],
 [142996,12,0,"Turok 3 : Shadow of Oblivion"],
 [143008,12,0,"Croc"],
@@ -27298,6 +27299,7 @@
 [409994,16,1,"Gokuaku Doumei Dump Matsumoto"],
 [410070,52,1,"Aerial_Knight's MrFreezy"],
 [410576,41,1,"Solaire"],
+[410584,41,1,"Grandma Left Me A Building"],
 [410604,30,1,"Kenki Ippatsu! Crane Master ni Narou!"],
 [410622,41,1,"Shady Job"],
 [411143,61,1,"Old Coin Pusher Gaiden"],
@@ -27588,10 +27590,11 @@
 [427672,41,1,"My Name Is Vincent Pogo"],
 [427799,41,1,"Iron Curtain Call"],
 [428020,41,1,"Can't See Shift"],
-[428221,41,1,"Doughn't Panic!"]
+[428221,41,1,"Doughn't Panic!"],
+[428463,41,1,"Chrono Punk"]
 ],
-"generated_at":"2026-11-08T07:18:15+00:00",
+"generated_at":"2026-11-08T07:32:14+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":320984,"skipped_no_igdb_id":565,"trash":293396,"wishlist":19667},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":321054,"skipped_no_igdb_id":565,"trash":293463,"wishlist":19670},
 "verdicts":["owned","wishlist","trash"]
 }
