@@ -6888,6 +6888,7 @@
 [10229,0,0,"Fire Emblem Fates: Limited Edition"],
 [10231,45,1,"Ascend: Hand of Kul"],
 [10232,36,0,"Thimbleweed Park"],
+[10233,36,1,"Brawlhalla"],
 [10234,44,0,"GunValkyrie"],
 [10235,5,1,"Chuckie Egg"],
 [10236,41,1,"Republic: The Revolution"],
@@ -7236,6 +7237,7 @@
 [11423,36,1,"This Is the Police"],
 [11436,41,1,"911: First Responders"],
 [11437,26,0,"Shin Megami Tensei : Persona 3 FES"],
+[11444,41,1,"The Silent Age"],
 [11445,27,0,"Persona 4 : Arena Ultimax"],
 [11446,26,1,"Seaman 2"],
 [11448,29,1,"Dengeki Bunko: Fighting Climax"],
@@ -27588,8 +27590,8 @@
 [428020,41,1,"Can't See Shift"],
 [428221,41,1,"Doughn't Panic!"]
 ],
-"generated_at":"2026-11-07T08:09:29+00:00",
+"generated_at":"2026-11-08T07:17:54+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":320983,"skipped_no_igdb_id":565,"trash":293397,"wishlist":19665},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":320984,"skipped_no_igdb_id":565,"trash":293396,"wishlist":19667},
 "verdicts":["owned","wishlist","trash"]
 }
