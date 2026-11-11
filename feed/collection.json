@@ -24550,6 +24550,7 @@
 [259944,62,1,"Doom"],
 [260303,41,1,"Garbage Country"],
 [260321,61,1,"Fatal Fury: City of the Wolves"],
+[260387,36,1,"Labyrinth"],
 [260487,49,1,"Granblue Fantasy Versus: Rising - Free Edition"],
 [260733,1,0,"Night Driver"],
 [260735,36,1,"Red Dead Redemption"],
@@ -26265,6 +26266,7 @@
 [337034,36,1,"Everybody\u2019s Golf: Hot Shots"],
 [337035,36,1,"Marvel Cosmic Invasion"],
 [337036,36,0,"Tomodachi Life: Living the Dream"],
+[337088,36,1,"Mr. Elevator"],
 [337198,15,1,"The Combatribes"],
 [337384,41,1,"Rig Riot"],
 [337555,15,1,"Final Lap 3"],
@@ -27555,7 +27557,7 @@
 [424060,41,1,"The Debtician"],
 [424071,36,1,"Hello, Peach!"],
 [424106,41,1,"Link Loop"],
-[424208,52,1,"Shrek 2 Remastered"],
+[424208,36,1,"Shrek 2 Remastered"],
 [424222,41,1,"Quatiica Motorsports"],
 [424273,41,1,"Crownkeep"],
 [424304,41,1,"Shared Custody"],
@@ -27609,11 +27611,14 @@
 [428453,5,1,"Ultima V: Warriors of Destiny"],
 [428463,41,1,"Chrono Punk"],
 [428679,41,1,"Misty and the Last Breeze"],
+[428724,35,1,"Ultima: The False Prophet"],
 [428820,41,1,"In That Case..."],
-[428851,41,1,"Vital Shell 2"]
+[428851,41,1,"Vital Shell 2"],
+[429029,53,1,"CEO: Chief Extermination Officer"],
+[429081,41,1,"All Army Attack"]
 ],
-"generated_at":"2026-11-11T06:11:51+00:00",
+"generated_at":"2026-11-11T06:36:31+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":321368,"skipped_no_igdb_id":565,"trash":293758,"wishlist":19689},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":321492,"skipped_no_igdb_id":565,"trash":293877,"wishlist":19694},
 "verdicts":["owned","wishlist","trash"]
 }
