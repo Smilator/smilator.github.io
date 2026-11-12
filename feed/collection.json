@@ -1014,6 +1014,7 @@
 [1271,40,0,"\u014ckami"],
 [1272,5,0,"SimCity"],
 [1273,41,1,"Delta Force: Xtreme"],
+[1274,41,1,"SimCity"],
 [1275,41,0,"SimCity 4"],
 [1276,45,0,"Deadly Premonition"],
 [1277,29,1,"Plants vs. Zombies"],
@@ -4653,6 +4654,7 @@
 [5970,44,0,"NightCaster II : Equinox"],
 [5971,27,0,"Shadows of the Damned"],
 [5972,44,0,"Ninja Gaiden"],
+[5973,36,1,"Broforce"],
 [5974,27,0,"Ninja Gaiden Sigma"],
 [5975,44,0,"Otogi : Myth Of Demons"],
 [5976,44,0,"Otogi 2 : Immortal Warriors"],
@@ -7301,6 +7303,7 @@
 [11627,35,1,"Pushover"],
 [11630,5,1,"Stunts"],
 [11635,26,0,"Drakengard"],
+[11642,41,1,"Geometry Dash"],
 [11646,36,1,"Ziggurat"],
 [11648,9,0,"Crystal Warriors"],
 [11650,35,0,"NHL 96"],
@@ -27614,11 +27617,13 @@
 [428724,35,1,"Ultima: The False Prophet"],
 [428820,41,1,"In That Case..."],
 [428851,41,1,"Vital Shell 2"],
+[428973,41,1,"Surfin' Landes"],
 [429029,53,1,"CEO: Chief Extermination Officer"],
-[429081,41,1,"All Army Attack"]
+[429081,41,1,"All Army Attack"],
+[429213,41,1,"Life, the Universe, and Restaurants"]
 ],
-"generated_at":"2026-11-12T06:47:28+00:00",
+"generated_at":"2026-11-12T07:23:12+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":321492,"skipped_no_igdb_id":565,"trash":293877,"wishlist":19694},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":321624,"skipped_no_igdb_id":565,"trash":294004,"wishlist":19699},
 "verdicts":["owned","wishlist","trash"]
 }
