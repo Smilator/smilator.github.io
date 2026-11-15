@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-11-14T08:20:19+00:00",
+"generated_at":"2026-11-15T08:06:24+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -124134,7 +124134,6 @@
 "3114":["Dolphin Blue","https://images.igdb.com/igdb/image/upload/t_cover_big/co2uml.jpg"],
 "31140":["VR Fun World","https://images.igdb.com/igdb/image/upload/t_cover_big/cob64k.jpg"],
 "31141":["Unforgiving Trials: The Space Crusade","https://images.igdb.com/igdb/image/upload/t_cover_big/co2hzb.jpg"],
-"311410":["Type-Noise: Shonen Shojo","https://images.igdb.com/igdb/image/upload/t_cover_big/co9o58.jpg"],
 "311416":["College Gay Sex: Episode 4","https://images.igdb.com/igdb/image/upload/t_cover_big/co8lru.jpg"],
 "31142":["Marblize","https://images.igdb.com/igdb/image/upload/t_cover_big/coa3t7.jpg"],
 "311420":["Dragon Daughter","https://images.igdb.com/igdb/image/upload/t_cover_big/co8uan.jpg"],
@@ -226883,7 +226882,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":226879,"trash":294257},
+"stats":{"named":226878,"trash":294257},
 "trash":[
 [3,41],
 [4,41],
@@ -443365,7 +443364,6 @@
 [311379,15],
 [311380,47],
 [311391,41],
-[311410,41],
 [311416,41],
 [311420,41],
 [311424,41],
@@ -481193,6 +481191,7 @@
 [366911,10],
 [366912,41],
 [366913,36],
+[366913,52],
 [366914,10],
 [366915,10],
 [366917,10],
