@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-11-15T08:06:24+00:00",
+"generated_at":"2026-11-15T08:11:15+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -6573,7 +6573,6 @@
 "111642":["Chuckie Egg 2017 Challenges","https://images.igdb.com/igdb/image/upload/t_cover_big/co3n5g.jpg"],
 "111644":["ACA Neo Geo: Pleasure Goal - 5 on 5 Mini Soccer","https://images.igdb.com/igdb/image/upload/t_cover_big/co1qzp.jpg"],
 "111649":["Hana Saki Work Spring!","https://images.igdb.com/igdb/image/upload/t_cover_big/co2v6w.jpg"],
-"111651":["Diablo Immortal","https://images.igdb.com/igdb/image/upload/t_cover_big/co2pwy.jpg"],
 "111652":["Warcraft III: Reforged - Spoils of War Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co1xiz.jpg"],
 "111653":["Agartha-S","https://images.igdb.com/igdb/image/upload/t_cover_big/co2xb8.jpg"],
 "111654":["MLB The Show 19","https://images.igdb.com/igdb/image/upload/t_cover_big/co2qpq.jpg"],
@@ -22049,7 +22048,6 @@
 "133149":["Post Void","https://images.igdb.com/igdb/image/upload/t_cover_big/co2jb2.jpg"],
 "133150":["Alone Journey","https://images.igdb.com/igdb/image/upload/t_cover_big/co2t50.jpg"],
 "133151":["Queens Garden: Sakura Season","https://images.igdb.com/igdb/image/upload/t_cover_big/co2t6m.jpg"],
-"133152":["Helltaker","https://images.igdb.com/igdb/image/upload/t_cover_big/co279z.jpg"],
 "133153":["Outlaws: Corwin's Treasure","https://images.igdb.com/igdb/image/upload/t_cover_big/co3qpx.jpg"],
 "133154":["Rough Justice: '84","https://images.igdb.com/igdb/image/upload/t_cover_big/co4kkl.jpg"],
 "133155":["Harvest Island","https://images.igdb.com/igdb/image/upload/t_cover_big/co716m.jpg"],
@@ -226882,7 +226880,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":226878,"trash":294257},
+"stats":{"named":226876,"trash":294254},
 "trash":[
 [3,41],
 [4,41],
@@ -252599,7 +252597,6 @@
 [26671,41],
 [26673,0],
 [26673,29],
-[26673,36],
 [26673,41],
 [26673,49],
 [26673,50],
@@ -305557,7 +305554,6 @@
 [111644,50],
 [111649,29],
 [111649,49],
-[111651,41],
 [111652,41],
 [111653,36],
 [111654,49],
@@ -325539,7 +325535,6 @@
 [133149,52],
 [133150,41],
 [133151,41],
-[133152,41],
 [133153,41],
 [133154,36],
 [133154,41],

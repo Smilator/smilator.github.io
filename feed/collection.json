@@ -10818,6 +10818,7 @@
 [26657,30,1,"Cardinal Syn"],
 [26659,5,1,"Fisher-Price: I Can Remember"],
 [26661,26,0,"Metropolismania"],
+[26673,36,1,"Omori"],
 [26683,64,1,"Statik"],
 [26690,47,1,"Bakugan: Rise of the Resistance"],
 [26701,36,1,"Turok"],
@@ -20285,6 +20286,7 @@
 [111559,12,0,"Frogger 2"],
 [111562,30,1,"Speed Racer"],
 [111650,41,1,"Warcraft III: Reforged"],
+[111651,41,1,"Diablo Immortal"],
 [111704,53,1,"Clash of Chefs VR"],
 [111846,36,1,"Void Bastards"],
 [111904,26,1,"Shin Master of Monsters Final EX"],
@@ -21051,6 +21053,7 @@
 [133013,36,1,"Isles of Sea and Sky"],
 [133071,41,1,"Kill It With Fire: Ignition"],
 [133149,36,1,"Post Void"],
+[133152,41,1,"Helltaker"],
 [133236,61,1,"Final Fantasy VII Rebirth"],
 [133238,30,1,"Penny Racers"],
 [133280,53,1,"Lies Beneath"],
@@ -27640,8 +27643,8 @@
 [429549,41,1,"Give or Take: Pawn Shop"],
 [429574,41,1,"Gutterglow"]
 ],
-"generated_at":"2026-11-15T08:06:24+00:00",
+"generated_at":"2026-11-15T08:11:15+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":321895,"skipped_no_igdb_id":565,"trash":294257,"wishlist":19717},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":321895,"skipped_no_igdb_id":565,"trash":294254,"wishlist":19720},
 "verdicts":["owned","wishlist","trash"]
 }
