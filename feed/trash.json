@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-11-16T05:35:22+00:00",
+"generated_at":"2026-11-16T05:36:32+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -198815,6 +198815,7 @@
 "42974":["F.E.A.R 3: Collector's Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co6gw4.jpg"],
 "42976":["Sengoku Basara 4 Sumeragi","https://images.igdb.com/igdb/image/upload/t_cover_big/co2yiy.jpg"],
 "42978":["Thexder Neo","https://images.igdb.com/igdb/image/upload/t_cover_big/co72g9.jpg"],
+"429784":["5000 Donuts","https://images.igdb.com/igdb/image/upload/t_cover_big/coddyy.jpg"],
 "42980":["The X-Factor","https://images.igdb.com/igdb/image/upload/t_cover_big/co8qxf.jpg"],
 "42981":["Metal Gear Solid: HD Collection Limited Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co3dmw.jpg"],
 "42983":["Assassin's Creed III: Washington Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co600p.jpg"],
@@ -227013,7 +227014,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":227009,"trash":294427},
+"stats":{"named":227010,"trash":294428},
 "trash":[
 [3,41],
 [4,41],
@@ -521441,6 +521442,7 @@
 [429652,41],
 [429658,41],
 [429662,41],
-[429665,41]
+[429665,41],
+[429784,41]
 ]
 }
