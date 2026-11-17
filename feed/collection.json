@@ -8942,6 +8942,7 @@
 [18904,41,1,"Star Trek: Armada 2"],
 [18916,15,1,"The Goonies II"],
 [18916,22,1,"The Goonies II"],
+[18927,36,1,"Hue"],
 [18928,5,1,"The Legend of Sword and Fairy"],
 [18937,15,1,"Atomic Punk"],
 [18939,5,1,"Goal"],
@@ -11191,6 +11192,7 @@
 [36592,5,1,"Patton vs. Rommel"],
 [36593,5,1,"Star Trek: The Promethean Prophecy"],
 [36595,36,1,"Sakuna: Of Rice and Ruin"],
+[36597,36,1,"Cat Quest"],
 [36610,64,1,"Megadimension Neptunia VIIR"],
 [36649,36,1,"Tropico 6"],
 [36662,49,1,"Need for Speed: Payback"],
@@ -20882,6 +20884,7 @@
 [127953,11,0,"The Lord of the Rings: The Third Age"],
 [127983,36,1,"Outlanders"],
 [128069,36,0,"Pok\u00e9mon Mystery Dungeon: Rescue Team DX"],
+[128097,36,1,"Turnip Boy Commits Tax Evasion"],
 [128122,53,1,"Iron Rebellion"],
 [128192,30,1,"Brightis"],
 [128307,36,1,"Detective Pikachu Returns"],
@@ -27658,8 +27661,8 @@
 [429653,66,1,"Age of Arca"],
 [429716,41,1,"Super Meat Boy Again+"]
 ],
-"generated_at":"2026-11-16T05:57:08+00:00",
+"generated_at":"2026-11-17T05:28:39+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322276,"skipped_no_igdb_id":565,"trash":294620,"wishlist":19735},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322278,"skipped_no_igdb_id":565,"trash":294619,"wishlist":19738},
 "verdicts":["owned","wishlist","trash"]
 }
