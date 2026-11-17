@@ -27660,10 +27660,11 @@
 [429574,41,1,"Gutterglow"],
 [429585,41,1,"Songs of the Shore"],
 [429653,66,1,"Age of Arca"],
-[429716,41,1,"Super Meat Boy Again+"]
+[429716,41,1,"Super Meat Boy Again+"],
+[430028,41,1,"Embershadow: Forbidden Realm"]
 ],
-"generated_at":"2026-11-17T05:31:43+00:00",
+"generated_at":"2026-11-17T05:34:13+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322286,"skipped_no_igdb_id":565,"trash":294626,"wishlist":19739},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322288,"skipped_no_igdb_id":565,"trash":294627,"wishlist":19740},
 "verdicts":["owned","wishlist","trash"]
 }
