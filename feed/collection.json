@@ -7834,6 +7834,7 @@
 [12806,5,1,"Unreal"],
 [12807,5,1,"The Untouchables"],
 [12813,5,1,"Vroom"],
+[12815,49,1,"Stories: The Path of Destinies"],
 [12823,5,1,"Where in the U.S.A. is Carmen Sandiego?"],
 [12825,35,0,"Whizz"],
 [12826,22,0,"Who Framed Roger Rabbit"],
@@ -20202,6 +20203,7 @@
 [107295,36,1,"Hyper Light Drifter: Special Edition"],
 [107300,36,1,"Thronebreaker: The Witcher Tales"],
 [107315,36,1,"Subnautica: Below Zero"],
+[107317,36,1,"Gato Roboto"],
 [107330,10,0,"Spider-Man 2"],
 [107360,53,1,"Dance Collider"],
 [107585,4,0,"Net Select Salaryman Kintaro"],
@@ -27663,8 +27665,8 @@
 [429716,41,1,"Super Meat Boy Again+"],
 [430028,41,1,"Embershadow: Forbidden Realm"]
 ],
-"generated_at":"2026-11-17T05:34:13+00:00",
+"generated_at":"2026-11-17T05:54:21+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322288,"skipped_no_igdb_id":565,"trash":294627,"wishlist":19740},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322316,"skipped_no_igdb_id":565,"trash":294653,"wishlist":19742},
 "verdicts":["owned","wishlist","trash"]
 }
