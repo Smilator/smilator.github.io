@@ -13446,6 +13446,7 @@
 [43037,27,1,"WRC 3: FIA World Rally Championship"],
 [43047,27,1,"Shuukan Toro Station"],
 [43066,64,1,"Spider-Man: Homecoming - Virtual Reality Experience"],
+[43165,36,1,"My Time at Portia"],
 [43174,25,0,"Pok\u00e9mon Zany Cards"],
 [43204,26,1,"Bokura no Kazoku"],
 [43205,21,0,"Mobile Suit Gundam: Federation Vs. Zeon DX"],
@@ -27661,8 +27662,8 @@
 [429653,66,1,"Age of Arca"],
 [429716,41,1,"Super Meat Boy Again+"]
 ],
-"generated_at":"2026-11-17T05:28:52+00:00",
+"generated_at":"2026-11-17T05:31:43+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322278,"skipped_no_igdb_id":565,"trash":294619,"wishlist":19738},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322286,"skipped_no_igdb_id":565,"trash":294626,"wishlist":19739},
 "verdicts":["owned","wishlist","trash"]
 }
