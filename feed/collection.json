@@ -27667,10 +27667,11 @@
 [429653,66,1,"Age of Arca"],
 [429716,41,1,"Super Meat Boy Again+"],
 [430028,41,1,"Embershadow: Forbidden Realm"],
-[430149,41,1,"Catharsis: The Last of Atelier"]
+[430149,41,1,"Catharsis: The Last of Atelier"],
+[430321,41,1,"Catch Me Wooo!"]
 ],
-"generated_at":"2026-11-19T05:51:19+00:00",
+"generated_at":"2026-11-19T06:06:00+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322355,"skipped_no_igdb_id":565,"trash":294688,"wishlist":19746},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322400,"skipped_no_igdb_id":565,"trash":294732,"wishlist":19747},
 "verdicts":["owned","wishlist","trash"]
 }
