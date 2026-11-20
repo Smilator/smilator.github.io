@@ -22728,6 +22728,7 @@
 [198623,36,1,"Railbound"],
 [198665,11,0,"SpongeBob SquarePants : Revenge of the Flying Dutchman"],
 [199054,41,1,"SpinOff"],
+[199055,61,1,"Homura Hime"],
 [199116,36,1,"Brotato"],
 [199202,55,1,"Armed Dragon Fantasy Villgust"],
 [199252,52,1,"Melobot: A Last Song"],
@@ -27167,6 +27168,7 @@
 [397984,41,1,"Bills Must Be Paid"],
 [398002,30,1,"Max Surfing 2nd"],
 [398027,53,1,"Darts VR2: Bullseye"],
+[398212,36,1,"You're Nuts!"],
 [398225,52,1,"Metro 2039"],
 [398284,17,0,"Space Harrier II"],
 [398336,52,1,"Planted!"],
@@ -27503,6 +27505,7 @@
 [418735,41,1,"TomoTomo"],
 [418760,41,1,"Ghosted"],
 [418853,41,1,"Who Gave Them Weapons"],
+[418884,41,1,"BattleSpinners"],
 [418900,41,1,"Gasoline"],
 [419033,41,1,"Wane"],
 [419036,41,1,"Dust Till Dawn"],
@@ -27671,10 +27674,11 @@
 [429716,41,1,"Super Meat Boy Again+"],
 [430028,41,1,"Embershadow: Forbidden Realm"],
 [430149,41,1,"Catharsis: The Last of Atelier"],
-[430321,41,1,"Catch Me Wooo!"]
+[430321,41,1,"Catch Me Wooo!"],
+[430605,36,1,"Winx Club: Moonlight Quest"]
 ],
-"generated_at":"2026-11-20T06:40:44+00:00",
+"generated_at":"2026-11-20T07:12:10+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322403,"skipped_no_igdb_id":565,"trash":294732,"wishlist":19750},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322466,"skipped_no_igdb_id":565,"trash":294791,"wishlist":19754},
 "verdicts":["owned","wishlist","trash"]
 }
