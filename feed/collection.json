@@ -10659,6 +10659,7 @@
 [25471,41,1,"Galaxy on Fire 2 Full HD"],
 [25507,26,1,"Operation Air Assault 2"],
 [25579,26,1,"Lupin Sansei: Lupin ni ha Shi wo, Zenigata ni ha Koi wo"],
+[25580,36,1,"Forager"],
 [25599,36,1,"Monster Boy and the Cursed Kingdom"],
 [25631,15,1,"Us vs. Them"],
 [25632,53,0,"SuperHot VR"],
@@ -11175,6 +11176,7 @@
 [36508,30,0,"Digimon World 2"],
 [36515,49,1,"Sword Art Online: Fatal Bullet"],
 [36536,41,1,"Microsoft Combat Flight Simulator: WWII Europe Series"],
+[36543,36,1,"Last Day of June"],
 [36544,36,1,"Tennis World Tour"],
 [36550,49,1,"Yakuza: Like a Dragon"],
 [36558,30,1,"Hot Shots Golf 2"],
@@ -19622,6 +19624,7 @@
 [90628,36,1,"Diablo III: Eternal Collection"],
 [90656,28,1,"Death Jr: Root of Evil"],
 [90687,0,0,"Dillon's Dead-Heat Breakers"],
+[90714,49,1,"Martha Is Dead"],
 [90915,15,1,"Alpine Surfer"],
 [90930,26,1,"Azumi"],
 [90931,26,1,"Appleseed EX"],
@@ -27670,8 +27673,8 @@
 [430149,41,1,"Catharsis: The Last of Atelier"],
 [430321,41,1,"Catch Me Wooo!"]
 ],
-"generated_at":"2026-11-19T06:06:00+00:00",
+"generated_at":"2026-11-20T06:40:33+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322400,"skipped_no_igdb_id":565,"trash":294732,"wishlist":19747},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322400,"skipped_no_igdb_id":565,"trash":294729,"wishlist":19750},
 "verdicts":["owned","wishlist","trash"]
 }
