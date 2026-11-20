@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-11-20T06:40:32+00:00",
+"generated_at":"2026-11-20T06:40:44+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -199123,6 +199123,9 @@
 "43050":["Shin Sangoku Musou Multi Raid 2: HD Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/cobc5f.jpg"],
 "43051":["Shin Kamai-tachi no Yoru: 11nin-me no Suspect","https://images.igdb.com/igdb/image/upload/t_cover_big/co2gx7.jpg"],
 "43055":["Sekai Saikyou Ginsei Shogi: Fuuum Ryouko Raiden","https://images.igdb.com/igdb/image/upload/t_cover_big/co9h7c.jpg"],
+"430553":["101 Cats in Frankfurt","https://images.igdb.com/igdb/image/upload/t_cover_big/codeua.jpg"],
+"430554":["101 Cats in Copenhagen","https://images.igdb.com/igdb/image/upload/t_cover_big/codeub.jpg"],
+"430555":["101 Cats in San Francisco","https://images.igdb.com/igdb/image/upload/t_cover_big/codeuc.jpg"],
 "43056":["Sekai Saikyou Ginsei Igo: Hybrid Monte Carlo","https://images.igdb.com/igdb/image/upload/t_cover_big/txd1gjwrdh7pbgykw3tq.jpg"],
 "43057":["Sangoku Hime: Senkou no Taika - Akatsuki no Haryuu","https://images.igdb.com/igdb/image/upload/t_cover_big/co57fa.jpg"],
 "4306":["Mind Teazzer","https://images.igdb.com/igdb/image/upload/t_cover_big/co6o8u.jpg"],
@@ -227268,7 +227271,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":227264,"trash":294729},
+"stats":{"named":227267,"trash":294732},
 "trash":[
 [3,41],
 [4,41],
@@ -521998,6 +522001,9 @@
 [430455,12],
 [430464,41],
 [430472,41],
-[430484,41]
+[430484,41],
+[430553,41],
+[430554,41],
+[430555,41]
 ]
 }
