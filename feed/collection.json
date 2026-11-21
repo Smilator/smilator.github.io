@@ -4404,6 +4404,7 @@
 [5600,12,0,"Metal Gear Solid"],
 [5601,49,1,"The Witness"],
 [5606,49,1,"Assassin's Creed Unity"],
+[5607,36,1,"Smite"],
 [5610,5,0,"Comanche 2"],
 [5611,41,1,"RuneScape"],
 [5612,41,1,"LEGO Island"],
@@ -6777,6 +6778,7 @@
 [9752,47,1,"The Trash Pack: The Gross Gang in Your Garbage"],
 [9755,15,1,"Section-Z"],
 [9757,1,0,"Yars' Revenge"],
+[9761,47,1,"Cut the Rope"],
 [9762,5,1,"Lollypop"],
 [9763,26,0,"Ace Combat 04 : Shattered Skies"],
 [9766,35,1,"Rocket Knight Adventures"],
@@ -22883,6 +22885,7 @@
 [203355,26,1,"Street Golfer"],
 [203360,26,1,"Simple 2000 Series Ultimate Vol. 24: Makai Tenshou"],
 [203364,49,1,"Destroy All Humans!: Clone Carnage"],
+[203366,49,1,"Rollerdrome"],
 [203376,52,1,"Madden NFL 23"],
 [203489,15,1,"Sonic the Hedgehog"],
 [203494,17,0,"Captain Planet and the Planeteers"],
@@ -27677,8 +27680,8 @@
 [430321,41,1,"Catch Me Wooo!"],
 [430605,36,1,"Winx Club: Moonlight Quest"]
 ],
-"generated_at":"2026-11-20T07:12:10+00:00",
+"generated_at":"2026-11-21T06:27:30+00:00",
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322466,"skipped_no_igdb_id":565,"trash":294791,"wishlist":19754},
+"stats":{"duplicates_collapsed":134,"owned":7921,"rows":322466,"skipped_no_igdb_id":565,"trash":294788,"wishlist":19757},
 "verdicts":["owned","wishlist","trash"]
 }

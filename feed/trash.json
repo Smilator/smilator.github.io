@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-11-20T07:12:10+00:00",
+"generated_at":"2026-11-21T06:27:30+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -227310,7 +227310,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":227306,"trash":294791},
+"stats":{"named":227306,"trash":294788},
 "trash":[
 [3,41],
 [4,41],
@@ -234575,7 +234575,6 @@
 [5606,50],
 [5606,51],
 [5606,52],
-[5607,36],
 [5607,41],
 [5607,49],
 [5607,50],
@@ -239512,7 +239511,6 @@
 [9759,41],
 [9761,0],
 [9761,41],
-[9761,47],
 [9762,41],
 [9764,41],
 [9766,17],
@@ -374169,7 +374167,6 @@
 [203364,41],
 [203364,50],
 [203366,41],
-[203366,49],
 [203366,51],
 [203366,52],
 [203367,36],
