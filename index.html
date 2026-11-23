@@ -493,11 +493,11 @@
 </div>
 <section id="stats" class="wrap" style="display:none"></section>
 <main class="wrap"><div id="feed"></div></main>
-<script src="data.js?v=73de42b556ab"></script>
+<script src="data.js?v=fce5cf448f42"></script>
 <script>
   var GAMES = window.GAMES || [], PLATFORMS = window.PLATFORMS || [];
   var STATS = window.STATS || { owned: 0, wishlist: 0, unjudged: 0, trash: 0, byConsole: [] };
-  var LAST_PULL = "Updated 23 Nov 2026, 07:23";
+  var LAST_PULL = "Updated 23 Nov 2026, 07:34";
   // Trash is huge (100k+) — its own file, fetched only on the first search or
   // when the day-feed needs its per-day "trashed" accordions.
   var TRASH = [], trashState = 'none';  // none | loading | ready
@@ -505,7 +505,7 @@
     if (trashState === 'loading' || trashState === 'ready') return;
     trashState = 'loading';
     var sc = document.createElement('script');
-    sc.src = 'trash.js?v=757dfe3516e1';
+    sc.src = 'trash.js?v=e364e55b68c7';
     sc.onload = function () {
       TRASH = window.TRASH || [];
       // trash rows carry the merge key as `ig_id` to keep bytes down elsewhere.
