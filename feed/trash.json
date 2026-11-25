@@ -1,6 +1,6 @@
 {
 "format":2,
-"generated_at":"2026-11-25T06:37:20+00:00",
+"generated_at":"2026-11-25T07:21:16+00:00",
 "names":{
 "10":["Jade Empire: Special Edition","https://images.igdb.com/igdb/image/upload/t_cover_big/co21x0.jpg"],
 "100":["Need for Speed: ProStreet","https://images.igdb.com/igdb/image/upload/t_cover_big/co209l.jpg"],
@@ -97156,7 +97156,6 @@
 "267849":["House of Legacy","https://images.igdb.com/igdb/image/upload/t_cover_big/co748v.jpg"],
 "26785":["Herolike","https://images.igdb.com/igdb/image/upload/t_cover_big/co42dc.jpg"],
 "267852":["Internet Cafe Mini Games 10 in 1","https://images.igdb.com/igdb/image/upload/t_cover_big/co7dsu.jpg"],
-"267853":["Goodbye Seoul","https://images.igdb.com/igdb/image/upload/t_cover_big/co9o40.jpg"],
 "267854":["Aerial Nature Jigsaw Puzzles","https://images.igdb.com/igdb/image/upload/t_cover_big/co748c.jpg"],
 "267855":["Cat Attack","https://images.igdb.com/igdb/image/upload/t_cover_big/co785y.jpg"],
 "267856":["Clown Art","https://images.igdb.com/igdb/image/upload/t_cover_big/co748e.jpg"],
@@ -227647,7 +227646,7 @@
 "99996":["Grim Tales: The Heir","https://images.igdb.com/igdb/image/upload/t_cover_big/co48mo.jpg"]
 },
 "platforms":["3ds","atari2600","atari5200","atari7800","atomiswave","dos","dreamcast","gameandwatch","gamecube","gamegear","gb","gba","gbc","jaguar","lynx","mame","mastersystem","megadrive","model2","model3","n64","naomi","nes","ngp","ngpc","pokemini","ps2","ps3","psp","psvita","psx","saturn","sega32x","megacd","sg1000","snes","switch","triforce","vectrex","virtualboy","wii","windows","wswan","wswanc","xbox","xbox360","n64dd","nds","wiiu","ps4","xboxone","xboxseriesx","ps5","meta-quest-2","teknoparrot","famicom","fds","sfam","satellaview","casloopy","ngage","switch2","3do","meta-quest","psvr","psvr2","meta-quest-3"],
-"stats":{"named":227643,"trash":295172},
+"stats":{"named":227642,"trash":295171},
 "trash":[
 [3,41],
 [4,41],
@@ -415828,7 +415827,6 @@
 [267849,41],
 [267852,36],
 [267852,41],
-[267853,41],
 [267854,41],
 [267855,41],
 [267856,41],
